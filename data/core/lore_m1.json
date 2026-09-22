@@ -1,0 +1,25 @@
+{
+ "DERROTA": "derrota",
+ "DESISTENCIA": "desistencia",
+ "VITORIA": "vitoria",
+ "ROOM_INTRO": {
+  "1": "A névoa se arrasta pelo cais, fina e fria. Acima das docas, a Tarn brilha em azul, calma demais para uma noite como esta.",
+  "2": "Caixotes tombados e cordas rasgadas marcam o caminho. Algo que já foi gente ainda se move entre as sombras.",
+  "3": "Uma fenda pequena, quase cirúrgica, corta a parede de energia. Só névoa esverdeada escapa por ela, e as pedras ao redor estão cobertas de símbolos e de uma frase repetida: \"Seremos um só\".",
+  "4": "Degraus úmidos descem para um porão que ninguém deveria conhecer. O ar cheira a metal corroído.",
+  "5": "Estantes tortas guardam livros que ninguém teve coragem de queimar. Uma sombra alada se levanta entre elas.",
+  "6": "O corredor é estreito e escorre. O que vive nele já ouviu o grupo chegar.",
+  "7": "Ossos alinhados, um círculo escrito em alfabeto abissal e, no centro, um vazio à espera. Na parede, a mesma frase, várias vezes: \"Seremos um só\"."
+ },
+ "ENEMY_FLAVOR": {
+  "Criatura corrompida pela névoa": "A névoa a torceu por dentro; nada nela lembra o que era antes.",
+  "Slime corrosivo": "Escorre pelas frestas e corrói o metal por onde passa.",
+  "Guardião alado (cópia)": "Uma imitação bem-feita, mas sem sangue de verdade.",
+  "Guardião alado (verdadeiro)": "Guarda o ritual com asas negras e sangue escuro. Não recua."
+ },
+ "RUN_END": {
+  "vitoria": "O ritual foi desfeito. A névoa recua e a fenda na Tarn volta a ser só luz azul.",
+  "derrota": "A névoa se fecha sobre o grupo. Nottgard ainda não ficou a salvo.",
+  "desistencia": "O grupo recua para a superfície. O que ficou no porão continua esperando."
+ }
+}

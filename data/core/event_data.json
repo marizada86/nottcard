@@ -1,0 +1,20 @@
+{
+ "BASE_CHANCE": 0.3,
+ "PITY_STEP": 0.1,
+ "CHANCE_CAP": 0.75,
+ "PITY_GUARANTEE": 2,
+ "SECOND_EVENT_CHANCE": 0.1,
+ "ELIGIBLE_ROOMS": [
+  2,
+  3,
+  4,
+  5,
+  6
+ ],
+ "GROUP_WEIGHTS": {
+  "presente": 50,
+  "risco": 30,
+  "personagem": 20
+ },
+ "MIMIC_MIN_ROOM": 3
+}

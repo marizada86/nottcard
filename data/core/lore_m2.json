@@ -1,0 +1,25 @@
+{
+ "DERROTA": "derrota",
+ "DESISTENCIA": "desistencia",
+ "VITORIA": "vitoria",
+ "ROOM_INTRO": {
+  "1": "Dagruve à noite: lampiões fracos, janelas tapadas e uma cidade que aprendeu a não fazer perguntas.",
+  "2": "A praça é um beco sem saída. Velas de cera pingam no calçamento e alguém deixou um círculo de cinza no chão.",
+  "3": "O beco estreita entre varandas de madeira. Do alto, algo observa o grupo.",
+  "4": "Degraus gastos sobem até uma igreja abandonada. Há velas acesas nos degraus: alguém entrou aqui há pouco.",
+  "5": "A nave foi profanada: bancos empilhados como barricadas, cera escorrendo dos castiçais e formas cobertas por mantos no chão.",
+  "6": "No altar, camadas de cera pálida e um círculo ritual ainda úmido. Um capuz de olho único espera o grupo de costas."
+ },
+ "ENEMY_FLAVOR": {
+  "Cultista": "Fanático comum de A Mente Derretida: capuz, adaga curva e uma vela que nunca apaga.",
+  "Cultista de cajado": "Mais alto e mais magro que os outros; o lampião na ponta do cajado queima cera, não óleo.",
+  "Arqueiro cultista": "Mira de um joelho só e atira com a paciência de quem já perdeu o medo.",
+  "Zumbi": "Um morador de Dagruve, ungido em cera. Levanta sem saber que já tinha caído.",
+  "Sacerdote da Mente Derretida": "Sob o capuz, um único olho vivo se mexe sozinho, procurando um receptáculo."
+ },
+ "RUN_END": {
+  "vitoria": "O ritual foi interrompido. Um garoto assustado, mas vivo, sai da igreja com o grupo; no altar sobra um mapa de Dagruve.",
+  "derrota": "A cera engole as velas e o grupo cai na nave. O culto ainda procura o que veio buscar.",
+  "desistencia": "O grupo recua da praça. A igreja continua acesa, à espera."
+ }
+}

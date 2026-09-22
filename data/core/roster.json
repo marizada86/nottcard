@@ -1,0 +1,20 @@
+{
+ "BROOK": "brook",
+ "STARTERS": [
+  "kayron",
+  "durvall",
+  "sylas",
+  "maelor"
+ ],
+ "CHARACTER_PRICE": 300,
+ "SLOT_ACHIEVEMENTS": [
+  "dupla",
+  "concluir_m2",
+  "m2_em_dupla"
+ ],
+ "BROOK_ACHIEVEMENT": "concluir_m2",
+ "GROUP_ACHIEVEMENTS": {
+  "2": "dupla",
+  "3": "trio"
+ }
+}

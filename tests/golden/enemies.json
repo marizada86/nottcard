@@ -1,0 +1,665 @@
+{
+ "snap": {
+  "mimico": {
+   "name": "Mímico",
+   "hp": 12,
+   "base_attack": "1d6",
+   "special_every": 0,
+   "special_name": "Mordida que prende",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 12,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 20,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "mimico",
+   "blood_color": [
+    150,
+    100,
+    50
+   ],
+   "ca": 11,
+   "cam": 10,
+   "attack_bonus": 2,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": true,
+   "grapple_dc": 12,
+   "max_hp": 12,
+   "has_script": false,
+   "slug": "mimico",
+   "eca": 11,
+   "ecam": 10
+  },
+  "mimico15": {
+   "name": "Mímico",
+   "hp": 20,
+   "base_attack": "1d6",
+   "special_every": 0,
+   "special_name": "Mordida que prende",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 12,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 25,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "mimico",
+   "blood_color": [
+    150,
+    100,
+    50
+   ],
+   "ca": 12,
+   "cam": 10,
+   "attack_bonus": 2,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": true,
+   "grapple_dc": 12,
+   "max_hp": 20,
+   "has_script": false,
+   "slug": "mimico",
+   "eca": 12,
+   "ecam": 10
+  },
+  "criatura": {
+   "name": "Criatura corrompida pela névoa",
+   "hp": 10,
+   "base_attack": "1d6",
+   "special_every": 0,
+   "special_name": "",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 12,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 10,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "criatura_corrompida",
+   "blood_color": [
+    110,
+    70,
+    150
+   ],
+   "ca": 10,
+   "cam": 10,
+   "attack_bonus": 2,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 10,
+   "has_script": false,
+   "slug": "criatura_corrompida",
+   "eca": 10,
+   "ecam": 10
+  },
+  "slime": {
+   "name": "Slime corrosivo",
+   "hp": 8,
+   "base_attack": "1d4",
+   "special_every": 0,
+   "special_name": "",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 10,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 5,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "slime_corrosivo",
+   "blood_color": [
+    95,
+    135,
+    60
+   ],
+   "ca": 9,
+   "cam": 11,
+   "attack_bonus": 1,
+   "corrode_chance": 0.2,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 8,
+   "has_script": false,
+   "slug": "slime_corrosivo",
+   "eca": 9,
+   "ecam": 11
+  },
+  "guardiao_copia": {
+   "name": "Guardião alado (cópia)",
+   "hp": 16,
+   "base_attack": "1d8",
+   "special_every": 2,
+   "special_name": "Investida",
+   "special_dice": "1d8",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 14,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 15,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "guardiao_copia",
+   "blood_color": [
+    170,
+    130,
+    60
+   ],
+   "ca": 12,
+   "cam": 10,
+   "attack_bonus": 3,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 16,
+   "has_script": false,
+   "slug": "guardiao_copia",
+   "eca": 12,
+   "ecam": 10
+  },
+  "guardiao_verdadeiro": {
+   "name": "Guardião alado (verdadeiro)",
+   "hp": 26,
+   "base_attack": "1d8",
+   "special_every": 2,
+   "special_name": "Grito Abissal",
+   "special_dice": "1d6",
+   "special_extra": "próximo ataque de Durvall sofre -1",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 16,
+   "stun_immunity": 1,
+   "stun_immune": 0,
+   "xp": 25,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "guardiao_verdadeiro",
+   "blood_color": [
+    140,
+    60,
+    170
+   ],
+   "ca": 13,
+   "cam": 12,
+   "attack_bonus": 4,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "cam",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 26,
+   "has_script": false,
+   "slug": "guardiao_verdadeiro",
+   "eca": 13,
+   "ecam": 12
+  },
+  "cultista_adaga": {
+   "name": "Cultista",
+   "hp": 11,
+   "base_attack": "1d6",
+   "special_every": 0,
+   "special_name": "",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 12,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 12,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "cultista_adaga",
+   "blood_color": [
+    150,
+    60,
+    60
+   ],
+   "ca": 11,
+   "cam": 10,
+   "attack_bonus": 2,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 11,
+   "has_script": false,
+   "slug": "cultista_adaga",
+   "eca": 11,
+   "ecam": 10
+  },
+  "cultista_cajado": {
+   "name": "Cultista de cajado",
+   "hp": 10,
+   "base_attack": "1d6",
+   "special_every": 2,
+   "special_name": "Lampião de cera",
+   "special_dice": "1d4",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 12,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 12,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "cultista_cajado",
+   "blood_color": [
+    130,
+    70,
+    150
+   ],
+   "ca": 10,
+   "cam": 12,
+   "attack_bonus": 2,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "cam",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 10,
+   "has_script": false,
+   "slug": "cultista_cajado",
+   "eca": 10,
+   "ecam": 12
+  },
+  "cultista_arqueiro": {
+   "name": "Arqueiro cultista",
+   "hp": 8,
+   "base_attack": "1d8",
+   "special_every": 0,
+   "special_name": "",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 11,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 12,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "cultista_arqueiro",
+   "blood_color": [
+    150,
+    60,
+    60
+   ],
+   "ca": 9,
+   "cam": 10,
+   "attack_bonus": 3,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 8,
+   "has_script": false,
+   "slug": "cultista_arqueiro",
+   "eca": 9,
+   "ecam": 10
+  },
+  "zumbi": {
+   "name": "Zumbi",
+   "hp": 14,
+   "base_attack": "1d6",
+   "special_every": 0,
+   "special_name": "",
+   "special_dice": "",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 10,
+   "stun_immunity": 0,
+   "stun_immune": 0,
+   "xp": 8,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "zumbi",
+   "blood_color": [
+    110,
+    120,
+    80
+   ],
+   "ca": 9,
+   "cam": 8,
+   "attack_bonus": 1,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "ca",
+   "special_area": false,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 14,
+   "has_script": false,
+   "slug": "zumbi",
+   "eca": 9,
+   "ecam": 8
+  },
+  "sacerdote": {
+   "name": "Sacerdote da Mente Derretida",
+   "hp": 34,
+   "base_attack": "1d8",
+   "special_every": 3,
+   "special_name": "Turíbulo de cera",
+   "special_dice": "1d6",
+   "special_extra": "",
+   "turns_taken": 0,
+   "next_attack_reduction": 0,
+   "stunned": false,
+   "stun_left": 0,
+   "thunder_mark": "",
+   "stun_dc": 15,
+   "stun_immunity": 1,
+   "stun_immune": 0,
+   "xp": 30,
+   "ca_penalty": 0,
+   "cam_penalty": 0,
+   "marked_bonus": 0,
+   "asset_id": "sacerdote_mente_derretida",
+   "blood_color": [
+    130,
+    70,
+    150
+   ],
+   "ca": 12,
+   "cam": 14,
+   "attack_bonus": 4,
+   "corrode_chance": 0.0,
+   "corrode_amount": 1,
+   "special_defense": "cam",
+   "special_area": true,
+   "grapples": false,
+   "grapple_dc": 12,
+   "max_hp": 34,
+   "has_script": true,
+   "slug": "sacerdote_mente_derretida",
+   "eca": 12,
+   "ecam": 14
+  }
+ },
+ "beh": [
+  {
+   "n": "guardiao_verdadeiro",
+   "seq": [
+    "ataque básico",
+    "1d8",
+    false,
+    false,
+    false
+   ],
+   "acts": [
+    [
+     "ataque básico",
+     "1d8"
+    ],
+    [
+     "Grito Abissal",
+     "1d6"
+    ],
+    [
+     "ataque básico",
+     "1d8"
+    ],
+    [
+     "Grito Abissal",
+     "1d6"
+    ]
+   ],
+   "stun": [
+    true,
+    false,
+    false
+   ],
+   "s1": [
+    true,
+    1,
+    0
+   ],
+   "s2": [
+    false,
+    0,
+    1
+   ],
+   "s3": 0,
+   "drops": [
+    3,
+    1,
+    2,
+    2,
+    9,
+    8,
+    true
+   ],
+   "mark": [
+    2,
+    2,
+    0
+   ],
+   "summ": null
+  },
+  {
+   "n": "cultista_cajado",
+   "seq": [
+    "ataque básico",
+    "1d6",
+    false,
+    false,
+    false
+   ],
+   "acts": [
+    [
+     "ataque básico",
+     "1d6"
+    ],
+    [
+     "Lampião de cera",
+     "1d4"
+    ],
+    [
+     "ataque básico",
+     "1d6"
+    ],
+    [
+     "Lampião de cera",
+     "1d4"
+    ]
+   ],
+   "stun": [
+    true,
+    false,
+    false
+   ],
+   "s1": [
+    true,
+    1,
+    0
+   ],
+   "s2": [
+    false,
+    0,
+    0
+   ],
+   "s3": 0,
+   "drops": [
+    3,
+    1,
+    2,
+    2,
+    6,
+    8,
+    true
+   ],
+   "mark": [
+    2,
+    2,
+    0
+   ],
+   "summ": null
+  },
+  {
+   "n": "sacerdote",
+   "seq": [
+    "ataque básico",
+    "1d8",
+    false,
+    false,
+    false
+   ],
+   "acts": [
+    [
+     "ataque básico",
+     "1d8"
+    ],
+    [
+     "ataque básico",
+     "1d8"
+    ],
+    [
+     "Turíbulo de cera",
+     "1d6"
+    ],
+    [
+     "ataque básico",
+     "1d8"
+    ]
+   ],
+   "stun": [
+    true,
+    false,
+    false
+   ],
+   "s1": [
+    true,
+    1,
+    0
+   ],
+   "s2": [
+    false,
+    0,
+    1
+   ],
+   "s3": 0,
+   "drops": [
+    3,
+    1,
+    2,
+    2,
+    8,
+    10,
+    true
+   ],
+   "mark": [
+    2,
+    2,
+    0
+   ],
+   "summ": [
+    0,
+    [
+     "Zumbi",
+     "Zumbi",
+     "Zumbi",
+     "Zumbi"
+    ],
+    0,
+    true
+   ]
+  }
+ ],
+ "roll": {
+  "seed": 5,
+  "dmg": [
+   [
+    5,
+    3
+   ],
+   [
+    6,
+    1
+   ],
+   [
+    "ataque básico",
+    4
+   ],
+   [
+    "ataque básico",
+    2
+   ]
+  ]
+ }
+}

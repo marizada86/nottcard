@@ -1,0 +1,14 @@
+{
+ "NOTE_LIMIT": 1000,
+ "MAX_PRINTS": 20,
+ "MAX_BYTES": 8388608,
+ "WARN_FRACTION": 0.8,
+ "NOTA": "nota",
+ "PRINT": "print",
+ "EMPTY_MESSAGE": "Não há evidência a ser enviada.",
+ "FULL_MESSAGE": "Pacote cheio: aperte F7 para gerar o .zip.",
+ "NEAR_FULL_MESSAGE": "Pacote quase cheio: aperte F7 para gerar o .zip.",
+ "OK": "ok",
+ "NEAR_FULL": "quase_cheio",
+ "FULL": "cheio"
+}

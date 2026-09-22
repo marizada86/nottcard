@@ -1,0 +1,444 @@
+{
+ "CLASSIC_LAYOUT": "classico",
+ "LAYOUT": "layout",
+ "UPGRADE": "upgrade",
+ "EQUIPAMENTO": "equipamento",
+ "PERSONAGEM": "personagem",
+ "LEGACY_LAYOUT_PRICES": {
+  "pergaminho": 100,
+  "obsidiana": 100,
+  "recorte": 100,
+  "bosque": 100,
+  "gelo": 100,
+  "neon": 200,
+  "vitral": 200,
+  "ferro": 200,
+  "brasa": 200
+ },
+ "REFUND_SECOND_DECK": 500,
+ "REFUND_PACK": 100,
+ "LEGACY_SECOND_DECK_ID": "baralho_2",
+ "LAYOUT_ITEMS": [],
+ "UPGRADE_ITEMS": [
+  {
+   "__type": "ShopItem",
+   "id": "forca_bruta",
+   "nome": "Força Bruta",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "vitalidade",
+   "nome": "Vitalidade",
+   "preco": 80,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "mao_cheia",
+   "nome": "Mão Cheia",
+   "preco": 500,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "rerrolagem",
+   "nome": "Rerrolagem",
+   "preco": 150,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "sorte",
+   "nome": "Sorte",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "bolso_fundo",
+   "nome": "Bolso Fundo",
+   "preco": 600,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "ganancia",
+   "nome": "Ganância",
+   "preco": 200,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "mao_maior",
+   "nome": "Mão Maior",
+   "preco": 600,
+   "titulo_requerido": "fechadura",
+   "tipo": "upgrade"
+  }
+ ],
+ "SHOP_ITEMS": [
+  {
+   "__type": "ShopItem",
+   "id": "forca_bruta",
+   "nome": "Força Bruta",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "vitalidade",
+   "nome": "Vitalidade",
+   "preco": 80,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "mao_cheia",
+   "nome": "Mão Cheia",
+   "preco": 500,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "rerrolagem",
+   "nome": "Rerrolagem",
+   "preco": 150,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "sorte",
+   "nome": "Sorte",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "bolso_fundo",
+   "nome": "Bolso Fundo",
+   "preco": 600,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "ganancia",
+   "nome": "Ganância",
+   "preco": 200,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "mao_maior",
+   "nome": "Mão Maior",
+   "preco": 600,
+   "titulo_requerido": "fechadura",
+   "tipo": "upgrade"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "armadura_couro",
+   "nome": "Couro",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "armadura_cota",
+   "nome": "Cota de malha",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "armadura_placa",
+   "nome": "Placa completa",
+   "preco": 600,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "armadura_robe",
+   "nome": "Robe",
+   "preco": 150,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "arma_adaga",
+   "nome": "Adaga",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "arma_espada",
+   "nome": "Espada longa",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "arma_maca",
+   "nome": "Maça de guerra",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "arma_cajado",
+   "nome": "Cajado",
+   "preco": 250,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "arma_cetro",
+   "nome": "Cetro",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "kayron",
+   "nome": "Kayron",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "durvall",
+   "nome": "Durvall",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "sylas",
+   "nome": "Sylas Malafa",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "maelor",
+   "nome": "Maelor",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  {
+   "__type": "ShopItem",
+   "id": "brook",
+   "nome": "Brook França",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  }
+ ],
+ "BY_ID": {
+  "forca_bruta": {
+   "__type": "ShopItem",
+   "id": "forca_bruta",
+   "nome": "Força Bruta",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "vitalidade": {
+   "__type": "ShopItem",
+   "id": "vitalidade",
+   "nome": "Vitalidade",
+   "preco": 80,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "mao_cheia": {
+   "__type": "ShopItem",
+   "id": "mao_cheia",
+   "nome": "Mão Cheia",
+   "preco": 500,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "rerrolagem": {
+   "__type": "ShopItem",
+   "id": "rerrolagem",
+   "nome": "Rerrolagem",
+   "preco": 150,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "sorte": {
+   "__type": "ShopItem",
+   "id": "sorte",
+   "nome": "Sorte",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "bolso_fundo": {
+   "__type": "ShopItem",
+   "id": "bolso_fundo",
+   "nome": "Bolso Fundo",
+   "preco": 600,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "ganancia": {
+   "__type": "ShopItem",
+   "id": "ganancia",
+   "nome": "Ganância",
+   "preco": 200,
+   "titulo_requerido": null,
+   "tipo": "upgrade"
+  },
+  "mao_maior": {
+   "__type": "ShopItem",
+   "id": "mao_maior",
+   "nome": "Mão Maior",
+   "preco": 600,
+   "titulo_requerido": "fechadura",
+   "tipo": "upgrade"
+  },
+  "armadura_couro": {
+   "__type": "ShopItem",
+   "id": "armadura_couro",
+   "nome": "Couro",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "armadura_cota": {
+   "__type": "ShopItem",
+   "id": "armadura_cota",
+   "nome": "Cota de malha",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "armadura_placa": {
+   "__type": "ShopItem",
+   "id": "armadura_placa",
+   "nome": "Placa completa",
+   "preco": 600,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "armadura_robe": {
+   "__type": "ShopItem",
+   "id": "armadura_robe",
+   "nome": "Robe",
+   "preco": 150,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "arma_adaga": {
+   "__type": "ShopItem",
+   "id": "arma_adaga",
+   "nome": "Adaga",
+   "preco": 100,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "arma_espada": {
+   "__type": "ShopItem",
+   "id": "arma_espada",
+   "nome": "Espada longa",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "arma_maca": {
+   "__type": "ShopItem",
+   "id": "arma_maca",
+   "nome": "Maça de guerra",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "arma_cajado": {
+   "__type": "ShopItem",
+   "id": "arma_cajado",
+   "nome": "Cajado",
+   "preco": 250,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "arma_cetro": {
+   "__type": "ShopItem",
+   "id": "arma_cetro",
+   "nome": "Cetro",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "equipamento"
+  },
+  "kayron": {
+   "__type": "ShopItem",
+   "id": "kayron",
+   "nome": "Kayron",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  "durvall": {
+   "__type": "ShopItem",
+   "id": "durvall",
+   "nome": "Durvall",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  "sylas": {
+   "__type": "ShopItem",
+   "id": "sylas",
+   "nome": "Sylas Malafa",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  "maelor": {
+   "__type": "ShopItem",
+   "id": "maelor",
+   "nome": "Maelor",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  },
+  "brook": {
+   "__type": "ShopItem",
+   "id": "brook",
+   "nome": "Brook França",
+   "preco": 300,
+   "titulo_requerido": null,
+   "tipo": "personagem"
+  }
+ }
+}

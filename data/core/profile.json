@@ -1,0 +1,10 @@
+{
+ "PROFILE_NAME": "perfil.json",
+ "MIN_NAME": 2,
+ "MAX_NAME": 24,
+ "FPS_CHOICES": [
+  30,
+  60
+ ],
+ "FPS_DEFAULT": 60
+}

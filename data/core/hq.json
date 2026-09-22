@@ -1,0 +1,171 @@
+{
+ "HQ_001": {
+  "__type": "Hq",
+  "id": "hq_001",
+  "title": "Da Fenda nas Docas aos Guardiões de Nottgard",
+  "panels": [
+   {
+    "__type": "Panel",
+    "image": "hq_001_q1",
+    "text": "A fenda nas Docas foi selada.",
+    "speaker": ""
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_001_q2",
+    "text": "A cidade está respirando outra vez.",
+    "speaker": "Maelor"
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_001_q3",
+    "text": "Mas Nottgard ainda precisava de guardiões.",
+    "speaker": ""
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_001_q4",
+    "text": "Nottgard reconhece sua coragem.",
+    "speaker": "Helion"
+   }
+  ]
+ },
+ "HQ_002": {
+  "__type": "Hq",
+  "id": "hq_002",
+  "title": "Guardiões de Nottgard",
+  "panels": [
+   {
+    "__type": "Panel",
+    "image": "hq_002_q1",
+    "text": "No salão de Castle Rodhe, o grupo é recebido com honras.",
+    "speaker": ""
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_002_q2",
+    "text": "Cada aventureiro recebe o broche de Guardião de Nottgard.",
+    "speaker": ""
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_002_q3",
+    "text": "Este é Brook França, paladino. Ele vai com vocês a Dagruve.",
+    "speaker": "Helion"
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_002_q4",
+    "text": "A estrada leva a Dagruve, onde um culto prepara algo na praça.",
+    "speaker": ""
+   }
+  ]
+ },
+ "HQ_003": {
+  "__type": "Hq",
+  "id": "hq_003",
+  "title": "O mapa de Dagruve",
+  "panels": [
+   {
+    "__type": "Panel",
+    "image": "hq_003_q1",
+    "text": "O ritual foi interrompido. Na praça, só o silêncio das velas apagadas.",
+    "speaker": ""
+   },
+   {
+    "__type": "Panel",
+    "image": "hq_003_q2",
+    "text": "No altar, um mapa de Dagruve com três lugares marcados. O próximo caminho está aberto.",
+    "speaker": ""
+   }
+  ]
+ },
+ "HQS": {
+  "hq_001": {
+   "__type": "Hq",
+   "id": "hq_001",
+   "title": "Da Fenda nas Docas aos Guardiões de Nottgard",
+   "panels": [
+    {
+     "__type": "Panel",
+     "image": "hq_001_q1",
+     "text": "A fenda nas Docas foi selada.",
+     "speaker": ""
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_001_q2",
+     "text": "A cidade está respirando outra vez.",
+     "speaker": "Maelor"
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_001_q3",
+     "text": "Mas Nottgard ainda precisava de guardiões.",
+     "speaker": ""
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_001_q4",
+     "text": "Nottgard reconhece sua coragem.",
+     "speaker": "Helion"
+    }
+   ]
+  },
+  "hq_002": {
+   "__type": "Hq",
+   "id": "hq_002",
+   "title": "Guardiões de Nottgard",
+   "panels": [
+    {
+     "__type": "Panel",
+     "image": "hq_002_q1",
+     "text": "No salão de Castle Rodhe, o grupo é recebido com honras.",
+     "speaker": ""
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_002_q2",
+     "text": "Cada aventureiro recebe o broche de Guardião de Nottgard.",
+     "speaker": ""
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_002_q3",
+     "text": "Este é Brook França, paladino. Ele vai com vocês a Dagruve.",
+     "speaker": "Helion"
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_002_q4",
+     "text": "A estrada leva a Dagruve, onde um culto prepara algo na praça.",
+     "speaker": ""
+    }
+   ]
+  },
+  "hq_003": {
+   "__type": "Hq",
+   "id": "hq_003",
+   "title": "O mapa de Dagruve",
+   "panels": [
+    {
+     "__type": "Panel",
+     "image": "hq_003_q1",
+     "text": "O ritual foi interrompido. Na praça, só o silêncio das velas apagadas.",
+     "speaker": ""
+    },
+    {
+     "__type": "Panel",
+     "image": "hq_003_q2",
+     "text": "No altar, um mapa de Dagruve com três lugares marcados. O próximo caminho está aberto.",
+     "speaker": ""
+    }
+   ]
+  }
+ },
+ "HQ_BY_MISSION": {
+  "m1": "hq_001",
+  "m2": "hq_003"
+ },
+ "CURRENT_MISSION": "m1"
+}

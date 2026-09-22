@@ -1,0 +1,22 @@
+{
+ "MAX_LEVEL": 5,
+ "ALL_CHARACTER_IDS": [
+  "durvall",
+  "maelor",
+  "sylas",
+  "kayron",
+  "brook"
+ ],
+ "SAVE_VERSION": 1,
+ "LEVEL_XP": [
+  100,
+  350,
+  950,
+  1950
+ ],
+ "XP_SCALE": 1.0,
+ "VITORIA": "vitoria",
+ "DESISTENCIA": "desistencia",
+ "DERROTA": "derrota",
+ "DEFEAT_XP_KEPT": 0.5
+}

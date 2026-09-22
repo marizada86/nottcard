@@ -1,0 +1,637 @@
+{
+ "modifier": {
+  "-3": -7,
+  "-2": -6,
+  "-1": -6,
+  "0": -5,
+  "1": -5,
+  "2": -4,
+  "3": -4,
+  "4": -3,
+  "5": -3,
+  "6": -2,
+  "7": -2,
+  "8": -1,
+  "9": -1,
+  "10": 0,
+  "11": 0,
+  "12": 1,
+  "13": 1,
+  "14": 2,
+  "15": 2,
+  "16": 3,
+  "17": 3,
+  "18": 4,
+  "19": 4,
+  "20": 5,
+  "21": 5,
+  "22": 6,
+  "23": 6,
+  "24": 7,
+  "25": 7,
+  "26": 8,
+  "27": 8,
+  "28": 9,
+  "29": 9,
+  "30": 10
+ },
+ "combine": [
+  [
+   [],
+   "normal"
+  ],
+  [
+   [
+    "vantagem"
+   ],
+   "vantagem"
+  ],
+  [
+   [
+    "desvantagem"
+   ],
+   "desvantagem"
+  ],
+  [
+   [
+    "vantagem",
+    "desvantagem"
+   ],
+   "normal"
+  ],
+  [
+   [
+    "vantagem",
+    "vantagem",
+    "desvantagem"
+   ],
+   "normal"
+  ],
+  [
+   [
+    "normal",
+    "desvantagem",
+    "desvantagem"
+   ],
+   "desvantagem"
+  ],
+  [
+   [
+    "vantagem",
+    "desvantagem",
+    "desvantagem"
+   ],
+   "normal"
+  ]
+ ],
+ "pick_d20": [
+  [
+   "normal",
+   3,
+   15,
+   [
+    3,
+    null
+   ]
+  ],
+  [
+   "normal",
+   15,
+   3,
+   [
+    15,
+    null
+   ]
+  ],
+  [
+   "normal",
+   7,
+   7,
+   [
+    7,
+    null
+   ]
+  ],
+  [
+   "normal",
+   1,
+   null,
+   [
+    1,
+    null
+   ]
+  ],
+  [
+   "normal",
+   20,
+   null,
+   [
+    20,
+    null
+   ]
+  ],
+  [
+   "vantagem",
+   3,
+   15,
+   [
+    15,
+    3
+   ]
+  ],
+  [
+   "vantagem",
+   15,
+   3,
+   [
+    15,
+    3
+   ]
+  ],
+  [
+   "vantagem",
+   7,
+   7,
+   [
+    7,
+    7
+   ]
+  ],
+  [
+   "vantagem",
+   1,
+   null,
+   [
+    1,
+    null
+   ]
+  ],
+  [
+   "vantagem",
+   20,
+   null,
+   [
+    20,
+    null
+   ]
+  ],
+  [
+   "desvantagem",
+   3,
+   15,
+   [
+    3,
+    15
+   ]
+  ],
+  [
+   "desvantagem",
+   15,
+   3,
+   [
+    3,
+    15
+   ]
+  ],
+  [
+   "desvantagem",
+   7,
+   7,
+   [
+    7,
+    7
+   ]
+  ],
+  [
+   "desvantagem",
+   1,
+   null,
+   [
+    1,
+    null
+   ]
+  ],
+  [
+   "desvantagem",
+   20,
+   null,
+   [
+    20,
+    null
+   ]
+  ]
+ ],
+ "rolls": [
+  {
+   "seed": 1,
+   "roll": [
+    2,
+    6,
+    8,
+    15,
+    15,
+    4,
+    2
+   ],
+   "d20": [
+    [
+     16,
+     null
+    ],
+    [
+     13,
+     1
+    ],
+    [
+     14,
+     20
+    ],
+    [
+     15,
+     1
+    ]
+   ]
+  },
+  {
+   "seed": 7,
+   "roll": [
+    3,
+    6,
+    8,
+    18,
+    8,
+    10,
+    1
+   ],
+   "d20": [
+    [
+     17,
+     null
+    ],
+    [
+     7,
+     2
+    ],
+    [
+     3,
+     14
+    ],
+    [
+     14,
+     3
+    ]
+   ]
+  },
+  {
+   "seed": 2026,
+   "roll": [
+    1,
+    8,
+    12,
+    8,
+    15,
+    10,
+    8
+   ],
+   "d20": [
+    [
+     8,
+     null
+    ],
+    [
+     20,
+     1
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     10,
+     4
+    ]
+   ]
+  }
+ ],
+ "sides_of": {
+  "1d4": 4,
+  "2d6": 6,
+  "3D8": 8,
+  "1d20": 20
+ },
+ "ac": [
+  [
+   13,
+   12
+  ],
+  [
+   10,
+   11
+  ],
+  [
+   10,
+   13
+  ],
+  [
+   11,
+   11
+  ],
+  [
+   11,
+   10
+  ]
+ ],
+ "cards": {
+  "ESTOCADA_MISTICA": {
+   "slug": "estocada_mistica",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "PANCADA_DE_ESCUDO": {
+   "slug": "pancada_de_escudo",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "ESQUIVA": {
+   "slug": "esquiva",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "LUZ_REVELADORA": {
+   "slug": "luz_reveladora",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "ROMPER_ARMADURA": {
+   "slug": "romper_armadura",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "REACAO_INSTINTIVA": {
+   "slug": "reacao_instintiva",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "AMARRAR_E_SALTAR": {
+   "slug": "amarrar_e_saltar",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "LOCALIZAR_CRIATURA": {
+   "slug": "localizar_criatura",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "COMUNHAO_COM_SENDRINAH": {
+   "slug": "comunhao_com_sendrinah",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "LUZ_MAIS_PURA": {
+   "slug": "luz_mais_pura",
+   "targets_enemy": false,
+   "targets_ally": true,
+   "ally_hint": "Alvo: aliado"
+  },
+  "VISAO_VERDADEIRA": {
+   "slug": "visao_verdadeira",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "RAIO_ENFRAQUECEDOR": {
+   "slug": "raio_enfraquecedor",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "DOMINAR_PESSOA": {
+   "slug": "dominar_pessoa",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "LEITURA_ABISSAL": {
+   "slug": "leitura_abissal",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "ASAS_NEGRAS": {
+   "slug": "asas_negras",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "DESCARGA_ESTELAR": {
+   "slug": "descarga_estelar",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "SENTIDO_DIVINO": {
+   "slug": "sentido_divino",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "MARCA_DA_RETIDAO": {
+   "slug": "marca_da_retidao",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "SENTENCA_DE_LLIIRA": {
+   "slug": "sentenca_de_lliira",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_FURTIVO": {
+   "slug": "golpe_furtivo",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "ATAQUE_IMPRUDENTE": {
+   "slug": "ataque_imprudente",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "RAJADA_DE_GOLPES": {
+   "slug": "rajada_de_golpes",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_ATORDOANTE": {
+   "slug": "golpe_atordoante",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "ESQUIVA_SOBRENATURAL": {
+   "slug": "esquiva_sobrenatural",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "LAMINA_TROVEJANTE": {
+   "slug": "lamina_trovejante",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_RAPIDO": {
+   "slug": "golpe_rapido",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_VERSATIL": {
+   "slug": "golpe_versatil",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_ESMAGADOR": {
+   "slug": "golpe_esmagador",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_DE_CAJADO": {
+   "slug": "golpe_de_cajado",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "GOLPE_DE_CETRO": {
+   "slug": "golpe_de_cetro",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "CERA_FERVENTE": {
+   "slug": "cera_fervente",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "VELA_SAGRADA": {
+   "slug": "vela_sagrada",
+   "targets_enemy": false,
+   "targets_ally": true,
+   "ally_hint": "Alvo: aliado"
+  },
+  "OLHAR_FIXO": {
+   "slug": "olhar_fixo",
+   "targets_enemy": true,
+   "targets_ally": false,
+   "ally_hint": ""
+  },
+  "ESTOLA_DE_CERA": {
+   "slug": "estola_de_cera",
+   "targets_enemy": false,
+   "targets_ally": false,
+   "ally_hint": ""
+  }
+ },
+ "decks": {
+  "starting": [
+   "Golpe",
+   "Golpe",
+   "Golpe",
+   "Golpe",
+   "Golpe",
+   "Golpe Perfurante",
+   "Golpe Perfurante",
+   "Segundo Fôlego",
+   "Chama Menor",
+   "Chama Menor",
+   "Névoa Fria",
+   "Surto de Ação",
+   "Poção de Cura",
+   "Aparar",
+   "Contrafeitiço",
+   "Onda Psiônica"
+  ],
+  "maelor": [
+   "Chama Sagrada",
+   "Chama Sagrada",
+   "Chama Sagrada",
+   "Chama Menor",
+   "Chama Menor",
+   "Toque Curativo",
+   "Névoa Fria",
+   "Golpe Contundente",
+   "Atordoar",
+   "Bola de Fogo",
+   "Palavra Curativa",
+   "Poção de Cura",
+   "Luz Reveladora"
+  ],
+  "sylas": [
+   "Raio Sombrio",
+   "Raio Sombrio",
+   "Raio Sombrio",
+   "Farpa Psiônica",
+   "Farpa Psiônica",
+   "Lâmina de Sombra",
+   "Lâmina de Sombra",
+   "Toque Vampírico",
+   "Escuridão",
+   "Cegueira",
+   "Imagem Espelhada",
+   "Passo Sombrio",
+   "Poção de Cura"
+  ],
+  "kayron": [
+   "Lança Mística",
+   "Lança Mística",
+   "Lança Mística",
+   "Lâmina Psíquica",
+   "Lâmina Psíquica",
+   "Pulso Psíquico",
+   "Foco Psiônico",
+   "Foco Psiônico",
+   "Sangue Celestial",
+   "Mãos Celestiais",
+   "Ruído Mental",
+   "Mente Vazia",
+   "Poção de Cura"
+  ],
+  "brook": [
+   "Martelo da Glória",
+   "Martelo da Glória",
+   "Martelo da Glória",
+   "Punição Divina",
+   "Punição Divina",
+   "Mãos Consagradas",
+   "Escudo da Fé",
+   "Escudo da Fé",
+   "Desafio Divino",
+   "Desafio Divino",
+   "Aura de Proteção",
+   "Redenção Divina",
+   "Poção de Cura"
+  ]
+ },
+ "slugify": {
+  "Golpe": "golpe",
+  "Chama Menor": "chama_menor",
+  "Surto de Ação": "surto_de_a_o",
+  "  X--Y  ": "x_y",
+  "Comunhão com Sendrinah": "comunh_o_com_sendrinah"
+ }
+}

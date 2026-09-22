@@ -1,0 +1,7 @@
+{
+ "COMBATE": "combate",
+ "ENEMY": "enemy",
+ "ENEMY_SIDE": "enemy_side",
+ "LOCKED": "locked",
+ "LOCKED_TEXT": "Elimine o inimigo primeiro."
+}

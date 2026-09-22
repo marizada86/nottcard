@@ -1,0 +1,264 @@
+{
+ "ITEMS": {
+  "lupa_de_latao": {
+   "__type": "ItemDef",
+   "id": "lupa_de_latao",
+   "nome": "Lupa de latão",
+   "tipo": "acessorio",
+   "descricao": "Uma lupa gasta, boa para ler símbolos miúdos.",
+   "asset_id": "lupa_de_latao",
+   "check_bonus": [
+    [
+     "inteligencia",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  "faixa_de_couro": {
+   "__type": "ItemDef",
+   "id": "faixa_de_couro",
+   "nome": "Faixa de couro",
+   "tipo": "acessorio",
+   "descricao": "Uma faixa curtida que firma o pulso.",
+   "asset_id": "faixa_de_couro",
+   "check_bonus": [
+    [
+     "forca",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  "carta_chamuscada": {
+   "__type": "ItemDef",
+   "id": "carta_chamuscada",
+   "nome": "Carta chamuscada",
+   "tipo": "pista",
+   "descricao": "Uma carta com as bordas queimadas. Só dá para ler pedaços.",
+   "asset_id": "carta_chamuscada",
+   "check_bonus": [],
+   "next_check_bonus": 0
+  },
+  "arma_durvall": {
+   "__type": "ItemDef",
+   "id": "arma_durvall",
+   "nome": "Arma de assinatura",
+   "tipo": "arma",
+   "descricao": "A arma que o Durvall já porta desde o início. Não é uma carta.",
+   "asset_id": "arma_durvall",
+   "check_bonus": [],
+   "next_check_bonus": 0
+  }
+ },
+ "EVENTS": [
+  {
+   "__type": "EventDef",
+   "id": "bau",
+   "name": "Baú",
+   "group": "presente",
+   "weight": 60,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "__type": "EventDef",
+   "id": "mercador",
+   "name": "Mercador",
+   "group": "presente",
+   "weight": 40,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "__type": "EventDef",
+   "id": "frasco",
+   "name": "Frasco esquecido",
+   "group": "presente",
+   "weight": 30,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "__type": "EventDef",
+   "id": "fenda",
+   "name": "Fenda de névoa",
+   "group": "risco",
+   "weight": 100,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "__type": "EventDef",
+   "id": "altar",
+   "name": "Altar",
+   "group": "personagem",
+   "weight": 50,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "__type": "EventDef",
+   "id": "viajante",
+   "name": "Viajante ferido",
+   "group": "personagem",
+   "weight": 50,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  }
+ ],
+ "BY_ID": {
+  "bau": {
+   "__type": "EventDef",
+   "id": "bau",
+   "name": "Baú",
+   "group": "presente",
+   "weight": 60,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "mercador": {
+   "__type": "EventDef",
+   "id": "mercador",
+   "name": "Mercador",
+   "group": "presente",
+   "weight": 40,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "frasco": {
+   "__type": "EventDef",
+   "id": "frasco",
+   "name": "Frasco esquecido",
+   "group": "presente",
+   "weight": 30,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "fenda": {
+   "__type": "EventDef",
+   "id": "fenda",
+   "name": "Fenda de névoa",
+   "group": "risco",
+   "weight": 100,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "altar": {
+   "__type": "EventDef",
+   "id": "altar",
+   "name": "Altar",
+   "group": "personagem",
+   "weight": 50,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  "viajante": {
+   "__type": "EventDef",
+   "id": "viajante",
+   "name": "Viajante ferido",
+   "group": "personagem",
+   "weight": 50,
+   "rooms": [
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  }
+ },
+ "CHEST_GOLD_LOW": 15,
+ "CHEST_GOLD_SPAN": 8,
+ "CHEST_GOLD_PER_ROOM": 3,
+ "CHEST_REWARD_CHANCE": 0.4,
+ "CHEST_LOCKED_CHANCE": 0.25,
+ "MIMIC_CHANCE": 0.25,
+ "CHEST_EXAMINE_DC": 12,
+ "LOCK_DC": 12,
+ "LOCK_DAMAGE": [
+  1,
+  4
+ ],
+ "SHOP_CARD_PRICE": [
+  20,
+  35
+ ],
+ "SHOP_ITEM_PRICE": [
+  25,
+  45
+ ],
+ "POTION_NAME": "Poção de Cura",
+ "POTION_PRICE": 15,
+ "SHOP_REROLL_COST": 10,
+ "ALTAR_HEAL_COST": 15,
+ "ALTAR_BLESS_COST": 20,
+ "ALTAR_CLEANSE_COST": 20,
+ "ALTAR_HEAL_PCT": 50,
+ "TRAVELER_ASSAULT_GOLD": [
+  20,
+  30
+ ],
+ "TRAVELER_DC": 12,
+ "RIFT_DC": 12,
+ "RIFT_XP": 12,
+ "RIFT_DAMAGE": [
+  2,
+  5
+ ]
+}

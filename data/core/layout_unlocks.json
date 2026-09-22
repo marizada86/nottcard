@@ -1,0 +1,506 @@
+{
+ "CLASSIC_LAYOUT": "classico",
+ "MIST_LAYOUT": "nevoa",
+ "ALWAYS_OWNED": [
+  "classico",
+  "nevoa"
+ ],
+ "MILESTONES": [
+  10,
+  20,
+  30
+ ],
+ "ROMAN": [
+  "I",
+  "II",
+  "III"
+ ],
+ "AVAILABLE_GRADES": [
+  1,
+  2,
+  3
+ ],
+ "CLASSES": [
+  [
+   "guerreiro",
+   "durvall",
+   "Guerreiro Psíquico"
+  ],
+  [
+   "luz",
+   "maelor",
+   "Clérigo da Luz"
+  ],
+  [
+   "sombras",
+   "sylas",
+   "Clérigo das Sombras"
+  ],
+  [
+   "mistico",
+   "kayron",
+   "Místico"
+  ],
+  [
+   "paladino",
+   "brook",
+   "Paladino"
+  ]
+ ],
+ "UNLOCKS": [
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_1",
+   "achievement_id": "layout_guerreiro_1",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_2",
+   "achievement_id": "layout_guerreiro_2",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_3",
+   "achievement_id": "layout_guerreiro_3",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_1",
+   "achievement_id": "layout_luz_1",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_2",
+   "achievement_id": "layout_luz_2",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_3",
+   "achievement_id": "layout_luz_3",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_1",
+   "achievement_id": "layout_sombras_1",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_2",
+   "achievement_id": "layout_sombras_2",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_3",
+   "achievement_id": "layout_sombras_3",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_1",
+   "achievement_id": "layout_mistico_1",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_2",
+   "achievement_id": "layout_mistico_2",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_3",
+   "achievement_id": "layout_mistico_3",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_1",
+   "achievement_id": "layout_paladino_1",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_2",
+   "achievement_id": "layout_paladino_2",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_3",
+   "achievement_id": "layout_paladino_3",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 3,
+   "kills_needed": 30
+  }
+ ],
+ "BY_LAYOUT": {
+  "guerreiro_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_1",
+   "achievement_id": "layout_guerreiro_1",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "guerreiro_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_2",
+   "achievement_id": "layout_guerreiro_2",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "guerreiro_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_3",
+   "achievement_id": "layout_guerreiro_3",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "luz_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_1",
+   "achievement_id": "layout_luz_1",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "luz_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_2",
+   "achievement_id": "layout_luz_2",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "luz_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_3",
+   "achievement_id": "layout_luz_3",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "sombras_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_1",
+   "achievement_id": "layout_sombras_1",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "sombras_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_2",
+   "achievement_id": "layout_sombras_2",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "sombras_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_3",
+   "achievement_id": "layout_sombras_3",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "mistico_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_1",
+   "achievement_id": "layout_mistico_1",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "mistico_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_2",
+   "achievement_id": "layout_mistico_2",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "mistico_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_3",
+   "achievement_id": "layout_mistico_3",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "paladino_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_1",
+   "achievement_id": "layout_paladino_1",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "paladino_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_2",
+   "achievement_id": "layout_paladino_2",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "paladino_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_3",
+   "achievement_id": "layout_paladino_3",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 3,
+   "kills_needed": 30
+  }
+ },
+ "BY_ACHIEVEMENT": {
+  "layout_guerreiro_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_1",
+   "achievement_id": "layout_guerreiro_1",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "layout_guerreiro_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_2",
+   "achievement_id": "layout_guerreiro_2",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "layout_guerreiro_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "guerreiro_3",
+   "achievement_id": "layout_guerreiro_3",
+   "class_id": "guerreiro",
+   "character_id": "durvall",
+   "class_name": "Guerreiro Psíquico",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "layout_luz_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_1",
+   "achievement_id": "layout_luz_1",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "layout_luz_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_2",
+   "achievement_id": "layout_luz_2",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "layout_luz_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "luz_3",
+   "achievement_id": "layout_luz_3",
+   "class_id": "luz",
+   "character_id": "maelor",
+   "class_name": "Clérigo da Luz",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "layout_sombras_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_1",
+   "achievement_id": "layout_sombras_1",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "layout_sombras_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_2",
+   "achievement_id": "layout_sombras_2",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "layout_sombras_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "sombras_3",
+   "achievement_id": "layout_sombras_3",
+   "class_id": "sombras",
+   "character_id": "sylas",
+   "class_name": "Clérigo das Sombras",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "layout_mistico_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_1",
+   "achievement_id": "layout_mistico_1",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "layout_mistico_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_2",
+   "achievement_id": "layout_mistico_2",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "layout_mistico_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "mistico_3",
+   "achievement_id": "layout_mistico_3",
+   "class_id": "mistico",
+   "character_id": "kayron",
+   "class_name": "Místico",
+   "grade": 3,
+   "kills_needed": 30
+  },
+  "layout_paladino_1": {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_1",
+   "achievement_id": "layout_paladino_1",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 1,
+   "kills_needed": 10
+  },
+  "layout_paladino_2": {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_2",
+   "achievement_id": "layout_paladino_2",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 2,
+   "kills_needed": 20
+  },
+  "layout_paladino_3": {
+   "__type": "LayoutUnlock",
+   "layout_id": "paladino_3",
+   "achievement_id": "layout_paladino_3",
+   "class_id": "paladino",
+   "character_id": "brook",
+   "class_name": "Paladino",
+   "grade": 3,
+   "kills_needed": 30
+  }
+ }
+}

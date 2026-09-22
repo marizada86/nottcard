@@ -1,0 +1,269 @@
+{
+ "MAX_LEVEL": 5,
+ "VITORIA": "vitoria",
+ "MULLIGAN": "mulligan",
+ "BONUS_HP": "bonus_hp",
+ "KEEP_REACTION": "keep_reaction",
+ "EXTRA_LUCK": "extra_luck",
+ "GROUP_2": "group_2",
+ "GROUP_3": "group_3",
+ "BUY_SLOT": "buy_slot",
+ "BUY_BROOK": "buy_brook",
+ "LEVEL_FOR_GROUPS": 3,
+ "BONUS_HP_AMOUNT": 2,
+ "CRITS_FOR_LUCK": 3,
+ "DAMAGE_BONUS": "damage_bonus",
+ "BIG_HIT": 30,
+ "DAMAGE_BONUS_PCT": 0.1,
+ "GRANT_CARD": "grant_card",
+ "LEVEL_FOR_VETERAN": 4,
+ "ONES_FOR_UNLUCKY": 3,
+ "ACHIEVEMENTS": [
+  {
+   "__type": "Achievement",
+   "id": "veteranos",
+   "name": "Dois Veteranos",
+   "description": "Leve os dois personagens ao nível 5.",
+   "benefit": "Trocar a mão inicial de um combate (1 vez por tentativa).",
+   "benefit_key": "mulligan",
+   "earned": {
+    "__fn": "_veterans"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "fechadura",
+   "name": "Fechadura Aberta",
+   "description": "Conclua a missão.",
+   "benefit": "+2 PV máximo em toda tentativa.",
+   "benefit_key": "bonus_hp",
+   "earned": {
+    "__fn": "_victory"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "sorte",
+   "name": "Sorte de Sendrinah",
+   "description": "Tire 3 críticos (20 natural) na mesma tentativa.",
+   "benefit": "Falha crítica não tira a sua Reação (só encerra o turno).",
+   "benefit_key": "keep_reaction",
+   "earned": {
+    "__fn": "_lucky"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "infeliz",
+   "name": "O infeliz",
+   "description": "Tire 3 dados '1' em testes de d20 na mesma missão.",
+   "benefit": "+1 uso de Sorte por missão, para todos os personagens.",
+   "benefit_key": "extra_luck",
+   "earned": {
+    "__fn": "_unlucky"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "dupla",
+   "name": "Dupla",
+   "description": "Leve 1 personagem ao nível 3.",
+   "benefit": "Libera o grupo de 2 personagens e a compra do 1º personagem novo (na Loja).",
+   "benefit_key": "group_2",
+   "earned": {
+    "__fn": "_pair"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "trio",
+   "name": "Trio",
+   "description": "Leve todos os personagens ao nível 3, incluindo o Brook.",
+   "benefit": "Libera o grupo de 3 personagens.",
+   "benefit_key": "group_3",
+   "earned": {
+    "__fn": "_trio"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "veterano_durvall",
+   "name": "Veterano de Durvall",
+   "description": "Leve o Durvall ao nível 4.",
+   "benefit": "+1 Golpe permanente na coleção.",
+   "benefit_key": "grant_card",
+   "earned": {
+    "__fn": "_durvall_veteran"
+   },
+   "grants": [
+    "Golpe"
+   ]
+  },
+  {
+   "__type": "Achievement",
+   "id": "golpe_devastador",
+   "name": "Golpe Devastador",
+   "description": "Cause 30 de dano ou mais em um único ataque.",
+   "benefit": "+10% de dano permanente para todos os personagens.",
+   "benefit_key": "damage_bonus",
+   "earned": {
+    "__fn": "_big_hit"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "concluir_m2",
+   "name": "A Praça em silêncio",
+   "description": "Conclua a M2, A Praça da Loucura.",
+   "benefit": "Libera a compra do 2º personagem novo e a compra do Brook (na Loja).",
+   "benefit_key": "buy_brook",
+   "earned": {
+    "__fn": "_m2_done"
+   },
+   "grants": []
+  },
+  {
+   "__type": "Achievement",
+   "id": "m2_em_dupla",
+   "name": "Dupla na Praça",
+   "description": "Conclua a M2 com um grupo de dois ou três personagens.",
+   "benefit": "Libera a compra do 3º personagem novo (na Loja).",
+   "benefit_key": "buy_slot",
+   "earned": {
+    "__fn": "_m2_as_pair"
+   },
+   "grants": []
+  }
+ ],
+ "BY_ID": {
+  "veteranos": {
+   "__type": "Achievement",
+   "id": "veteranos",
+   "name": "Dois Veteranos",
+   "description": "Leve os dois personagens ao nível 5.",
+   "benefit": "Trocar a mão inicial de um combate (1 vez por tentativa).",
+   "benefit_key": "mulligan",
+   "earned": {
+    "__fn": "_veterans"
+   },
+   "grants": []
+  },
+  "fechadura": {
+   "__type": "Achievement",
+   "id": "fechadura",
+   "name": "Fechadura Aberta",
+   "description": "Conclua a missão.",
+   "benefit": "+2 PV máximo em toda tentativa.",
+   "benefit_key": "bonus_hp",
+   "earned": {
+    "__fn": "_victory"
+   },
+   "grants": []
+  },
+  "sorte": {
+   "__type": "Achievement",
+   "id": "sorte",
+   "name": "Sorte de Sendrinah",
+   "description": "Tire 3 críticos (20 natural) na mesma tentativa.",
+   "benefit": "Falha crítica não tira a sua Reação (só encerra o turno).",
+   "benefit_key": "keep_reaction",
+   "earned": {
+    "__fn": "_lucky"
+   },
+   "grants": []
+  },
+  "infeliz": {
+   "__type": "Achievement",
+   "id": "infeliz",
+   "name": "O infeliz",
+   "description": "Tire 3 dados '1' em testes de d20 na mesma missão.",
+   "benefit": "+1 uso de Sorte por missão, para todos os personagens.",
+   "benefit_key": "extra_luck",
+   "earned": {
+    "__fn": "_unlucky"
+   },
+   "grants": []
+  },
+  "dupla": {
+   "__type": "Achievement",
+   "id": "dupla",
+   "name": "Dupla",
+   "description": "Leve 1 personagem ao nível 3.",
+   "benefit": "Libera o grupo de 2 personagens e a compra do 1º personagem novo (na Loja).",
+   "benefit_key": "group_2",
+   "earned": {
+    "__fn": "_pair"
+   },
+   "grants": []
+  },
+  "trio": {
+   "__type": "Achievement",
+   "id": "trio",
+   "name": "Trio",
+   "description": "Leve todos os personagens ao nível 3, incluindo o Brook.",
+   "benefit": "Libera o grupo de 3 personagens.",
+   "benefit_key": "group_3",
+   "earned": {
+    "__fn": "_trio"
+   },
+   "grants": []
+  },
+  "veterano_durvall": {
+   "__type": "Achievement",
+   "id": "veterano_durvall",
+   "name": "Veterano de Durvall",
+   "description": "Leve o Durvall ao nível 4.",
+   "benefit": "+1 Golpe permanente na coleção.",
+   "benefit_key": "grant_card",
+   "earned": {
+    "__fn": "_durvall_veteran"
+   },
+   "grants": [
+    "Golpe"
+   ]
+  },
+  "golpe_devastador": {
+   "__type": "Achievement",
+   "id": "golpe_devastador",
+   "name": "Golpe Devastador",
+   "description": "Cause 30 de dano ou mais em um único ataque.",
+   "benefit": "+10% de dano permanente para todos os personagens.",
+   "benefit_key": "damage_bonus",
+   "earned": {
+    "__fn": "_big_hit"
+   },
+   "grants": []
+  },
+  "concluir_m2": {
+   "__type": "Achievement",
+   "id": "concluir_m2",
+   "name": "A Praça em silêncio",
+   "description": "Conclua a M2, A Praça da Loucura.",
+   "benefit": "Libera a compra do 2º personagem novo e a compra do Brook (na Loja).",
+   "benefit_key": "buy_brook",
+   "earned": {
+    "__fn": "_m2_done"
+   },
+   "grants": []
+  },
+  "m2_em_dupla": {
+   "__type": "Achievement",
+   "id": "m2_em_dupla",
+   "name": "Dupla na Praça",
+   "description": "Conclua a M2 com um grupo de dois ou três personagens.",
+   "benefit": "Libera a compra do 3º personagem novo (na Loja).",
+   "benefit_key": "buy_slot",
+   "earned": {
+    "__fn": "_m2_as_pair"
+   },
+   "grants": []
+  }
+ }
+}

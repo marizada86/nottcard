@@ -1,0 +1,2469 @@
+{
+ "turn": [
+  {
+   "card": "Esquiva",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Esquiva",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Esquiva",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Esquiva",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Esquiva",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Esquiva",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Esquiva",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Esquiva",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    false,
+    true,
+    false,
+    true,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Rajada de Golpes",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Rápido",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Esmagador",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Localizar Criatura",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Golpe Perfurante",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Segundo Fôlego",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Chama Menor",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Chama Menor",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Chama Menor",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Chama Menor",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Chama Menor",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Chama Menor",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Chama Menor",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Chama Menor",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Névoa Fria",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    2,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    2,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Surto de Ação",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    1,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Poção de Cura",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Aparar",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Aparar",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Aparar",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Aparar",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Aparar",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Aparar",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Aparar",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Aparar",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    true,
+    true,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Contrafeitiço",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    true,
+    true,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": false,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": false,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": false,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": false,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": true,
+   "act": 1,
+   "bonus": true,
+   "can_play": true,
+   "after": [
+    0,
+    true
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": true,
+   "act": 0,
+   "bonus": true,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": false
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": true,
+   "act": 1,
+   "bonus": false,
+   "can_play": true,
+   "after": [
+    0,
+    false
+   ],
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  },
+  {
+   "card": "Onda Psiônica",
+   "hit": true,
+   "act": 0,
+   "bonus": false,
+   "can_play": false,
+   "react": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "end": true
+  }
+ ],
+ "spend": [
+  [
+   true,
+   false,
+   true,
+   false,
+   true,
+   true,
+   false
+  ]
+ ],
+ "saves": [
+  {
+   "rolls": [
+    10,
+    10,
+    10
+   ],
+   "seq": [
+    [
+     10,
+     true,
+     false,
+     false,
+     false,
+     false,
+     1,
+     0
+    ],
+    [
+     10,
+     true,
+     false,
+     false,
+     false,
+     false,
+     2,
+     0
+    ],
+    [
+     10,
+     true,
+     false,
+     false,
+     true,
+     false,
+     3,
+     0
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  },
+  {
+   "rolls": [
+    9,
+    9,
+    9
+   ],
+   "seq": [
+    [
+     9,
+     false,
+     false,
+     false,
+     false,
+     false,
+     0,
+     1
+    ],
+    [
+     9,
+     false,
+     false,
+     false,
+     false,
+     false,
+     0,
+     2
+    ],
+    [
+     9,
+     false,
+     false,
+     false,
+     false,
+     true,
+     0,
+     3
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  },
+  {
+   "rolls": [
+    1,
+    10,
+    10
+   ],
+   "seq": [
+    [
+     1,
+     false,
+     false,
+     true,
+     false,
+     false,
+     0,
+     2
+    ],
+    [
+     10,
+     true,
+     false,
+     false,
+     false,
+     false,
+     1,
+     2
+    ],
+    [
+     10,
+     true,
+     false,
+     false,
+     false,
+     false,
+     2,
+     2
+    ]
+   ],
+   "end": [
+    2,
+    2
+   ]
+  },
+  {
+   "rolls": [
+    20
+   ],
+   "seq": [
+    [
+     20,
+     true,
+     true,
+     false,
+     true,
+     false,
+     0,
+     0
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  },
+  {
+   "rolls": [
+    1,
+    1
+   ],
+   "seq": [
+    [
+     1,
+     false,
+     false,
+     true,
+     false,
+     false,
+     0,
+     2
+    ],
+    [
+     1,
+     false,
+     false,
+     true,
+     false,
+     true,
+     0,
+     4
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  },
+  {
+   "rolls": [
+    5,
+    15,
+    15,
+    15
+   ],
+   "seq": [
+    [
+     5,
+     false,
+     false,
+     false,
+     false,
+     false,
+     0,
+     1
+    ],
+    [
+     15,
+     true,
+     false,
+     false,
+     false,
+     false,
+     1,
+     1
+    ],
+    [
+     15,
+     true,
+     false,
+     false,
+     false,
+     false,
+     2,
+     1
+    ],
+    [
+     15,
+     true,
+     false,
+     false,
+     true,
+     false,
+     3,
+     1
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  },
+  {
+   "rolls": [
+    9,
+    10,
+    9,
+    10,
+    9
+   ],
+   "seq": [
+    [
+     9,
+     false,
+     false,
+     false,
+     false,
+     false,
+     0,
+     1
+    ],
+    [
+     10,
+     true,
+     false,
+     false,
+     false,
+     false,
+     1,
+     1
+    ],
+    [
+     9,
+     false,
+     false,
+     false,
+     false,
+     false,
+     1,
+     2
+    ],
+    [
+     10,
+     true,
+     false,
+     false,
+     false,
+     false,
+     2,
+     2
+    ],
+    [
+     9,
+     false,
+     false,
+     false,
+     false,
+     true,
+     2,
+     3
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  },
+  {
+   "rolls": [
+    1,
+    15,
+    8
+   ],
+   "seq": [
+    [
+     1,
+     false,
+     false,
+     true,
+     false,
+     false,
+     0,
+     2
+    ],
+    [
+     15,
+     true,
+     false,
+     false,
+     false,
+     false,
+     1,
+     2
+    ],
+    [
+     8,
+     false,
+     false,
+     false,
+     false,
+     true,
+     1,
+     3
+    ]
+   ],
+   "end": [
+    0,
+    0
+   ]
+  }
+ ],
+ "seeded": [
+  15,
+  18
+ ]
+}

@@ -1,0 +1,524 @@
+{
+ "DESVANTAGEM": "desvantagem",
+ "PENALIDADE": "penalidade",
+ "STEALTH_PENALTY": -2,
+ "ITEMS": {
+  "lupa_de_latao": {
+   "__type": "ItemDef",
+   "id": "lupa_de_latao",
+   "nome": "Lupa de latão",
+   "tipo": "acessorio",
+   "descricao": "Uma lupa gasta, boa para ler símbolos miúdos.",
+   "asset_id": "lupa_de_latao",
+   "check_bonus": [
+    [
+     "inteligencia",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  "faixa_de_couro": {
+   "__type": "ItemDef",
+   "id": "faixa_de_couro",
+   "nome": "Faixa de couro",
+   "tipo": "acessorio",
+   "descricao": "Uma faixa curtida que firma o pulso.",
+   "asset_id": "faixa_de_couro",
+   "check_bonus": [
+    [
+     "forca",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  "carta_chamuscada": {
+   "__type": "ItemDef",
+   "id": "carta_chamuscada",
+   "nome": "Carta chamuscada",
+   "tipo": "pista",
+   "descricao": "Uma carta com as bordas queimadas. Só dá para ler pedaços.",
+   "asset_id": "carta_chamuscada",
+   "check_bonus": [],
+   "next_check_bonus": 0
+  },
+  "arma_durvall": {
+   "__type": "ItemDef",
+   "id": "arma_durvall",
+   "nome": "Arma de assinatura",
+   "tipo": "arma",
+   "descricao": "A arma que o Durvall já porta desde o início. Não é uma carta.",
+   "asset_id": "arma_durvall",
+   "check_bonus": [],
+   "next_check_bonus": 0
+  }
+ },
+ "FACIL": 10,
+ "MEDIO": 15,
+ "DIFICIL": 20,
+ "CRITICAL_MIN_HP_LOSS": 3,
+ "ATTRIBUTE_LABELS": {
+  "forca": "Força",
+  "inteligencia": "Inteligência",
+  "constituicao": "Constituição",
+  "carisma": "Carisma"
+ },
+ "HOOK_NAMES": {
+  "mist_immune": "Em Casa na Névoa"
+ },
+ "SITUATIONS": {
+  "1": {
+   "__type": "Situation",
+   "room_id": 1,
+   "lines": [
+    "A névoa das Docas sussurra. Algo ecoa na cabeça do grupo."
+   ],
+   "options": [
+    {
+     "__type": "Option",
+     "label": "Notar o eco antes que ele pegue",
+     "attribute": "inteligencia",
+     "dc": 10,
+     "success": {
+      "__type": "Outcome",
+      "text": "O grupo percebe o eco e se desvia dele, ganhando um instante para se preparar.",
+      "xp": 0,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 1,
+      "item": "carta_chamuscada",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "O eco pega o grupo: uma carta escapa da mão.",
+      "xp": 0,
+      "hp_loss": null,
+      "discard": true,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [
+      [
+       "mist_immune",
+       2
+      ]
+     ],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    },
+    {
+     "__type": "Option",
+     "label": "Aguentar a névoa",
+     "attribute": "constituicao",
+     "dc": 10,
+     "success": {
+      "__type": "Outcome",
+      "text": "O grupo aguenta firme; a névoa passa e todos se recompõem.",
+      "xp": 0,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 1,
+      "item": "carta_chamuscada",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "A névoa vence o grupo: uma carta escapa da mão.",
+      "xp": 0,
+      "hp_loss": null,
+      "discard": true,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [
+      [
+       "mist_immune",
+       2
+      ]
+     ],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    }
+   ],
+   "title": ""
+  },
+  "3": {
+   "__type": "Situation",
+   "room_id": 3,
+   "lines": [
+    "Símbolos rituais estão entalhados na pedra da rachadura."
+   ],
+   "options": [
+    {
+     "__type": "Option",
+     "label": "Decifrar os símbolos",
+     "attribute": "inteligencia",
+     "dc": 15,
+     "success": {
+      "__type": "Outcome",
+      "text": "O grupo decifra o ritual e entende o que vem pela frente.",
+      "xp": 10,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "lupa_de_latao",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "Os símbolos não fazem sentido, mas o grupo anota o que viu.",
+      "xp": 3,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    },
+    {
+     "__type": "Option",
+     "label": "Forçar a pedra",
+     "attribute": "forca",
+     "dc": 15,
+     "success": {
+      "__type": "Outcome",
+      "text": "A pedra cede e revela uma marca do ritual.",
+      "xp": 10,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "faixa_de_couro",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "A pedra não se move, mas o grupo aprende onde ela é mais fraca.",
+      "xp": 3,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    },
+    {
+     "__type": "Option",
+     "label": "Suportar o frio da fenda",
+     "attribute": "constituicao",
+     "dc": 15,
+     "success": {
+      "__type": "Outcome",
+      "text": "O grupo aguenta o frio e examina a fenda até entendê-la.",
+      "xp": 10,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "O frio afasta o grupo, mas todos guardam o que sentiram.",
+      "xp": 3,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    }
+   ],
+   "title": ""
+  },
+  "4": {
+   "__type": "Situation",
+   "room_id": 4,
+   "lines": [
+    "O grupo encontra um slime corrosivo pelo caminho."
+   ],
+   "options": [
+    {
+     "__type": "Option",
+     "label": "Contornar o slime",
+     "attribute": "carisma",
+     "dc": 10,
+     "success": {
+      "__type": "Outcome",
+      "text": "O grupo passa sem chamar a atenção dele.",
+      "xp": 5,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "Um aventureiro escorrega e se fere ao passar... e o slime ataca!",
+      "xp": 0,
+      "hp_loss": [
+       1,
+       3
+      ],
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "sala",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [],
+     "stealth": true,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    },
+    {
+     "__type": "Option",
+     "label": "Achar o caminho seco",
+     "attribute": "inteligencia",
+     "dc": 10,
+     "success": {
+      "__type": "Outcome",
+      "text": "O grupo acha uma passagem que o slime não alcança.",
+      "xp": 5,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "A passagem estava escorregadia e um aventureiro se fere... e o slime ataca!",
+      "xp": 0,
+      "hp_loss": [
+       1,
+       3
+      ],
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "sala",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": false,
+     "bonus_hooks": [],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    },
+    {
+     "__type": "Option",
+     "label": "Enfrentar",
+     "attribute": null,
+     "dc": 15,
+     "success": {
+      "__type": "Outcome",
+      "text": "",
+      "xp": 0,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "failure": {
+      "__type": "Outcome",
+      "text": "",
+      "xp": 0,
+      "hp_loss": null,
+      "discard": false,
+      "draw": 0,
+      "item": "",
+      "gold": 0,
+      "temp_card": "",
+      "temp_item": "",
+      "heal_pct": 0,
+      "bless": 0,
+      "dishonor": false,
+      "clear_dishonor": false,
+      "fight": "",
+      "remain": false,
+      "effect": ""
+     },
+     "combat": true,
+     "bonus_hooks": [],
+     "stealth": false,
+     "critical": null,
+     "auto": false,
+     "cost_gold": 0
+    }
+   ],
+   "title": ""
+  }
+ },
+ "EXPLORATION_FIGHTS": {
+  "4": [
+   "Contornar o slime",
+   "Achar o caminho seco"
+  ]
+ }
+}

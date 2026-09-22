@@ -1,0 +1,38 @@
+{
+ "DURVALL_ATTRIBUTES": {
+  "forca": 16,
+  "inteligencia": 14,
+  "constituicao": 12,
+  "carisma": 10
+ },
+ "MAELOR_ATTRIBUTES": {
+  "forca": 10,
+  "inteligencia": 13,
+  "constituicao": 16,
+  "carisma": 12
+ },
+ "SYLAS_ATTRIBUTES": {
+  "forca": 10,
+  "inteligencia": 16,
+  "constituicao": 14,
+  "carisma": 12
+ },
+ "KAYRON_ATTRIBUTES": {
+  "forca": 12,
+  "inteligencia": 12,
+  "constituicao": 12,
+  "carisma": 14
+ },
+ "BROOK_ATTRIBUTES": {
+  "forca": 12,
+  "inteligencia": 10,
+  "constituicao": 16,
+  "carisma": 14
+ },
+ "COLOR_ATTRIBUTE": {
+  "Vermelho": "forca",
+  "Amarelo": "inteligencia",
+  "Azul": "constituicao",
+  "Roxo": "carisma"
+ }
+}

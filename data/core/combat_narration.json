@@ -1,0 +1,26 @@
+{
+ "GRUPO": "grupo",
+ "INIMIGO": "inimigo",
+ "SISTEMA": "sistema",
+ "ATTR_NAMES": {
+  "forca": "Força",
+  "inteligencia": "Inteligência",
+  "constituicao": "Constituição",
+  "carisma": "Carisma"
+ },
+ "ATTR_BY_COLOR": {
+  "Vermelho": "Força",
+  "Amarelo": "Inteligência",
+  "Azul": "Constituição",
+  "Roxo": "Carisma"
+ },
+ "ELEMENT_NAMES": {
+  "fogo": "fogo",
+  "radiante": "radiante",
+  "necrotico": "necrótico",
+  "sombra": "sombra",
+  "psionico": "psiônico",
+  "sagrado": "sagrado",
+  "trovao": "trovão"
+ }
+}

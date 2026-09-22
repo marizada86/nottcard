@@ -1,0 +1,92 @@
+{
+ "names": [
+  [
+   "",
+   [
+    "",
+    "Digite pelo menos 2 caracteres."
+   ]
+  ],
+  [
+   "a",
+   [
+    "a",
+    "Digite pelo menos 2 caracteres."
+   ]
+  ],
+  [
+   "ab",
+   [
+    "ab",
+    ""
+   ]
+  ],
+  [
+   "  Ana   Maria ",
+   [
+    "Ana Maria",
+    ""
+   ]
+  ],
+  [
+   "xxxxxxxxxxxxxxxxxxxxxxxx",
+   [
+    "xxxxxxxxxxxxxxxxxxxxxxxx",
+    ""
+   ]
+  ],
+  [
+   "xxxxxxxxxxxxxxxxxxxxxxxxx",
+   [
+    "xxxxxxxxxxxxxxxxxxxxxxxxx",
+    "No máximo 24 caracteres (agora são 25)."
+   ]
+  ],
+  [
+   "João_Silva-2.0",
+   [
+    "João_Silva-2.0",
+    ""
+   ]
+  ],
+  [
+   "ba$d!",
+   [
+    "ba$d!",
+    "Só letras, números, espaço, ponto, hífen e sublinhado (não vale: ! $)."
+   ]
+  ],
+  [
+   "Ünï côdé",
+   [
+    "Ünï côdé",
+    ""
+   ]
+  ],
+  [
+   "a\tb",
+   [
+    "a b",
+    ""
+   ]
+  ]
+ ],
+ "fps": [
+  [
+   30,
+   30
+  ],
+  [
+   60,
+   60
+  ],
+  [
+   45,
+   60
+  ],
+  [
+   null,
+   60
+  ]
+ ]
+}

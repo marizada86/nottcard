@@ -1,0 +1,210 @@
+{
+ "FORCA_BRUTA": "forca_bruta",
+ "VITALIDADE": "vitalidade",
+ "MAO_CHEIA": "mao_cheia",
+ "RERROLAGEM": "rerrolagem",
+ "SORTE": "sorte",
+ "BOLSO_FUNDO": "bolso_fundo",
+ "GANANCIA": "ganancia",
+ "MAO_MAIOR": "mao_maior",
+ "BASE_MAX_HAND": 5,
+ "DAMAGE_PCT_PER_LEVEL": 0.04,
+ "HP_PER_LEVEL": 2,
+ "COINS_PCT_PER_LEVEL": 0.1,
+ "UPGRADES": [
+  {
+   "__type": "Upgrade",
+   "id": "forca_bruta",
+   "nome": "Força Bruta",
+   "efeito": "+4% no dano base dos dados de ataque",
+   "custos": [
+    100,
+    200,
+    400,
+    800,
+    1600
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "vitalidade",
+   "nome": "Vitalidade",
+   "efeito": "+2 PV máximo",
+   "custos": [
+    80,
+    160,
+    320,
+    640,
+    1280
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "mao_cheia",
+   "nome": "Mão Cheia",
+   "efeito": "+1 carta na mão inicial",
+   "custos": [
+    500,
+    1500
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "rerrolagem",
+   "nome": "Rerrolagem",
+   "efeito": "+1 rerrolagem de recompensa por missão",
+   "custos": [
+    150,
+    450,
+    1350
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "sorte",
+   "nome": "Sorte",
+   "efeito": "+1 uso de Sorte por missão",
+   "custos": [
+    300,
+    900,
+    2700
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "bolso_fundo",
+   "nome": "Bolso Fundo",
+   "efeito": "+1 slot na mochila",
+   "custos": [
+    600
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "ganancia",
+   "nome": "Ganância",
+   "efeito": "+10% de moedas por tentativa",
+   "custos": [
+    200,
+    600,
+    1800
+   ],
+   "titulo_requerido": null
+  },
+  {
+   "__type": "Upgrade",
+   "id": "mao_maior",
+   "nome": "Mão Maior",
+   "efeito": "+1 no máximo de cartas na mão",
+   "custos": [
+    600,
+    1800
+   ],
+   "titulo_requerido": "fechadura"
+  }
+ ],
+ "BY_ID": {
+  "forca_bruta": {
+   "__type": "Upgrade",
+   "id": "forca_bruta",
+   "nome": "Força Bruta",
+   "efeito": "+4% no dano base dos dados de ataque",
+   "custos": [
+    100,
+    200,
+    400,
+    800,
+    1600
+   ],
+   "titulo_requerido": null
+  },
+  "vitalidade": {
+   "__type": "Upgrade",
+   "id": "vitalidade",
+   "nome": "Vitalidade",
+   "efeito": "+2 PV máximo",
+   "custos": [
+    80,
+    160,
+    320,
+    640,
+    1280
+   ],
+   "titulo_requerido": null
+  },
+  "mao_cheia": {
+   "__type": "Upgrade",
+   "id": "mao_cheia",
+   "nome": "Mão Cheia",
+   "efeito": "+1 carta na mão inicial",
+   "custos": [
+    500,
+    1500
+   ],
+   "titulo_requerido": null
+  },
+  "rerrolagem": {
+   "__type": "Upgrade",
+   "id": "rerrolagem",
+   "nome": "Rerrolagem",
+   "efeito": "+1 rerrolagem de recompensa por missão",
+   "custos": [
+    150,
+    450,
+    1350
+   ],
+   "titulo_requerido": null
+  },
+  "sorte": {
+   "__type": "Upgrade",
+   "id": "sorte",
+   "nome": "Sorte",
+   "efeito": "+1 uso de Sorte por missão",
+   "custos": [
+    300,
+    900,
+    2700
+   ],
+   "titulo_requerido": null
+  },
+  "bolso_fundo": {
+   "__type": "Upgrade",
+   "id": "bolso_fundo",
+   "nome": "Bolso Fundo",
+   "efeito": "+1 slot na mochila",
+   "custos": [
+    600
+   ],
+   "titulo_requerido": null
+  },
+  "ganancia": {
+   "__type": "Upgrade",
+   "id": "ganancia",
+   "nome": "Ganância",
+   "efeito": "+10% de moedas por tentativa",
+   "custos": [
+    200,
+    600,
+    1800
+   ],
+   "titulo_requerido": null
+  },
+  "mao_maior": {
+   "__type": "Upgrade",
+   "id": "mao_maior",
+   "nome": "Mão Maior",
+   "efeito": "+1 no máximo de cartas na mão",
+   "custos": [
+    600,
+    1800
+   ],
+   "titulo_requerido": "fechadura"
+  }
+ }
+}

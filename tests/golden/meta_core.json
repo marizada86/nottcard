@@ -1,0 +1,2719 @@
+{
+ "chars": {
+  "durvall": {
+   "max_hp": 21,
+   "hp": [
+    21,
+    25,
+    29,
+    33,
+    38
+   ],
+   "attrs": [
+    {
+     "forca": 16,
+     "inteligencia": 14,
+     "constituicao": 12,
+     "carisma": 10
+    },
+    {
+     "forca": 16,
+     "inteligencia": 14,
+     "constituicao": 12,
+     "carisma": 10
+    },
+    {
+     "forca": 16,
+     "inteligencia": 14,
+     "constituicao": 12,
+     "carisma": 10
+    },
+    {
+     "forca": 16,
+     "inteligencia": 14,
+     "constituicao": 12,
+     "carisma": 10
+    },
+    {
+     "forca": 16,
+     "inteligencia": 14,
+     "constituicao": 14,
+     "carisma": 10
+    }
+   ],
+   "hooks": [
+    [],
+    [],
+    [],
+    [],
+    [
+     "mist_immune"
+    ]
+   ],
+   "passives": [
+    [],
+    [],
+    [],
+    [],
+    [
+     [
+      "Em Casa na Névoa",
+      "+2 nos testes de exploração contra a névoa (como o das Docas) e em futuros efeitos de névoa."
+     ]
+    ]
+   ],
+   "rewards": [
+    [],
+    [
+     "Nova carta: Romper Armadura"
+    ],
+    [
+     "Nova carta: Reação Instintiva"
+    ],
+    [
+     "Nova carta: Amarrar e Saltar"
+    ],
+    [
+     "Passiva: Em Casa na Névoa",
+     "+2 Constituição"
+    ]
+   ],
+   "deck_at": [
+    [
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe Perfurante",
+     "Golpe Perfurante",
+     "Segundo Fôlego",
+     "Chama Menor",
+     "Chama Menor",
+     "Névoa Fria",
+     "Surto de Ação",
+     "Poção de Cura",
+     "Aparar",
+     "Contrafeitiço",
+     "Onda Psiônica"
+    ],
+    [
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe Perfurante",
+     "Golpe Perfurante",
+     "Segundo Fôlego",
+     "Chama Menor",
+     "Chama Menor",
+     "Névoa Fria",
+     "Surto de Ação",
+     "Poção de Cura",
+     "Aparar",
+     "Contrafeitiço",
+     "Onda Psiônica",
+     "Romper Armadura"
+    ],
+    [
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe Perfurante",
+     "Golpe Perfurante",
+     "Segundo Fôlego",
+     "Chama Menor",
+     "Chama Menor",
+     "Névoa Fria",
+     "Surto de Ação",
+     "Poção de Cura",
+     "Aparar",
+     "Contrafeitiço",
+     "Onda Psiônica",
+     "Romper Armadura",
+     "Reação Instintiva"
+    ],
+    [
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe Perfurante",
+     "Golpe Perfurante",
+     "Segundo Fôlego",
+     "Chama Menor",
+     "Chama Menor",
+     "Névoa Fria",
+     "Surto de Ação",
+     "Poção de Cura",
+     "Aparar",
+     "Contrafeitiço",
+     "Onda Psiônica",
+     "Romper Armadura",
+     "Reação Instintiva",
+     "Amarrar e Saltar"
+    ],
+    [
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe",
+     "Golpe Perfurante",
+     "Golpe Perfurante",
+     "Segundo Fôlego",
+     "Chama Menor",
+     "Chama Menor",
+     "Névoa Fria",
+     "Surto de Ação",
+     "Poção de Cura",
+     "Aparar",
+     "Contrafeitiço",
+     "Onda Psiônica",
+     "Romper Armadura",
+     "Reação Instintiva",
+     "Amarrar e Saltar"
+    ]
+   ],
+   "catalog": [
+    [
+     "Golpe",
+     1
+    ],
+    [
+     "Golpe Perfurante",
+     1
+    ],
+    [
+     "Segundo Fôlego",
+     1
+    ],
+    [
+     "Chama Menor",
+     1
+    ],
+    [
+     "Névoa Fria",
+     1
+    ],
+    [
+     "Surto de Ação",
+     1
+    ],
+    [
+     "Poção de Cura",
+     1
+    ],
+    [
+     "Aparar",
+     1
+    ],
+    [
+     "Contrafeitiço",
+     1
+    ],
+    [
+     "Onda Psiônica",
+     1
+    ],
+    [
+     "Romper Armadura",
+     2
+    ],
+    [
+     "Reação Instintiva",
+     3
+    ],
+    [
+     "Amarrar e Saltar",
+     4
+    ]
+   ],
+   "colormod": {
+    "Vermelho": 3,
+    "Amarelo": 2,
+    "Azul": 1,
+    "Roxo": 0
+   },
+   "chain": {
+    "Golpe": [
+     true,
+     "forca"
+    ],
+    "Golpe Perfurante": [
+     true,
+     "forca"
+    ],
+    "Segundo Fôlego": [
+     false,
+     "carisma"
+    ],
+    "Chama Menor": [
+     false,
+     "inteligencia"
+    ],
+    "Névoa Fria": [
+     false,
+     ""
+    ],
+    "Surto de Ação": [
+     false,
+     "carisma"
+    ],
+    "Poção de Cura": [
+     false,
+     "carisma"
+    ],
+    "Aparar": [
+     true,
+     "forca"
+    ],
+    "Contrafeitiço": [
+     false,
+     ""
+    ],
+    "Onda Psiônica": [
+     false,
+     "inteligencia"
+    ],
+    "Romper Armadura": [
+     true,
+     "forca"
+    ],
+    "Reação Instintiva": [
+     true,
+     "forca"
+    ],
+    "Amarrar e Saltar": [
+     false,
+     "carisma"
+    ]
+   }
+  },
+  "maelor": {
+   "max_hp": 21,
+   "hp": [
+    21,
+    25,
+    29,
+    33,
+    37
+   ],
+   "attrs": [
+    {
+     "forca": 10,
+     "inteligencia": 13,
+     "constituicao": 16,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 13,
+     "constituicao": 16,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 13,
+     "constituicao": 16,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 13,
+     "constituicao": 16,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 14,
+     "constituicao": 16,
+     "carisma": 12
+    }
+   ],
+   "hooks": [
+    [],
+    [],
+    [],
+    [],
+    [
+     "last_stand"
+    ]
+   ],
+   "passives": [
+    [],
+    [],
+    [],
+    [],
+    [
+     [
+      "Proteção de Sendrinah",
+      "1 vez por combate, ao receber dano que levaria seus PV a 0, você fica com 1 PV."
+     ]
+    ]
+   ],
+   "rewards": [
+    [],
+    [
+     "Nova carta: Localizar Criatura"
+    ],
+    [
+     "Nova carta: Comunhão com Sendrinah"
+    ],
+    [
+     "Nova carta: Luz Mais Pura"
+    ],
+    [
+     "Passiva: Proteção de Sendrinah",
+     "+1 Inteligência"
+    ]
+   ],
+   "deck_at": [
+    [
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Menor",
+     "Chama Menor",
+     "Toque Curativo",
+     "Névoa Fria",
+     "Golpe Contundente",
+     "Atordoar",
+     "Bola de Fogo",
+     "Palavra Curativa",
+     "Poção de Cura",
+     "Luz Reveladora"
+    ],
+    [
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Menor",
+     "Chama Menor",
+     "Toque Curativo",
+     "Névoa Fria",
+     "Golpe Contundente",
+     "Atordoar",
+     "Bola de Fogo",
+     "Palavra Curativa",
+     "Poção de Cura",
+     "Luz Reveladora",
+     "Localizar Criatura"
+    ],
+    [
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Menor",
+     "Chama Menor",
+     "Toque Curativo",
+     "Névoa Fria",
+     "Golpe Contundente",
+     "Atordoar",
+     "Bola de Fogo",
+     "Palavra Curativa",
+     "Poção de Cura",
+     "Luz Reveladora",
+     "Localizar Criatura",
+     "Comunhão com Sendrinah"
+    ],
+    [
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Menor",
+     "Chama Menor",
+     "Toque Curativo",
+     "Névoa Fria",
+     "Golpe Contundente",
+     "Atordoar",
+     "Bola de Fogo",
+     "Palavra Curativa",
+     "Poção de Cura",
+     "Luz Reveladora",
+     "Localizar Criatura",
+     "Comunhão com Sendrinah",
+     "Luz Mais Pura"
+    ],
+    [
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Sagrada",
+     "Chama Menor",
+     "Chama Menor",
+     "Toque Curativo",
+     "Névoa Fria",
+     "Golpe Contundente",
+     "Atordoar",
+     "Bola de Fogo",
+     "Palavra Curativa",
+     "Poção de Cura",
+     "Luz Reveladora",
+     "Localizar Criatura",
+     "Comunhão com Sendrinah",
+     "Luz Mais Pura"
+    ]
+   ],
+   "catalog": [
+    [
+     "Chama Sagrada",
+     1
+    ],
+    [
+     "Chama Menor",
+     1
+    ],
+    [
+     "Toque Curativo",
+     1
+    ],
+    [
+     "Névoa Fria",
+     1
+    ],
+    [
+     "Golpe Contundente",
+     1
+    ],
+    [
+     "Atordoar",
+     1
+    ],
+    [
+     "Bola de Fogo",
+     1
+    ],
+    [
+     "Palavra Curativa",
+     1
+    ],
+    [
+     "Poção de Cura",
+     1
+    ],
+    [
+     "Luz Reveladora",
+     1
+    ],
+    [
+     "Localizar Criatura",
+     2
+    ],
+    [
+     "Comunhão com Sendrinah",
+     3
+    ],
+    [
+     "Luz Mais Pura",
+     4
+    ]
+   ],
+   "colormod": {
+    "Vermelho": 0,
+    "Amarelo": 1,
+    "Azul": 3,
+    "Roxo": 1
+   },
+   "chain": {
+    "Chama Sagrada": [
+     true,
+     "constituicao"
+    ],
+    "Chama Menor": [
+     true,
+     "constituicao"
+    ],
+    "Toque Curativo": [
+     true,
+     ""
+    ],
+    "Névoa Fria": [
+     true,
+     ""
+    ],
+    "Golpe Contundente": [
+     false,
+     "forca"
+    ],
+    "Atordoar": [
+     true,
+     ""
+    ],
+    "Bola de Fogo": [
+     true,
+     "constituicao"
+    ],
+    "Palavra Curativa": [
+     true,
+     ""
+    ],
+    "Poção de Cura": [
+     false,
+     "carisma"
+    ],
+    "Luz Reveladora": [
+     true,
+     ""
+    ],
+    "Localizar Criatura": [
+     true,
+     ""
+    ],
+    "Comunhão com Sendrinah": [
+     true,
+     ""
+    ],
+    "Luz Mais Pura": [
+     true,
+     ""
+    ]
+   }
+  },
+  "sylas": {
+   "max_hp": 20,
+   "hp": [
+    20,
+    24,
+    28,
+    32,
+    37
+   ],
+   "attrs": [
+    {
+     "forca": 10,
+     "inteligencia": 16,
+     "constituicao": 14,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 16,
+     "constituicao": 14,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 16,
+     "constituicao": 14,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 16,
+     "constituicao": 14,
+     "carisma": 12
+    },
+    {
+     "forca": 10,
+     "inteligencia": 16,
+     "constituicao": 16,
+     "carisma": 12
+    }
+   ],
+   "hooks": [
+    [],
+    [],
+    [],
+    [],
+    [
+     "shadow_return"
+    ]
+   ],
+   "passives": [
+    [],
+    [],
+    [],
+    [],
+    [
+     [
+      "Sombra Persistente",
+      "1 vez por combate, quando a Cópia Sombria cai, ela volta com 5 PV no início do seu turno seguinte."
+     ]
+    ]
+   ],
+   "rewards": [
+    [],
+    [
+     "Nova carta: Visão Verdadeira"
+    ],
+    [
+     "Nova carta: Raio Enfraquecedor"
+    ],
+    [
+     "Nova carta: Dominar Pessoa"
+    ],
+    [
+     "Passiva: Sombra Persistente",
+     "+2 Constituição"
+    ]
+   ],
+   "deck_at": [
+    [
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Farpa Psiônica",
+     "Farpa Psiônica",
+     "Lâmina de Sombra",
+     "Lâmina de Sombra",
+     "Toque Vampírico",
+     "Escuridão",
+     "Cegueira",
+     "Imagem Espelhada",
+     "Passo Sombrio",
+     "Poção de Cura"
+    ],
+    [
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Farpa Psiônica",
+     "Farpa Psiônica",
+     "Lâmina de Sombra",
+     "Lâmina de Sombra",
+     "Toque Vampírico",
+     "Escuridão",
+     "Cegueira",
+     "Imagem Espelhada",
+     "Passo Sombrio",
+     "Poção de Cura",
+     "Visão Verdadeira"
+    ],
+    [
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Farpa Psiônica",
+     "Farpa Psiônica",
+     "Lâmina de Sombra",
+     "Lâmina de Sombra",
+     "Toque Vampírico",
+     "Escuridão",
+     "Cegueira",
+     "Imagem Espelhada",
+     "Passo Sombrio",
+     "Poção de Cura",
+     "Visão Verdadeira",
+     "Raio Enfraquecedor"
+    ],
+    [
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Farpa Psiônica",
+     "Farpa Psiônica",
+     "Lâmina de Sombra",
+     "Lâmina de Sombra",
+     "Toque Vampírico",
+     "Escuridão",
+     "Cegueira",
+     "Imagem Espelhada",
+     "Passo Sombrio",
+     "Poção de Cura",
+     "Visão Verdadeira",
+     "Raio Enfraquecedor",
+     "Dominar Pessoa"
+    ],
+    [
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Raio Sombrio",
+     "Farpa Psiônica",
+     "Farpa Psiônica",
+     "Lâmina de Sombra",
+     "Lâmina de Sombra",
+     "Toque Vampírico",
+     "Escuridão",
+     "Cegueira",
+     "Imagem Espelhada",
+     "Passo Sombrio",
+     "Poção de Cura",
+     "Visão Verdadeira",
+     "Raio Enfraquecedor",
+     "Dominar Pessoa"
+    ]
+   ],
+   "catalog": [
+    [
+     "Raio Sombrio",
+     1
+    ],
+    [
+     "Farpa Psiônica",
+     1
+    ],
+    [
+     "Lâmina de Sombra",
+     1
+    ],
+    [
+     "Toque Vampírico",
+     1
+    ],
+    [
+     "Escuridão",
+     1
+    ],
+    [
+     "Cegueira",
+     1
+    ],
+    [
+     "Imagem Espelhada",
+     1
+    ],
+    [
+     "Passo Sombrio",
+     1
+    ],
+    [
+     "Poção de Cura",
+     1
+    ],
+    [
+     "Visão Verdadeira",
+     2
+    ],
+    [
+     "Raio Enfraquecedor",
+     3
+    ],
+    [
+     "Dominar Pessoa",
+     4
+    ]
+   ],
+   "colormod": {
+    "Vermelho": 0,
+    "Amarelo": 3,
+    "Azul": 2,
+    "Roxo": 1
+   },
+   "chain": {
+    "Raio Sombrio": [
+     true,
+     "inteligencia"
+    ],
+    "Farpa Psiônica": [
+     true,
+     "inteligencia"
+    ],
+    "Lâmina de Sombra": [
+     true,
+     "inteligencia"
+    ],
+    "Toque Vampírico": [
+     true,
+     "inteligencia"
+    ],
+    "Escuridão": [
+     false,
+     ""
+    ],
+    "Cegueira": [
+     false,
+     ""
+    ],
+    "Imagem Espelhada": [
+     false,
+     "carisma"
+    ],
+    "Passo Sombrio": [
+     false,
+     "carisma"
+    ],
+    "Poção de Cura": [
+     false,
+     "carisma"
+    ],
+    "Visão Verdadeira": [
+     true,
+     "inteligencia"
+    ],
+    "Raio Enfraquecedor": [
+     true,
+     "inteligencia"
+    ],
+    "Dominar Pessoa": [
+     false,
+     "carisma"
+    ]
+   }
+  },
+  "kayron": {
+   "max_hp": 17,
+   "hp": [
+    17,
+    20,
+    23,
+    26,
+    29
+   ],
+   "attrs": [
+    {
+     "forca": 12,
+     "inteligencia": 12,
+     "constituicao": 12,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 12,
+     "constituicao": 12,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 12,
+     "constituicao": 12,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 12,
+     "constituicao": 12,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 12,
+     "constituicao": 12,
+     "carisma": 16
+    }
+   ],
+   "hooks": [
+    [],
+    [],
+    [],
+    [],
+    [
+     "charge_cap_plus2"
+    ]
+   ],
+   "passives": [
+    [],
+    [],
+    [],
+    [],
+    [
+     [
+      "Forma Estrelada",
+      "O teto da Carga de Poder Místico sobe de 8 para 10."
+     ]
+    ]
+   ],
+   "rewards": [
+    [],
+    [
+     "Nova carta: Leitura Abissal"
+    ],
+    [
+     "Nova carta: Asas Negras"
+    ],
+    [
+     "Nova carta: Descarga Estelar"
+    ],
+    [
+     "Passiva: Forma Estrelada",
+     "+2 Carisma"
+    ]
+   ],
+   "deck_at": [
+    [
+     "Lança Mística",
+     "Lança Mística",
+     "Lança Mística",
+     "Lâmina Psíquica",
+     "Lâmina Psíquica",
+     "Pulso Psíquico",
+     "Foco Psiônico",
+     "Foco Psiônico",
+     "Sangue Celestial",
+     "Mãos Celestiais",
+     "Ruído Mental",
+     "Mente Vazia",
+     "Poção de Cura"
+    ],
+    [
+     "Lança Mística",
+     "Lança Mística",
+     "Lança Mística",
+     "Lâmina Psíquica",
+     "Lâmina Psíquica",
+     "Pulso Psíquico",
+     "Foco Psiônico",
+     "Foco Psiônico",
+     "Sangue Celestial",
+     "Mãos Celestiais",
+     "Ruído Mental",
+     "Mente Vazia",
+     "Poção de Cura",
+     "Leitura Abissal"
+    ],
+    [
+     "Lança Mística",
+     "Lança Mística",
+     "Lança Mística",
+     "Lâmina Psíquica",
+     "Lâmina Psíquica",
+     "Pulso Psíquico",
+     "Foco Psiônico",
+     "Foco Psiônico",
+     "Sangue Celestial",
+     "Mãos Celestiais",
+     "Ruído Mental",
+     "Mente Vazia",
+     "Poção de Cura",
+     "Leitura Abissal",
+     "Asas Negras"
+    ],
+    [
+     "Lança Mística",
+     "Lança Mística",
+     "Lança Mística",
+     "Lâmina Psíquica",
+     "Lâmina Psíquica",
+     "Pulso Psíquico",
+     "Foco Psiônico",
+     "Foco Psiônico",
+     "Sangue Celestial",
+     "Mãos Celestiais",
+     "Ruído Mental",
+     "Mente Vazia",
+     "Poção de Cura",
+     "Leitura Abissal",
+     "Asas Negras",
+     "Descarga Estelar"
+    ],
+    [
+     "Lança Mística",
+     "Lança Mística",
+     "Lança Mística",
+     "Lâmina Psíquica",
+     "Lâmina Psíquica",
+     "Pulso Psíquico",
+     "Foco Psiônico",
+     "Foco Psiônico",
+     "Sangue Celestial",
+     "Mãos Celestiais",
+     "Ruído Mental",
+     "Mente Vazia",
+     "Poção de Cura",
+     "Leitura Abissal",
+     "Asas Negras",
+     "Descarga Estelar"
+    ]
+   ],
+   "catalog": [
+    [
+     "Lança Mística",
+     1
+    ],
+    [
+     "Lâmina Psíquica",
+     1
+    ],
+    [
+     "Pulso Psíquico",
+     1
+    ],
+    [
+     "Foco Psiônico",
+     1
+    ],
+    [
+     "Sangue Celestial",
+     1
+    ],
+    [
+     "Mãos Celestiais",
+     1
+    ],
+    [
+     "Ruído Mental",
+     1
+    ],
+    [
+     "Mente Vazia",
+     1
+    ],
+    [
+     "Poção de Cura",
+     1
+    ],
+    [
+     "Leitura Abissal",
+     2
+    ],
+    [
+     "Asas Negras",
+     3
+    ],
+    [
+     "Descarga Estelar",
+     4
+    ]
+   ],
+   "colormod": {
+    "Vermelho": 1,
+    "Amarelo": 1,
+    "Azul": 1,
+    "Roxo": 2
+   },
+   "chain": {
+    "Lança Mística": [
+     true,
+     "carisma"
+    ],
+    "Lâmina Psíquica": [
+     true,
+     "carisma"
+    ],
+    "Pulso Psíquico": [
+     true,
+     "carisma"
+    ],
+    "Foco Psiônico": [
+     true,
+     "carisma"
+    ],
+    "Sangue Celestial": [
+     true,
+     "carisma"
+    ],
+    "Mãos Celestiais": [
+     true,
+     "carisma"
+    ],
+    "Ruído Mental": [
+     true,
+     "carisma"
+    ],
+    "Mente Vazia": [
+     true,
+     "carisma"
+    ],
+    "Poção de Cura": [
+     true,
+     "carisma"
+    ],
+    "Leitura Abissal": [
+     true,
+     "carisma"
+    ],
+    "Asas Negras": [
+     true,
+     "carisma"
+    ],
+    "Descarga Estelar": [
+     true,
+     "carisma"
+    ]
+   }
+  },
+  "brook": {
+   "max_hp": 23,
+   "hp": [
+    23,
+    28,
+    33,
+    38,
+    43
+   ],
+   "attrs": [
+    {
+     "forca": 12,
+     "inteligencia": 10,
+     "constituicao": 16,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 10,
+     "constituicao": 16,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 10,
+     "constituicao": 16,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 10,
+     "constituicao": 16,
+     "carisma": 14
+    },
+    {
+     "forca": 12,
+     "inteligencia": 10,
+     "constituicao": 16,
+     "carisma": 16
+    }
+   ],
+   "hooks": [
+    [],
+    [],
+    [],
+    [],
+    [
+     "dishonor_ward"
+    ]
+   ],
+   "passives": [
+    [],
+    [],
+    [],
+    [],
+    [
+     [
+      "Voz Contra a Névoa",
+      "1 vez por combate, a primeira Desonra é ignorada."
+     ]
+    ]
+   ],
+   "rewards": [
+    [],
+    [
+     "Nova carta: Sentido Divino"
+    ],
+    [
+     "Nova carta: Marca da Retidão"
+    ],
+    [
+     "Nova carta: Sentença de Lliira"
+    ],
+    [
+     "Passiva: Voz Contra a Névoa",
+     "+2 Carisma"
+    ]
+   ],
+   "deck_at": [
+    [
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Punição Divina",
+     "Punição Divina",
+     "Mãos Consagradas",
+     "Escudo da Fé",
+     "Escudo da Fé",
+     "Desafio Divino",
+     "Desafio Divino",
+     "Aura de Proteção",
+     "Redenção Divina",
+     "Poção de Cura"
+    ],
+    [
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Punição Divina",
+     "Punição Divina",
+     "Mãos Consagradas",
+     "Escudo da Fé",
+     "Escudo da Fé",
+     "Desafio Divino",
+     "Desafio Divino",
+     "Aura de Proteção",
+     "Redenção Divina",
+     "Poção de Cura",
+     "Sentido Divino"
+    ],
+    [
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Punição Divina",
+     "Punição Divina",
+     "Mãos Consagradas",
+     "Escudo da Fé",
+     "Escudo da Fé",
+     "Desafio Divino",
+     "Desafio Divino",
+     "Aura de Proteção",
+     "Redenção Divina",
+     "Poção de Cura",
+     "Sentido Divino",
+     "Marca da Retidão"
+    ],
+    [
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Punição Divina",
+     "Punição Divina",
+     "Mãos Consagradas",
+     "Escudo da Fé",
+     "Escudo da Fé",
+     "Desafio Divino",
+     "Desafio Divino",
+     "Aura de Proteção",
+     "Redenção Divina",
+     "Poção de Cura",
+     "Sentido Divino",
+     "Marca da Retidão",
+     "Sentença de Lliira"
+    ],
+    [
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Martelo da Glória",
+     "Punição Divina",
+     "Punição Divina",
+     "Mãos Consagradas",
+     "Escudo da Fé",
+     "Escudo da Fé",
+     "Desafio Divino",
+     "Desafio Divino",
+     "Aura de Proteção",
+     "Redenção Divina",
+     "Poção de Cura",
+     "Sentido Divino",
+     "Marca da Retidão",
+     "Sentença de Lliira"
+    ]
+   ],
+   "catalog": [
+    [
+     "Martelo da Glória",
+     1
+    ],
+    [
+     "Punição Divina",
+     1
+    ],
+    [
+     "Mãos Consagradas",
+     1
+    ],
+    [
+     "Escudo da Fé",
+     1
+    ],
+    [
+     "Desafio Divino",
+     1
+    ],
+    [
+     "Aura de Proteção",
+     1
+    ],
+    [
+     "Redenção Divina",
+     1
+    ],
+    [
+     "Poção de Cura",
+     1
+    ],
+    [
+     "Sentido Divino",
+     2
+    ],
+    [
+     "Marca da Retidão",
+     3
+    ],
+    [
+     "Sentença de Lliira",
+     4
+    ]
+   ],
+   "colormod": {
+    "Vermelho": 1,
+    "Amarelo": 0,
+    "Azul": 3,
+    "Roxo": 2
+   },
+   "chain": {
+    "Martelo da Glória": [
+     true,
+     "forca"
+    ],
+    "Punição Divina": [
+     true,
+     "forca"
+    ],
+    "Mãos Consagradas": [
+     true,
+     ""
+    ],
+    "Escudo da Fé": [
+     true,
+     ""
+    ],
+    "Desafio Divino": [
+     true,
+     ""
+    ],
+    "Aura de Proteção": [
+     true,
+     ""
+    ],
+    "Redenção Divina": [
+     true,
+     ""
+    ],
+    "Poção de Cura": [
+     false,
+     "carisma"
+    ],
+    "Sentido Divino": [
+     true,
+     ""
+    ],
+    "Marca da Retidão": [
+     true,
+     ""
+    ],
+    "Sentença de Lliira": [
+     true,
+     "forca"
+    ]
+   }
+  }
+ },
+ "char_ids": [
+  "durvall",
+  "maelor",
+  "sylas",
+  "kayron",
+  "brook"
+ ],
+ "upgrades": [
+  {
+   "levels": {
+    "forca_bruta": 0,
+    "vitalidade": 0,
+    "mao_cheia": 0,
+    "rerrolagem": 0,
+    "sorte": 0,
+    "bolso_fundo": 0,
+    "ganancia": 0,
+    "mao_maior": 0
+   },
+   "maxed": {
+    "forca_bruta": false,
+    "vitalidade": false,
+    "mao_cheia": false,
+    "rerrolagem": false,
+    "sorte": false,
+    "bolso_fundo": false,
+    "ganancia": false,
+    "mao_maior": false
+   },
+   "cost": {
+    "forca_bruta": 100,
+    "vitalidade": 80,
+    "mao_cheia": 500,
+    "rerrolagem": 150,
+    "sorte": 300,
+    "bolso_fundo": 600,
+    "ganancia": 200,
+    "mao_maior": 600
+   },
+   "mult": 1.0,
+   "hp": 0,
+   "hand": 5,
+   "extra_hand": 0,
+   "rer": 0,
+   "luck": 0,
+   "bag": 0,
+   "greed": [
+    -1,
+    0,
+    1,
+    7,
+    33,
+    100
+   ]
+  },
+  {
+   "levels": {
+    "forca_bruta": 3,
+    "vitalidade": 0,
+    "mao_cheia": 0,
+    "rerrolagem": 0,
+    "sorte": 0,
+    "bolso_fundo": 0,
+    "ganancia": 0,
+    "mao_maior": 0
+   },
+   "maxed": {
+    "forca_bruta": false,
+    "vitalidade": false,
+    "mao_cheia": false,
+    "rerrolagem": false,
+    "sorte": false,
+    "bolso_fundo": false,
+    "ganancia": false,
+    "mao_maior": false
+   },
+   "cost": {
+    "forca_bruta": 800,
+    "vitalidade": 80,
+    "mao_cheia": 500,
+    "rerrolagem": 150,
+    "sorte": 300,
+    "bolso_fundo": 600,
+    "ganancia": 200,
+    "mao_maior": 600
+   },
+   "mult": 1.12,
+   "hp": 0,
+   "hand": 5,
+   "extra_hand": 0,
+   "rer": 0,
+   "luck": 0,
+   "bag": 0,
+   "greed": [
+    -1,
+    0,
+    1,
+    7,
+    33,
+    100
+   ]
+  },
+  {
+   "levels": {
+    "forca_bruta": 5,
+    "vitalidade": 2,
+    "mao_cheia": 0,
+    "rerrolagem": 0,
+    "sorte": 0,
+    "bolso_fundo": 0,
+    "ganancia": 1,
+    "mao_maior": 2
+   },
+   "maxed": {
+    "forca_bruta": true,
+    "vitalidade": false,
+    "mao_cheia": false,
+    "rerrolagem": false,
+    "sorte": false,
+    "bolso_fundo": false,
+    "ganancia": false,
+    "mao_maior": true
+   },
+   "cost": {
+    "forca_bruta": -1,
+    "vitalidade": 320,
+    "mao_cheia": 500,
+    "rerrolagem": 150,
+    "sorte": 300,
+    "bolso_fundo": 600,
+    "ganancia": 600,
+    "mao_maior": -1
+   },
+   "mult": 1.2,
+   "hp": 4,
+   "hand": 7,
+   "extra_hand": 0,
+   "rer": 0,
+   "luck": 0,
+   "bag": 0,
+   "greed": [
+    -1,
+    0,
+    2,
+    8,
+    37,
+    110
+   ]
+  },
+  {
+   "levels": {
+    "forca_bruta": 0,
+    "vitalidade": 0,
+    "mao_cheia": 0,
+    "rerrolagem": 0,
+    "sorte": 0,
+    "bolso_fundo": 0,
+    "ganancia": 0,
+    "mao_maior": 0
+   },
+   "maxed": {
+    "forca_bruta": false,
+    "vitalidade": false,
+    "mao_cheia": false,
+    "rerrolagem": false,
+    "sorte": false,
+    "bolso_fundo": false,
+    "ganancia": false,
+    "mao_maior": false
+   },
+   "cost": {
+    "forca_bruta": 100,
+    "vitalidade": 80,
+    "mao_cheia": 500,
+    "rerrolagem": 150,
+    "sorte": 300,
+    "bolso_fundo": 600,
+    "ganancia": 200,
+    "mao_maior": 600
+   },
+   "mult": 1.0,
+   "hp": 0,
+   "hand": 5,
+   "extra_hand": 0,
+   "rer": 0,
+   "luck": 0,
+   "bag": 0,
+   "greed": [
+    -1,
+    0,
+    1,
+    7,
+    33,
+    100
+   ]
+  }
+ ],
+ "economy": [
+  [
+   -2,
+   "vitoria",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   -2,
+   "derrota",
+   37,
+   12,
+   1.0,
+   0,
+   0,
+   49
+  ],
+  [
+   -2,
+   "desistencia",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   0,
+   "vitoria",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   0,
+   "derrota",
+   37,
+   12,
+   1.0,
+   0,
+   0,
+   49
+  ],
+  [
+   0,
+   "desistencia",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   1,
+   "vitoria",
+   37,
+   25,
+   1.2,
+   20,
+   0,
+   75
+  ],
+  [
+   1,
+   "derrota",
+   37,
+   12,
+   1.2,
+   20,
+   0,
+   59
+  ],
+  [
+   1,
+   "desistencia",
+   37,
+   25,
+   1.2,
+   20,
+   0,
+   75
+  ],
+  [
+   3,
+   "vitoria",
+   37,
+   25,
+   1.6,
+   60,
+   0,
+   100
+  ],
+  [
+   3,
+   "derrota",
+   37,
+   12,
+   1.6,
+   60,
+   0,
+   79
+  ],
+  [
+   3,
+   "desistencia",
+   37,
+   25,
+   1.6,
+   60,
+   0,
+   100
+  ],
+  [
+   -2,
+   "vitoria",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   -2,
+   "derrota",
+   37,
+   12,
+   1.0,
+   0,
+   0,
+   49
+  ],
+  [
+   -2,
+   "desistencia",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   0,
+   "vitoria",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   0,
+   "derrota",
+   37,
+   12,
+   1.0,
+   0,
+   0,
+   49
+  ],
+  [
+   0,
+   "desistencia",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   1,
+   "vitoria",
+   37,
+   25,
+   1.2,
+   20,
+   0,
+   75
+  ],
+  [
+   1,
+   "derrota",
+   37,
+   12,
+   1.2,
+   20,
+   0,
+   59
+  ],
+  [
+   1,
+   "desistencia",
+   37,
+   25,
+   1.2,
+   20,
+   0,
+   75
+  ],
+  [
+   3,
+   "vitoria",
+   37,
+   25,
+   1.6,
+   60,
+   0,
+   100
+  ],
+  [
+   3,
+   "derrota",
+   37,
+   12,
+   1.6,
+   60,
+   0,
+   79
+  ],
+  [
+   3,
+   "desistencia",
+   37,
+   25,
+   1.6,
+   60,
+   0,
+   100
+  ],
+  [
+   -2,
+   "vitoria",
+   37,
+   25,
+   1.1,
+   0,
+   10,
+   69
+  ],
+  [
+   -2,
+   "derrota",
+   37,
+   12,
+   1.1,
+   0,
+   10,
+   54
+  ],
+  [
+   -2,
+   "desistencia",
+   37,
+   25,
+   1.1,
+   0,
+   10,
+   69
+  ],
+  [
+   0,
+   "vitoria",
+   37,
+   25,
+   1.1,
+   0,
+   10,
+   69
+  ],
+  [
+   0,
+   "derrota",
+   37,
+   12,
+   1.1,
+   0,
+   10,
+   54
+  ],
+  [
+   0,
+   "desistencia",
+   37,
+   25,
+   1.1,
+   0,
+   10,
+   69
+  ],
+  [
+   1,
+   "vitoria",
+   37,
+   25,
+   1.3,
+   20,
+   10,
+   81
+  ],
+  [
+   1,
+   "derrota",
+   37,
+   12,
+   1.3,
+   20,
+   10,
+   64
+  ],
+  [
+   1,
+   "desistencia",
+   37,
+   25,
+   1.3,
+   20,
+   10,
+   81
+  ],
+  [
+   3,
+   "vitoria",
+   37,
+   25,
+   1.7000000000000002,
+   60,
+   10,
+   106
+  ],
+  [
+   3,
+   "derrota",
+   37,
+   12,
+   1.7000000000000002,
+   60,
+   10,
+   84
+  ],
+  [
+   3,
+   "desistencia",
+   37,
+   25,
+   1.7000000000000002,
+   60,
+   10,
+   106
+  ],
+  [
+   -2,
+   "vitoria",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   -2,
+   "derrota",
+   37,
+   12,
+   1.0,
+   0,
+   0,
+   49
+  ],
+  [
+   -2,
+   "desistencia",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   0,
+   "vitoria",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   0,
+   "derrota",
+   37,
+   12,
+   1.0,
+   0,
+   0,
+   49
+  ],
+  [
+   0,
+   "desistencia",
+   37,
+   25,
+   1.0,
+   0,
+   0,
+   62
+  ],
+  [
+   1,
+   "vitoria",
+   37,
+   25,
+   1.2,
+   20,
+   0,
+   75
+  ],
+  [
+   1,
+   "derrota",
+   37,
+   12,
+   1.2,
+   20,
+   0,
+   59
+  ],
+  [
+   1,
+   "desistencia",
+   37,
+   25,
+   1.2,
+   20,
+   0,
+   75
+  ],
+  [
+   3,
+   "vitoria",
+   37,
+   25,
+   1.6,
+   60,
+   0,
+   100
+  ],
+  [
+   3,
+   "derrota",
+   37,
+   12,
+   1.6,
+   60,
+   0,
+   79
+  ],
+  [
+   3,
+   "desistencia",
+   37,
+   25,
+   1.6,
+   60,
+   0,
+   100
+  ]
+ ],
+ "spend": [
+  true,
+  true,
+  [
+   0,
+   3
+  ],
+  false,
+  [
+   0,
+   3
+  ],
+  3
+ ],
+ "xp_levels": [
+  [
+   0,
+   0,
+   100,
+   350,
+   950,
+   1950,
+   1950,
+   1950
+  ],
+  [
+   1,
+   1,
+   2,
+   2,
+   3,
+   4,
+   4,
+   5,
+   5
+  ]
+ ],
+ "progress": [
+  [
+   [],
+   1,
+   50,
+   0.5,
+   100,
+   false
+  ],
+  [
+   [
+    [
+     2,
+     [
+      "r2"
+     ]
+    ]
+   ],
+   2,
+   110,
+   0.04,
+   350,
+   false
+  ],
+  [
+   [
+    [
+     3,
+     [
+      "r3"
+     ]
+    ]
+   ],
+   3,
+   410,
+   0.1,
+   950,
+   false
+  ],
+  [
+   [
+    [
+     4,
+     [
+      "r4"
+     ]
+    ]
+   ],
+   4,
+   1110,
+   0.16,
+   1950,
+   false
+  ],
+  [
+   [
+    [
+     5,
+     [
+      "r5"
+     ]
+    ]
+   ],
+   5,
+   1950,
+   1.0,
+   -1,
+   true
+  ],
+  [
+   [],
+   5,
+   1950,
+   1.0,
+   -1,
+   true
+  ]
+ ],
+ "settle": [
+  "derrota",
+  150,
+  -75,
+  75,
+  1,
+  2,
+  90,
+  165,
+  [
+   [
+    2,
+    [
+     "x2"
+    ]
+   ]
+  ],
+  [
+   [
+    "a",
+    60
+   ],
+   [
+    "c",
+    90
+   ]
+  ],
+  150,
+  7
+ ],
+ "apply_outcome": [
+  0,
+  0,
+  0,
+  1,
+  0,
+  1,
+  7,
+  3,
+  7,
+  45,
+  22,
+  45
+ ],
+ "equipment": [
+  [
+   false
+  ],
+  [
+   true,
+   false,
+   true,
+   false,
+   true,
+   true,
+   false
+  ],
+  [
+   1,
+   0,
+   [
+    "durvall",
+    "brook"
+   ],
+   [
+    5,
+    -3
+   ],
+   {
+    "arma": "",
+    "armadura": "armadura_placa"
+   },
+   "Sylas não tem proficiência com placa completa.",
+   "Você não tem esta peça.",
+   "Maelor não tem proficiência com espada longa."
+  ],
+  [
+   true,
+   false,
+   false,
+   false,
+   [
+    "arma_espada",
+    "arma_cetro"
+   ],
+   {
+    "durvall": {
+     "armadura": "armadura_placa"
+    },
+    "maelor": {
+     "arma": "arma_cetro"
+    },
+    "brook": {
+     "armadura": "armadura_placa",
+     "arma": "arma_espada"
+    }
+   }
+  ],
+  [
+   true,
+   {
+    "armadura_couro": 1,
+    "arma_adaga": 1
+   },
+   false
+  ],
+  [
+   [
+    "armadura_couro",
+    "Durvall, Maelor, Sylas, Kayron",
+    "furtividade normal",
+    "CA +1 · CAM +0 · furtividade normal"
+   ],
+   [
+    "armadura_cota",
+    "Durvall, Maelor, Brook",
+    "-2 nos testes furtivos",
+    "CA +3 · CAM -1 · -2 nos testes furtivos"
+   ],
+   [
+    "armadura_placa",
+    "Durvall, Brook",
+    "desvantagem nos testes furtivos",
+    "CA +5 · CAM -3 · desvantagem nos testes furtivos"
+   ],
+   [
+    "armadura_robe",
+    "Maelor, Sylas, Kayron",
+    "furtividade normal",
+    "CA +0 · CAM +2 · furtividade normal"
+   ],
+   [
+    "arma_adaga",
+    "Durvall, Sylas, Kayron",
+    "furtividade normal",
+    "carta Golpe Rápido (1d4)"
+   ],
+   [
+    "arma_espada",
+    "Durvall, Brook",
+    "furtividade normal",
+    "carta Golpe Versátil (1d6)"
+   ],
+   [
+    "arma_maca",
+    "Durvall, Maelor, Brook",
+    "furtividade normal",
+    "carta Golpe Esmagador (1d8)"
+   ],
+   [
+    "arma_cajado",
+    "Durvall, Maelor, Sylas, Kayron",
+    "furtividade normal",
+    "carta Golpe de Cajado (1d6)"
+   ],
+   [
+    "arma_cetro",
+    "Maelor, Sylas, Kayron",
+    "furtividade normal",
+    "carta Golpe de Cetro (1d6)"
+   ]
+  ]
+ ],
+ "scrolls": [
+  [
+   true,
+   false,
+   true,
+   true,
+   false,
+   true
+  ],
+  [
+   true,
+   false,
+   [
+    "escudo_arcano",
+    "bencao",
+    "ajuda"
+   ],
+   [
+    "Pergaminho de Curar Ferimentos",
+    "Pergaminho de Escudo Arcano"
+   ],
+   2,
+   "maelor",
+   "maelor"
+  ],
+  [
+   [
+    "ajuda",
+    "maos_flamejantes",
+    "restauracao_menor"
+   ],
+   {
+    "source": "pergaminho",
+    "cards": [
+     "Pergaminho de Ajuda",
+     "Pergaminho de Mãos Flamejantes",
+     "Pergaminho de Restauração Menor"
+    ],
+    "for": "durvall",
+    "chosen": "ajuda"
+   },
+   [
+    "Pergaminho de Ajuda",
+    "Pergaminho de Mãos Flamejantes",
+    "Pergaminho de Restauração Menor"
+   ]
+  ],
+  [
+   "full",
+   {
+    "source": "pergaminho",
+    "cards": [
+     "Pergaminho de Ajuda",
+     "Pergaminho de Mãos Flamejantes",
+     "Pergaminho de Restauração Menor"
+    ],
+    "for": "durvall",
+    "chosen": "ajuda"
+   },
+   false,
+   true,
+   null,
+   {
+    "durvall": [
+     "escudo_arcano",
+     "bencao",
+     "ajuda"
+    ],
+    "maelor": []
+   }
+  ],
+  [
+   true,
+   null,
+   false,
+   ""
+  ],
+  [
+   [
+    "Escudo Arcano",
+    "Bênção",
+    "Ajuda"
+   ],
+   {},
+   [
+    "bola_de_fogo",
+    "aceleracao",
+    "protecao_contra_a_morte",
+    "curar_ferimentos_maior"
+   ],
+   "Pergaminho de Bênção",
+   "Pergaminho de Bênção",
+   true
+  ]
+ ],
+ "backpack": [
+  "arma_durvall",
+  4,
+  true,
+  true,
+  true,
+  true,
+  false,
+  true,
+  false,
+  true,
+  "lupa_de_latao",
+  [
+   "faixa_de_couro",
+   "carta_chamuscada",
+   "lupa_de_latao"
+  ],
+  true,
+  "faixa_de_couro",
+  [
+   "lupa_de_latao",
+   "carta_chamuscada",
+   "lupa_de_latao"
+  ],
+  2,
+  0,
+  true,
+  true,
+  true,
+  [
+   "+2 nos testes de Inteligência",
+   "+2 nos testes de Força",
+   "sem efeito mecânico",
+   "sem efeito mecânico"
+  ],
+  0,
+  true,
+  false,
+  false,
+  true,
+  false,
+  false,
+  [
+   "lupa_de_latao",
+   "faixa_de_couro"
+  ]
+ ],
+ "save": {
+  "raw": {
+   "version": 1,
+   "progress": {
+    "durvall": {
+     "level": 3,
+     "xp": 400,
+     "kills": 4
+    },
+    "maelor": {
+     "level": 9,
+     "xp": 99999
+    }
+   },
+   "achievements": [
+    "a",
+    "b"
+   ],
+   "hqs_seen": [
+    "hq_001"
+   ],
+   "card_layout": "x",
+   "collection": [
+    "Golpe",
+    "Golpe"
+   ],
+   "decks": [
+    [
+     "Golpe"
+    ],
+    []
+   ],
+   "active_deck": 1,
+   "coins": 40,
+   "owned": [
+    "arma_adaga"
+   ],
+   "pending_offer": {
+    "source": "pacote",
+    "cards": [
+     "A"
+    ],
+    "for": "durvall",
+    "lixo": 1
+   },
+   "scrolls": {
+    "durvall": [
+     "bencao"
+    ]
+   },
+   "upgrades": {
+    "vitalidade": 2,
+    "sorte": 0
+   },
+   "equipped": {
+    "durvall": {
+     "arma": "arma_adaga"
+    }
+   },
+   "event_pity": 3,
+   "story_items": [
+    "mapa"
+   ]
+  },
+  "dict": {
+   "version": 1,
+   "progress": {
+    "durvall": {
+     "level": 3,
+     "xp": 400,
+     "kills": 4
+    },
+    "maelor": {
+     "level": 5,
+     "xp": 1950,
+     "kills": 0
+    }
+   },
+   "achievements": [
+    "a",
+    "b"
+   ],
+   "hqs_seen": [
+    "hq_001"
+   ],
+   "card_layout": "x",
+   "collection": [
+    "Golpe",
+    "Golpe"
+   ],
+   "decks": [
+    [
+     "Golpe"
+    ],
+    []
+   ],
+   "active_deck": 1,
+   "coins": 40,
+   "owned": [
+    "arma_adaga"
+   ],
+   "pending_offer": {
+    "source": "pacote",
+    "cards": [
+     "A"
+    ],
+    "for": "durvall"
+   },
+   "scrolls": {
+    "durvall": [
+     "bencao"
+    ]
+   },
+   "upgrades": {
+    "vitalidade": 2
+   },
+   "equipped": {
+    "durvall": {
+     "arma": "arma_adaga"
+    }
+   },
+   "equipment_units": {
+    "arma_adaga": 1
+   },
+   "event_pity": 3,
+   "missions_completed": [
+    "m1"
+   ],
+   "unlocked_characters": [],
+   "story_items": [
+    "mapa"
+   ]
+  },
+  "again": {
+   "version": 1,
+   "progress": {
+    "durvall": {
+     "level": 3,
+     "xp": 400,
+     "kills": 4
+    },
+    "maelor": {
+     "level": 5,
+     "xp": 1950,
+     "kills": 0
+    }
+   },
+   "achievements": [
+    "a",
+    "b"
+   ],
+   "hqs_seen": [
+    "hq_001"
+   ],
+   "card_layout": "x",
+   "collection": [
+    "Golpe",
+    "Golpe"
+   ],
+   "decks": [
+    [
+     "Golpe"
+    ],
+    []
+   ],
+   "active_deck": 1,
+   "coins": 40,
+   "owned": [
+    "arma_adaga"
+   ],
+   "pending_offer": {
+    "source": "pacote",
+    "cards": [
+     "A"
+    ],
+    "for": "durvall"
+   },
+   "scrolls": {
+    "durvall": [
+     "bencao"
+    ]
+   },
+   "upgrades": {
+    "vitalidade": 2
+   },
+   "equipped": {
+    "durvall": {
+     "arma": "arma_adaga"
+    }
+   },
+   "equipment_units": {
+    "arma_adaga": 1
+   },
+   "event_pity": 3,
+   "missions_completed": [
+    "m1"
+   ],
+   "unlocked_characters": [],
+   "story_items": [
+    "mapa"
+   ]
+  },
+  "bad": [
+   "versão de save não suportada: 2",
+   "progress inválido",
+   "moedas inválidas",
+   "baralhos inválidos",
+   "oferta pendente inválida",
+   "upgrades inválidos",
+   "conquistas inválidas",
+   "contador de eventos inválido"
+  ],
+  "empty": {
+   "version": 1,
+   "progress": {},
+   "achievements": [],
+   "hqs_seen": [],
+   "card_layout": "",
+   "collection": [],
+   "decks": [],
+   "active_deck": 0,
+   "coins": 0,
+   "owned": [],
+   "pending_offer": null,
+   "scrolls": {},
+   "upgrades": {},
+   "equipped": {},
+   "equipment_units": {},
+   "event_pity": 0,
+   "missions_completed": [],
+   "unlocked_characters": [],
+   "story_items": []
+  },
+  "has_progress": [
+   true,
+   false
+  ]
+ }
+}

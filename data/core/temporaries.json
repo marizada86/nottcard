@@ -1,0 +1,118 @@
+{
+ "FAIXA": {
+  "__type": "ItemDef",
+  "id": "faixa_de_couro",
+  "nome": "Faixa de couro",
+  "tipo": "acessorio",
+  "descricao": "Uma faixa curtida que firma o pulso.",
+  "asset_id": "faixa_de_couro",
+  "check_bonus": [
+   [
+    "forca",
+    2
+   ]
+  ],
+  "next_check_bonus": 0
+ },
+ "ITEMS": {
+  "lupa_de_latao": {
+   "__type": "ItemDef",
+   "id": "lupa_de_latao",
+   "nome": "Lupa de latão",
+   "tipo": "acessorio",
+   "descricao": "Uma lupa gasta, boa para ler símbolos miúdos.",
+   "asset_id": "lupa_de_latao",
+   "check_bonus": [
+    [
+     "inteligencia",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  "faixa_de_couro": {
+   "__type": "ItemDef",
+   "id": "faixa_de_couro",
+   "nome": "Faixa de couro",
+   "tipo": "acessorio",
+   "descricao": "Uma faixa curtida que firma o pulso.",
+   "asset_id": "faixa_de_couro",
+   "check_bonus": [
+    [
+     "forca",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  "carta_chamuscada": {
+   "__type": "ItemDef",
+   "id": "carta_chamuscada",
+   "nome": "Carta chamuscada",
+   "tipo": "pista",
+   "descricao": "Uma carta com as bordas queimadas. Só dá para ler pedaços.",
+   "asset_id": "carta_chamuscada",
+   "check_bonus": [],
+   "next_check_bonus": 0
+  },
+  "arma_durvall": {
+   "__type": "ItemDef",
+   "id": "arma_durvall",
+   "nome": "Arma de assinatura",
+   "tipo": "arma",
+   "descricao": "A arma que o Durvall já porta desde o início. Não é uma carta.",
+   "asset_id": "arma_durvall",
+   "check_bonus": [],
+   "next_check_bonus": 0
+  }
+ },
+ "LUPA": {
+  "__type": "ItemDef",
+  "id": "lupa_de_latao",
+  "nome": "Lupa de latão",
+  "tipo": "acessorio",
+  "descricao": "Uma lupa gasta, boa para ler símbolos miúdos.",
+  "asset_id": "lupa_de_latao",
+  "check_bonus": [
+   [
+    "inteligencia",
+    2
+   ]
+  ],
+  "next_check_bonus": 0
+ },
+ "MAX_TEMP_CARDS": 2,
+ "MAX_TEMP_ITEMS": 1,
+ "TEMP_ITEMS": [
+  {
+   "__type": "ItemDef",
+   "id": "lupa_de_latao",
+   "nome": "Lupa de latão",
+   "tipo": "acessorio",
+   "descricao": "Uma lupa gasta, boa para ler símbolos miúdos.",
+   "asset_id": "lupa_de_latao",
+   "check_bonus": [
+    [
+     "inteligencia",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  },
+  {
+   "__type": "ItemDef",
+   "id": "faixa_de_couro",
+   "nome": "Faixa de couro",
+   "tipo": "acessorio",
+   "descricao": "Uma faixa curtida que firma o pulso.",
+   "asset_id": "faixa_de_couro",
+   "check_bonus": [
+    [
+     "forca",
+     2
+    ]
+   ],
+   "next_check_bonus": 0
+  }
+ ]
+}

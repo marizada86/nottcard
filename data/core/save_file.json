@@ -1,0 +1,5 @@
+{
+ "SAVE_NAME": "save.json",
+ "BACKUP_NAME": "save.json.bak",
+ "ENV_DIR": "NOTTCARD_SAVE_DIR"
+}
