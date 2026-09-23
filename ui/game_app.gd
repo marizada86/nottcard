@@ -24,10 +24,23 @@ var last_party: Array = []
 var last_mission: String = "m1"
 var _shot_path: String = ""
 var _shot_frames: int = 0
+var evidence_store: EvidenceStore = null
+var dev_log: DevLog = DevLog.new()
+var notepad: EvidenceNotepad = null
+var dev_console: DevConsole = null
+var qa_navigator: QaNavigator = null
+var playtest_guide: PlaytestGuide = null
+var qa_active: bool = false
+var qa_scenario_id: String = ""
+var _normal_save_store: SaveStore = null
+var _qa_badge: Control = null
+var _combat_log_count: int = 0
+var _opening_notepad: bool = false
 
 func _ready() -> void:
 	size = Vector2(Gfx.W, Gfx.H)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	_ensure_input_actions()
 	var args := OS.get_cmdline_user_args()
 	var shot := ""
 	var test_dir := ""
@@ -42,6 +55,8 @@ func _ready() -> void:
 	torch_flicker = profile.torch_flicker
 	walk_bob = profile.walk_bob
 	playtester_mode = profile.playtester
+	if BuildConfig.playtest_enabled():
+		evidence_store = EvidenceStore.new()
 	Engine.max_fps = fps_cap
 	var st := save_store.load_state()
 	if Shop.migrate_removed_items(st) or Collection.ensure_collection(st):
@@ -49,16 +64,24 @@ func _ready() -> void:
 	if save_store.warning != "":
 		show_toast(save_store.warning, 8.0)
 		save_store.warning = ""
+	if evidence_store != null:
+		if evidence_store.warning != "":
+			show_toast(evidence_store.warning, 6.0)
+		elif not evidence_store.items.is_empty():
+			show_toast("Você tem %d item(ns) guardado(s). F7 gera o ZIP." % evidence_store.items.size(), 6.0)
 	if shot != "":
 		_setup_shot(shot)
 	else:
 		open_menu()
+		if BuildConfig.playtest_enabled() and profile.name != "" and not profile.welcome_seen:
+			call_deferred("show_playtest_guide", true)
 
 func _process(dt: float) -> void:
 	toast_left = maxf(0.0, toast_left - dt)
 	lore_left = maxf(0.0, lore_left - dt)
-	if screen != null:
+	if screen != null and notepad == null:
 		screen.update(dt)
+	_collect_combat_log()
 	queue_redraw()
 	if _shot_path != "":
 		_shot_frames += 1
@@ -89,13 +112,56 @@ func _draw() -> void:
 			y2 += 28
 
 func _input(event: InputEvent) -> void:
-	if screen == null:
+	if playtest_guide != null:
+		if playtest_guide.handle_input(event):
+			playtest_guide = null
+			return
+	if notepad != null:
+		if event.is_action_pressed("evidence_note"):
+			_close_notepad()
+		elif event.is_action_pressed("evidence_screenshot"):
+			show_toast("Feche o bloco de notas (F5) antes de tirar um print.", 3.0)
+		elif event.is_action_pressed("evidence_export"):
+			_close_notepad()
+			_export_evidence()
+		elif event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			_close_notepad()
+		elif notepad.handle_input(event):
+			return
+		return
+	if qa_navigator != null:
+		if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_ESCAPE:
+			qa_navigator.queue_free()
+			qa_navigator = null
+			return
+		if qa_navigator.handle_input(event):
+			return
+	if dev_console != null and dev_console.handle_input(event):
+		return
+	if BuildConfig.playtest_enabled() and event.is_action_pressed("evidence_note"):
+		_open_notepad()
+		return
+	if BuildConfig.playtest_enabled() and event.is_action_pressed("evidence_screenshot"):
+		_capture_print()
+		return
+	if BuildConfig.playtest_enabled() and event.is_action_pressed("evidence_export"):
+		_export_evidence()
+		return
+	if BuildConfig.playtest_enabled() and event.is_action_pressed("dev_console"):
+		_toggle_dev_console()
+		return
+	if BuildConfig.playtest_enabled() and event.is_action_pressed("playtest_guide"):
+		show_playtest_guide(false)
+		return
+	if BuildConfig.qa_tools_enabled() and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_P and event.ctrl_pressed and Input.is_key_pressed(KEY_O):
+		open_qa_navigator()
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F11:
 		var mode := DisplayServer.window_get_mode()
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED if mode == DisplayServer.WINDOW_MODE_FULLSCREEN else DisplayServer.WINDOW_MODE_FULLSCREEN)
 		return
-	screen.handle_input(event)
+	if screen != null:
+		screen.handle_input(event)
 
 func show_toast(text: String, seconds: float = 4.0) -> void:
 	toast = text
@@ -111,6 +177,8 @@ func set_screen(s: UiScreen) -> void:
 	screen = s
 	s.app = self
 	s.enter()
+	if qa_active:
+		_ensure_qa_badge()
 
 var save_state: SaveState:
 	get:
@@ -158,14 +226,19 @@ func _refresh_group_achievements() -> void:
 		save_store.save(st)
 
 func return_to_menu() -> void:
+	if qa_active:
+		_end_qa_session()
 	open_menu()
 
-func start_run(characters: Array, mission_id: String) -> void:
+func start_run(characters: Array, mission_id: String, seed: int = 0) -> void:
 	last_party = characters
 	last_mission = mission_id
 	run = RunSession.new(save_store)
+	if seed != 0:
+		run.rng = PyRandom.new(seed)
 	run.playtester_mode = playtester_mode
 	run.start(characters, mission_id)
+	dev_log.add("Tentativa iniciada: %s" % mission_id.to_upper())
 	enter_room()
 
 ## Entra na sala atual: combate abre a luta; senão a caminhada (as salas de situação abrem por proximidade).
@@ -180,6 +253,7 @@ func open_walk() -> void:
 func start_combat(enemies: Array, is_boss: bool, backdrop: String, on_win: Callable = Callable()) -> void:
 	lore_left = 0.0
 	set_screen(CombatScreen.new(enemies, is_boss, backdrop, on_win))
+	dev_log.add("Combate iniciado%s." % (" (chefe)" if is_boss else ""))
 
 func combat_finished(victory: bool, on_win: Callable) -> void:
 	var kind := run.combat_finished(victory, on_win.is_valid())
@@ -203,6 +277,225 @@ func advance_room(after_combat: bool) -> void:
 func finish_run(outcome: String) -> void:
 	var res := run.finish(outcome)
 	open_offer(func(): open_offer(func(): set_screen(ResultScreen.new(res, outcome == ProgressRules.VITORIA))))
+	dev_log.add("Tentativa encerrada: %s." % outcome)
+
+# -- playtest, evidência e QA -------------------------------------------------------------------------------
+
+func _ensure_input_actions() -> void:
+	_add_input_action("evidence_note", KEY_F5)
+	_add_input_action("evidence_screenshot", KEY_F6)
+	_add_input_action("evidence_export", KEY_F7)
+	_add_input_action("dev_console", KEY_F12)
+	_add_input_action("playtest_guide", KEY_F1)
+
+func _add_input_action(action: String, keycode: int) -> void:
+	if InputMap.has_action(action):
+		return
+	InputMap.add_action(action)
+	var event := InputEventKey.new()
+	event.keycode = keycode
+	InputMap.action_add_event(action, event)
+
+func _open_notepad() -> void:
+	if _opening_notepad:
+		return
+	_opening_notepad = true
+	_capture_clean(func(png: PackedByteArray):
+		_opening_notepad = false
+		if png.is_empty():
+			show_toast("Não foi possível capturar a tela para a nota.", 4.0)
+			return
+		if screen != null:
+			screen.pause()
+		notepad = EvidenceNotepad.new()
+		add_child(notepad)
+		notepad.open_for(self, png)
+		dev_log.add("Bloco de notas aberto."))
+
+func _close_notepad() -> void:
+	if notepad == null:
+		return
+	var panel := notepad
+	notepad = null
+	panel.close_and_store()
+
+func _capture_print() -> void:
+	_capture_clean(func(png: PackedByteArray):
+		var result := evidence_store.add_print(png, evidence_context())
+		if result.ok:
+			show_toast("Print %d guardado — F7 gera o ZIP." % evidence_store.prints_count(), 3.0)
+			if result.near_limit:
+				show_toast("Pacote quase cheio: gere o ZIP com F7.", 4.0)
+			dev_log.add("Print de evidência guardado.")
+		else:
+			show_toast(result.error, 4.0))
+
+func _capture_clean(done: Callable) -> void:
+	var console_visible := dev_console != null and dev_console.visible
+	var qa_visible := qa_navigator != null and qa_navigator.visible
+	var previous_toast_left := toast_left
+	toast_left = 0.0
+	if console_visible:
+		dev_console.hide()
+	if qa_visible:
+		qa_navigator.hide()
+	await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	var image := get_viewport().get_texture().get_image()
+	var png := image.save_png_to_buffer()
+	if console_visible and dev_console != null:
+		dev_console.show()
+	if qa_visible and qa_navigator != null:
+		qa_navigator.show()
+	toast_left = previous_toast_left
+	done.call(png)
+
+func _export_evidence() -> void:
+	if evidence_store == null:
+		return
+	var result := evidence_store.export_bundle(profile.name, VERSION, evidence_state(), dev_log.export_text())
+	if result.ok:
+		show_toast("Evidência salva: %s" % result.path, 7.0)
+		dev_log.add("Pacote de evidências exportado: %s" % result.filename)
+	else:
+		show_toast(result.error, 5.0)
+
+func evidence_context() -> Dictionary:
+	var context := {"screen": screen.get_script().resource_path.get_file().get_basename() if screen != null else "inicial", "qa_scenario": qa_scenario_id}
+	if run != null and run.mission != null:
+		context["mission"] = run.mission.id
+		context["room"] = run.current_room().id
+		var party: Array = []
+		for member in run.party.members:
+			party.append(member.character.id)
+		context["party"] = party
+	if screen is CombatScreen:
+		context["turn"] = screen.cs.turn_number
+	return context
+
+func evidence_state() -> Dictionary:
+	var data := {"save": save_state.to_dict(), "context": evidence_context()}
+	if run != null and run.mission != null:
+		data["run"] = {"mission": run.mission.id, "room": run.current_room().id, "room_index": run.room_index, "seconds": run.stats.seconds}
+	return data
+
+func _toggle_dev_console() -> void:
+	if dev_console != null:
+		dev_console.queue_free()
+		dev_console = null
+		dev_log.visible = false
+		return
+	dev_console = DevConsole.new()
+	add_child(dev_console)
+	dev_console.open_for(self, dev_log)
+	dev_log.visible = true
+	dev_log.add("Console de desenvolvimento aberto.")
+
+func show_playtest_guide(mark_seen: bool = false) -> void:
+	if not BuildConfig.playtest_enabled() or playtest_guide != null:
+		return
+	playtest_guide = PlaytestGuide.new()
+	add_child(playtest_guide)
+	playtest_guide.open_for(self, mark_seen)
+
+func _collect_combat_log() -> void:
+	if not (screen is CombatScreen):
+		_combat_log_count = 0
+		return
+	var messages: Array = screen.cs.messages
+	if messages.size() < _combat_log_count:
+		_combat_log_count = 0
+	for i in range(_combat_log_count, messages.size()):
+		dev_log.add(messages[i])
+	_combat_log_count = messages.size()
+
+func open_qa_navigator() -> void:
+	if not BuildConfig.qa_tools_enabled():
+		return
+	if qa_navigator != null:
+		return
+	qa_navigator = QaNavigator.new()
+	add_child(qa_navigator)
+	qa_navigator.open_for(self)
+	dev_log.add("Navegador QA aberto.")
+
+func start_qa_scenario(scenario: QaScenario, party_ids: Array, seed: int) -> void:
+	if not BuildConfig.qa_tools_enabled():
+		return
+	if scenario.kind == "menu":
+		return_to_menu()
+		return
+	qa_navigator = null
+	_begin_qa_session()
+	qa_scenario_id = scenario.id
+	dev_log.add("Cenário QA iniciado: %s (seed %d)." % [scenario.id, seed])
+	if scenario.kind == "hq":
+		open_hq(scenario.hq_id)
+		return
+	var characters: Array = []
+	for party_id in party_ids:
+		characters.append(CharacterDefs.get_def(party_id))
+	start_run(characters, scenario.mission_id, seed)
+	if scenario.kind == "combat" or scenario.kind == "situation":
+		run.room_index = run.mission.index_of(scenario.room_id)
+		run.world.current = scenario.room_id
+		run.world.visited = {scenario.room_id: true}
+		var room := run.current_room()
+		if scenario.kind == "combat":
+			var enemies := [scenario.enemy_factory.call()] if scenario.enemy_factory.is_valid() else room.make_enemies()
+			start_combat(enemies, room.is_boss, room.asset_id)
+		else:
+			set_screen(SituationScreen.new(run.mission.situations[room.id], Callable()))
+
+func open_hq(hq_id: String) -> void:
+	var raw: Variant = HqData.all().get(hq_id)
+	if raw == null:
+		show_toast("HQ indisponível: %s" % hq_id, 4.0)
+		return
+	set_screen(HqScreen.new(raw))
+
+func _begin_qa_session() -> void:
+	if qa_active:
+		return
+	_normal_save_store = save_store
+	save_store = SaveStore.new("")
+	var state := save_store.load_state()
+	state.roster_rules = false
+	state.unlocked_characters = Py.set_of(ProgressRules.ALL_CHARACTER_IDS)
+	state.missions_completed = Py.set_of(Missions.all().keys())
+	for cid in ProgressRules.ALL_CHARACTER_IDS:
+		var progress := state.for_character(cid)
+		progress.level = ProgressRules.MAX_LEVEL
+		progress.xp = ProgressRules.xp_for_level(ProgressRules.MAX_LEVEL)
+	Collection.ensure_collection(state)
+	save_store.save(state)
+	qa_active = true
+
+func _end_qa_session() -> void:
+	if screen != null:
+		screen.exit()
+	run = null
+	qa_active = false
+	qa_scenario_id = ""
+	if _normal_save_store != null:
+		save_store = _normal_save_store
+		_normal_save_store = null
+	if _qa_badge != null:
+		_qa_badge.queue_free()
+		_qa_badge = null
+	dev_log.add("Sessão QA encerrada; save normal restaurado.")
+
+func _ensure_qa_badge() -> void:
+	if _qa_badge == null:
+		_qa_badge = Control.new()
+		_qa_badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		_qa_badge.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		_qa_badge.draw.connect(func():
+			Gfx.scrim(_qa_badge, Rect2(Gfx.W - 260, Gfx.H - 42, 248, 30), 210)
+			Gfx.text(_qa_badge, "CENÁRIO DE TESTE · " + qa_scenario_id, Vector2(Gfx.W - 18, Gfx.H - 26), 15, UiTheme.SELECTED_BORDER, "bottomright"))
+		add_child(_qa_badge)
+	move_child(_qa_badge, -1)
+	_qa_badge.queue_redraw()
 
 ## A oferta "escolha 1" pendente no save (carta rara do chefe ou pergaminho); segue para `then` quando não há (mais) oferta.
 func open_offer(then: Callable) -> void:

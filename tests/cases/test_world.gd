@@ -36,7 +36,9 @@ func test_maps_and_missions() -> String:
 		var d2 := Golden.diff(got, w, "missão " + mid)
 		if d2 != "": return d2
 	var un: Array = []
-	for m in ms.values():
+	# Este golden cobre o contrato histórico de M1/M2; M3 tem contrato próprio em test_m3.gd.
+	for mid in ["m1", "m2"]:
+		var m: MissionDef = ms[mid]
 		for c in [{}, {"m1": true}]:
 			un.append([m.id, Missions.is_unlocked(m, c)])
 	var d3 := Golden.diff(un, g.unlock, "unlock")

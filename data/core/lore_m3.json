@@ -1,0 +1,15 @@
+{
+  "ROOM_INTRO": {
+    "1": "A Biblioteca Corrompida respira em silêncio. Estantes sobem até a escuridão e uma pequena lombada corre por entre os livros caídos.",
+    "2": "O acervo se abre em volta de um poço escuro. Nas colunas, gárgulas de pedra parecem dormir com um olho voltado para cada estante.",
+    "3": "No alto do arquivo, uma ampulheta pulsa sobre o pedestal. Além do vidro estrelado, uma voz distante pede ajuda antes de sumir."
+  },
+  "ENEMY_FLAVOR": {
+    "Gárgula corrompida": "Pedra antiga rachada por linhas violetas. O grito não vem da boca: vibra dentro da cabeça."
+  },
+  "RUN_END": {
+    "vitoria": "A última gárgula se aquieta. Livrinho guarda o diário, e a Ampulheta do Silêncio Eterno responde com um único grão de luz.",
+    "derrota": "As estátuas voltam a fechar o círculo. A voz por trás do vidro se apaga na poeira da biblioteca.",
+    "desistencia": "O grupo deixa os livros sussurrando para trás. A escadaria continua escura, à espera de outro passo."
+  }
+}

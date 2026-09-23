@@ -173,7 +173,9 @@ func _open_room_encounter() -> void:
 		app.start_combat(room.make_enemies(), room.is_boss, room.asset_id)
 	else:
 		var sit: Situation = run.mission.situations[room.id]
-		app.set_screen(SituationScreen.new(sit, Callable(), "", func(applied): _situation_finished(applied)))
+		# Algumas salas-puzzle podem pedir uma nova tentativa sem alterar o mapa.
+		# O rebuild só é usado quando o Outcome marca `remain`.
+		app.set_screen(SituationScreen.new(sit, Callable(), "", func(applied): _situation_finished(applied), func(): return run.mission.situations[room.id]))
 
 func _situation_finished(applied: Applied) -> void:
 	var run := app.run

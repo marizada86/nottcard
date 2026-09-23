@@ -1,0 +1,16 @@
+{
+  "ROOM_INTRO": {
+    "1": "O Espeto de Pau não aquece metal há anos. A chuva ainda escorre pelos letreiros quebrados, mas uma brasa impossível insiste sob a cinza.",
+    "2": "As fornalhas apagadas guardam uma ordem que não serve a nenhuma ferramenta. Cada aro de ferro aponta para o porão.",
+    "3": "Dois portais idênticos ocupam a fundação da ferraria. Um pulsa em azul frio; o outro devolve o calor de uma forja que não existe.",
+    "4": "A oficina esconde uma bancada coberta por correntes e um baú pesado demais para estar abandonado. Entre as ferramentas, o diário de Bromnor espera."
+  },
+  "ENEMY_FLAVOR": {
+    "Mímico do Espeto": "A oficina escolheu sua própria fechadura: madeira, ferro e dentes escondidos sob um baú de ferramentas."
+  },
+  "RUN_END": {
+    "vitoria": "O mímico cai e o diário de Bromnor enfim se abre. Korrak emerge da galeria e Leoric atravessa o portal azul, assustado, com uma semente fechada na mão.",
+    "derrota": "As correntes da oficina se fecham e o baú volta a parecer inofensivo no escuro.",
+    "desistencia": "O grupo recua da ferraria. Os dois portais continuam pulsando atrás da porta enferrujada."
+  }
+}

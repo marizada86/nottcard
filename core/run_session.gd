@@ -149,6 +149,28 @@ func finish(outcome: String) -> RunResult:
 		state.missions_completed[mission.id] = true
 		if mission.id == "m2":
 			state.story_items["mapa_dagruve"] = true
+		elif mission.id == "m3":
+			state.story_items["ampulheta_silencio_eterno"] = true
+		elif mission.id == "m4":
+			state.story_items["cadernos_magicos"] = true
+		elif mission.id == "m5":
+			state.story_items["colar_visao_verdadeira"] = true
+			state.story_items["tarn_dagruve_selada"] = true
+		elif mission.id == "m6":
+			state.story_items["pocao_sopro_de_fogo"] = true
+			state.story_items["oleo_willie"] = true
+		elif mission.id == "m7":
+			state.story_items["diario_bromnor"] = true
+			state.story_items["korrak_recrutado"] = true
+			state.story_items["leoric_recrutado"] = true
+		elif mission.id == "m8":
+			state.story_items["artefatos_bromnor"] = true
+			state.story_items["erik_recrutado"] = true
+		elif mission.id == "m9":
+			state.story_items["martelo_da_gloria"] = true
+			state.story_items["tarn_caida"] = true
+			state.story_items["sacrificio_helion"] = true
+			state.story_items["veu_nascido"] = true
 	var res := ProgressRules.settle_run(progress, ledger, outcome, stats, character.id, Callable(character, "reward_texts"))
 	member_results = [res]
 	for other in party_characters.slice(1):

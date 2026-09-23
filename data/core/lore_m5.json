@@ -1,0 +1,17 @@
+{
+  "ROOM_INTRO": {
+    "1": "O cemitério de Dagruve se partiu como pedra antiga. A névoa sai de baixo das lápides e apaga os rastros de Bromnor.",
+    "2": "Além da fratura, a pedra do cemitério flutua sobre um vazio sem estrelas. Dois Notívagos guardam a passagem para a bacia.",
+    "3": "O círculo de fogo azul separa a arena do vazio. Astherion espera diante da bacia, como se reconhecesse uma ameaça que ninguém mais vê."
+  },
+  "ENEMY_FLAVOR": {
+    "Notívago": "Um morto-vivo que carrega a névoa nos olhos e no peito. Sua sombra chega antes do corpo.",
+    "Astherion": "Uma armadura viva, rachada por névoa e fogo azul. Sua atenção pesa sobre Durvall sem que explique por quê.",
+    "Astherion — névoa absorvida": "A bacia está vazia. Astherion cresce na fumaça verde, e o santuário inteiro parece prender a respiração."
+  },
+  "RUN_END": {
+    "vitoria": "A bacia se apaga e a dimensão de bolso desmorona. A Tarn de Dagruve se fecha, deixando o Colar de Visão Verdadeira entre as pedras frias.",
+    "derrota": "O círculo de fogo azul continua aceso. A fratura engole os últimos sons do cemitério.",
+    "desistencia": "O grupo recua pela escadaria. A névoa conserva o santuário intacto para quem ousar voltar."
+  }
+}

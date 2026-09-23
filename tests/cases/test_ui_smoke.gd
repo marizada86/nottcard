@@ -35,7 +35,7 @@ func _drive_combat(cs_screen: CombatScreen) -> void:
 		cs_screen._consume_fx()
 		cs_screen.update(0.05)
 
-func test_bot_drives_the_real_screens() -> String:
+func _drive_mission(mission_id: String) -> String:
 	var tree := Engine.get_main_loop() as SceneTree
 	var app := GameApp.new()
 	app.size = Vector2(Gfx.W, Gfx.H)
@@ -47,7 +47,7 @@ func test_bot_drives_the_real_screens() -> String:
 	Collection.ensure_collection(st, PyRandom.new(5))
 	tree.root.add_child(app)
 	PyRandom.shared = PyRandom.new(31)
-	app.start_run([CharacterDefs.get_def("durvall")], "m1")
+	app.start_run([CharacterDefs.get_def("durvall")], mission_id)
 	app.run.player.hp = 900
 	app.run.player.max_hp = 900
 	var seen := {}
@@ -106,9 +106,33 @@ func test_bot_drives_the_real_screens() -> String:
 			return "tela inesperada: %s" % s.get_script().get_global_name()
 	app.queue_free()
 	if not (app.screen is ResultScreen):
-		return "o bot não chegou ao resultado em %d passos (telas: %s)" % [steps, str(seen.keys())]
+		return "%s: o bot não chegou ao resultado em %d passos (telas: %s)" % [mission_id, steps, str(seen.keys())]
 	var need := ["WalkScreen", "CombatScreen"]
 	for n in need:
 		if not seen.has(n):
-			return "tela não visitada: " + n
+			return "%s: tela não visitada: %s" % [mission_id, n]
 	return ""
+
+func test_bot_drives_the_real_screens() -> String:
+	return _drive_mission("m1")
+
+func test_bot_drives_m3_screens() -> String:
+	return _drive_mission("m3")
+
+func test_bot_drives_m4_screens() -> String:
+	return _drive_mission("m4")
+
+func test_bot_drives_m5_screens() -> String:
+	return _drive_mission("m5")
+
+func test_bot_drives_m6_screens() -> String:
+	return _drive_mission("m6")
+
+func test_bot_drives_m7_screens() -> String:
+	return _drive_mission("m7")
+
+func test_bot_drives_m8_screens() -> String:
+	return _drive_mission("m8")
+
+func test_bot_drives_m9_screens() -> String:
+	return _drive_mission("m9")

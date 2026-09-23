@@ -1,0 +1,16 @@
+{
+  "ROOM_INTRO": {
+    "1": "A névoa cobre a Vila das Sombras até esconder as próprias casas. Só uma lanterna torta ainda insiste em apontar uma rua.",
+    "2": "A pousada está quente demais para uma vila vazia. A luz por trás da porta não traz conforto; ela parece esperar uma resposta.",
+    "3": "O salão se fecha atrás do grupo. Entre mesas tombadas, uma voz doce abandona o disfarce e a sombra toma forma.",
+    "4": "A Igreja das Sombras foi deixada para a névoa, mas o relicário diante do altar permanece aberto. Alguém conhece uma saída segura daqui."
+  },
+  "ENEMY_FLAVOR": {
+    "Demônio Sedutor da Vila": "A armadilha da pousada oferece acolhimento apenas até a porta se fechar. Depois, a voz da criatura tenta escolher quem deve ficar."
+  },
+  "RUN_END": {
+    "vitoria": "O demônio desaparece com o último sussurro. Na igreja, os artefatos de Bromnor aguardam e Erik Blackthorn aceita guiar o grupo para fora da Vila das Sombras.",
+    "derrota": "A luz da pousada se apaga e a névoa devolve cada rua ao silêncio.",
+    "desistencia": "O grupo recua da vila. Atrás da névoa, a pousada continua com uma única janela acesa."
+  }
+}

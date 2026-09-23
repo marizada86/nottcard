@@ -33,6 +33,9 @@ var corrode_chance: float = 0.0
 var corrode_amount: int = 1
 var special_defense: String = "ca"
 var special_area: bool = false
+## Dano fixo ao próprio inimigo quando ele prepara uma ação especial.
+## Usado somente pelo Amálgama de Willie; não cria uma aura recorrente.
+var special_self_damage: int = 0
 var grapples: bool = false
 var grapple_dc: int = 12
 var enc_script: EncounterScript = null

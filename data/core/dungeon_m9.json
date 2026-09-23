@@ -1,0 +1,11 @@
+{
+  "ROOM_RECTS": {"1": [1, 8, 11, 16], "2": [17, 7, 29, 17], "3": [35, 6, 49, 18]},
+  "CORRIDORS": [[12, 12, 16, 12], [30, 12, 34, 12]],
+  "DOORS": {"16,12": 2, "34,12": 3, "__tuplekeys": true},
+  "START": [6, 12, 1],
+  "ANCHORS": {"1": [6, 12], "2": [23, 12], "3": [42, 12]},
+  "ENEMY_CELLS": {"3": [[42, 12]]},
+  "PROP_CELLS": {"1": [[[3, 9], "raiz_abissal"], [[10, 15], "fenda_veu"]], "2": [[[18, 8], "pedestal_veu"], [[28, 16], "raiz_abissal"]], "3": [[[36, 8], "fenda_veu"], [[48, 16], "pedestal_veu"]]},
+  "MARKER_ROOMS": [],
+  "ENCOUNTER_RANGE": 2
+}

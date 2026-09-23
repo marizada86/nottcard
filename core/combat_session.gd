@@ -437,7 +437,13 @@ func end_turn() -> void:
 func _check_scripts() -> void:
 	for s in slots.duplicate():
 		var script: Variant = s.enemy.enc_script
-		if script == null or not s.enemy.is_alive():
+		if script == null or (not s.enemy.is_alive() and not script.phase.is_valid()):
+			continue
+		var successor: Variant = script.replace(s.enemy)
+		if successor != null:
+			s.enemy = successor
+			_say(script.announce)
+			_fx("text", _slot_id(s), 0, "Fase 2", "Roxo")
 			continue
 		var reinforcements: Array = script.check(s.enemy)
 		if not reinforcements.is_empty():
@@ -562,6 +568,14 @@ func _prepare_enemy_attack(slot: Dictionary) -> bool:
 		if th.killed:
 			return false
 	enemy.tick_stun_immunity()
+	# A névoa do Amálgama incha junto com a própria carne. O dano é aplicado
+	# uma vez por ação especial, antes da sequência de alvos de uma área.
+	if enemy.peek_is_special() and enemy.special_self_damage > 0:
+		var self_damage := mini(enemy.special_self_damage, maxi(0, enemy.hp - 1))
+		if self_damage > 0:
+			enemy.hp -= self_damage
+			_say("%s é ferido pela própria névoa: %d de dano." % [enemy.name, self_damage])
+			_fx("damage", _slot_id(slot), self_damage, "Névoa", "Verde")
 	var targets := party.attack_targets(enemy)
 	activate(party.index_of(targets[0].player))
 	_area_rest = targets.slice(1)

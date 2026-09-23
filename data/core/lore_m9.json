@@ -1,0 +1,17 @@
+{
+  "ROOM_INTRO": {
+    "1": "A raiz do Plano Abissal rasga a pedra sob Nottgard. O ar fica frio onde ela toca, mas uma passagem ainda leva ao templo.",
+    "2": "Colunas partidas sustentam o templo da Tarn. Uma luz fraca repousa sobre o pedestal e recusa-se a desaparecer.",
+    "3": "O altar final paira sobre a fenda. Kein aguarda entre raízes e pedra quebrada, como se já conhecesse cada caminho até ali."
+  },
+  "ENEMY_FLAVOR": {
+    "Kein no Altar": "No centro do altar, Kein tenta prender a última luz do templo antes que ela alcance o Martelo.",
+    "Beholder da Raiz": "A forma que emerge da raiz abre olhos demais para o espaço estreito do altar.",
+    "Death Tyrant do Véu": "A última forma concentra o frio do abismo; cada olhar dobra a luz ao redor da fenda."
+  },
+  "RUN_END": {
+    "vitoria": "O Death Tyrant se desfaz e o Martelo da Glória responde à luz do altar. Helion sustenta a retirada com seu sacrifício; a Tarn cai, e o Véu nasce sobre Nottgard.",
+    "derrota": "A fenda consome a luz do altar e o templo volta a respirar apenas o frio da raiz.",
+    "desistencia": "O grupo recua do altar. Atrás dele, a raiz continua puxando a luz para dentro do Plano Abissal."
+  }
+}

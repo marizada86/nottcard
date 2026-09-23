@@ -1,0 +1,15 @@
+{
+  "ROOM_INTRO": {
+    "1": "A estrada de Rodhe's Bridge afunda em chuva e lama. As rodas das carroças deixaram um rastro apressado, iluminado por lanternas distantes.",
+    "2": "A ponte estreita prende a fuga. Rebeldes de escudo erguem uma linha diante das grades das carroças.",
+    "3": "A última carroça range sobre as pedras. Atrás das grades, nobres cansados esperam; Bella não baixa a arma ao ver Kein."
+  },
+  "ENEMY_FLAVOR": {
+    "Rebelde da ponte": "Não é um monstro. É uma pessoa cansada, de escudo gasto, que escolheu não sair do caminho."
+  },
+  "RUN_END": {
+    "vitoria": "As grades cedem. Doze nobres recuperam a liberdade, e Bella chama Kein de Elias — um nome que ele não reconhece. O Conselho entrega cinco cadernos ligados por magia.",
+    "derrota": "As carroças desaparecem na chuva. A ponte guarda apenas as marcas das rodas e lanternas que se apagam ao longe.",
+    "desistencia": "O grupo deixa a estrada para trás. Rodhe's Bridge continua sob chuva, e as carroças ganham distância."
+  }
+}

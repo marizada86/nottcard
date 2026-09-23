@@ -45,6 +45,10 @@ func enter() -> void:
 		options.append(["Novo jogo", func(): confirming = true])
 	options.append_array([["Cartas", func(): app.show_toast("Coleção: em porte", 2.0)], ["Loja", func(): app.show_toast("Loja: em porte", 2.0)],
 		["Baralho", func(): app.show_toast("Baralho: em porte", 2.0)], ["Equipamento", func(): app.show_toast("Equipamento: em porte", 2.0)]])
+	if BuildConfig.playtest_enabled():
+		options.append_array([["Guia do playtest (F1)", func(): app.show_playtest_guide()], ["Nota (F5)", func(): app._open_notepad()], ["Print (F6)", func(): app._capture_print()], ["Gerar ZIP (F7)", func(): app._export_evidence()]])
+	if BuildConfig.qa_tools_enabled():
+		options.append(["Ferramentas de teste", func(): app.open_qa_navigator()])
 	buttons = centered_buttons(options, Gfx.H / 2.0 + 60)
 
 func handle_input(event: InputEvent) -> void:

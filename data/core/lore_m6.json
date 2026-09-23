@@ -1,0 +1,16 @@
+{
+  "ROOM_INTRO": {
+    "1": "Nenhuma voz responde nas Docas. Só os cascos vazios e a névoa verde sabem para onde foi Willie.",
+    "2": "O armazém foi inundado por dentro. Redes, algas e marcas de sucção apontam para o píer mais distante.",
+    "3": "No fim do píer, Willie incha dentro da névoa como uma massa de maré. Cinco tentáculos se erguem para defendê-lo."
+  },
+  "ENEMY_FLAVOR": {
+    "Willie, o Amálgama Abissal": "O que sobrou de Willie respira a névoa verde. Cada pulsar de sua aura faz a massa crescer e se ferir por dentro.",
+    "Tentáculo de Willie": "Um membro independente, coberto de cracas e sal, que procura o convés como se ainda obedecesse a uma ordem esquecida."
+  },
+  "RUN_END": {
+    "vitoria": "A névoa verde se desfaz sobre o mar. Willie encolhe entre as tábuas e murmura que ninguém tomará sua coleção antes que a maré leve o último som.",
+    "derrota": "A névoa fecha o píer e o mar devolve seis sombras ao escuro.",
+    "desistencia": "O grupo recua pelas Docas. Atrás, a água continua batendo contra os barcos vazios."
+  }
+}
