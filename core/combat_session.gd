@@ -11,6 +11,9 @@ var slots: Array = []            # [{"enemy": Enemy, "eliminated": bool}]
 var is_boss: bool = false
 var messages: Array = []
 var fx: Array = []               # efeitos a mostrar: {"kind","target","value","text","color"}; a UI consome e limpa
+## Eventos somente de apresentação. São uma cópia dos resultados já resolvidos:
+## a tela os distribui no tempo, sem chamar o RNG nem alterar a regra.
+var presentation: Array = []
 var turn_number: int = 0
 var finished: bool = false
 var victory: bool = false
@@ -76,6 +79,11 @@ func _say(text: String) -> void:
 
 func _fx(kind: String, target: String, value: Variant = 0, text: String = "", color: String = "") -> void:
 	fx.append({"kind": kind, "target": target, "value": value, "text": text, "color": color})
+
+func _present(kind: String, data: Dictionary = {}) -> void:
+	var event := data.duplicate(true)
+	event["kind"] = kind
+	presentation.append(event)
 
 func activate(index: int) -> void:
 	party.activate(index)
@@ -175,6 +183,7 @@ func play_card(index: int, target_slot: int = -1, ally: Member = null) -> bool:
 	else:
 		p.discard.append(card)
 	_say("%s usa %s" % [who, card.name])
+	_present("announce", {"text": "%s usa %s" % [who, card.name]})
 	_resolve(card, target, heal_target)
 	_after_player_action()
 	return true
@@ -194,6 +203,7 @@ func _resolve(card: Card, target: Dictionary, heal_target: Member) -> void:
 				var hit: Variant = Combat.player_attack_hit(card, p, enemy)
 				run.stats.record_hit(hit)
 				var result := Combat.resolve_attack(card, p.combo, hit)
+				_present_attack_rolls(card, target, result)
 				var effects := Combat.apply_card_effects(card, result, p, enemy)
 				if result.acertou:
 					turn.hit_this_turn = true
@@ -212,12 +222,14 @@ func _resolve(card: Card, target: Dictionary, heal_target: Member) -> void:
 			if card.area:
 				var targets := alive_slots()
 				var r := Combat.resolve_control(card, p.combo)
+				_present("dice", {"target": _slot_id(target), "sides": Dice.sides_of(card.dice), "values": [r.dado_base], "label": card.name})
 				for s in targets:
 					s.enemy.next_attack_reduction += r.reduction
 					_fx("text", _slot_id(s), 0, "Próximo ataque −%d" % r.reduction, "Azul")
 				_say("%s vai reduzir o próximo ataque de todos em %d." % [card.name, r.reduction])
 			else:
 				var r2 := Combat.resolve_control(card, p.combo)
+				_present("dice", {"target": _slot_id(target), "sides": Dice.sides_of(card.dice), "values": [r2.dado_base], "label": card.name})
 				enemy.next_attack_reduction += r2.reduction
 				_say("%s vai reduzir o próximo ataque em %d." % [card.name, r2.reduction])
 				_fx("text", _slot_id(target), 0, "Próximo ataque −%d" % r2.reduction, card.color)
@@ -294,6 +306,7 @@ func _play_area_attack(card: Card) -> void:
 	var n_hit := 0
 	for i in range(targets.size()):
 		var r: AttackResult = results[i]
+		_present_attack_rolls(card, targets[i], r)
 		if r.acertou:
 			any = true
 			n_hit += 1
@@ -305,12 +318,24 @@ func _play_area_attack(card: Card) -> void:
 		turn.hit_this_turn = true
 	_say("%s acerta %d de %d inimigos: %d de dano no total." % [who, n_hit, targets.size(), total])
 
+func _present_attack_rolls(card: Card, slot: Dictionary, result: AttackResult) -> void:
+	var target := _slot_id(slot)
+	if result.hit != null:
+		_present("hit", {"target": target, "d20": result.hit.d20, "discarded": result.hit.d20_discarded, "label": result.hit.defense_name})
+	if result.acertou and not result.dados.is_empty():
+		_present("dice", {"target": target, "sides": Dice.sides_of(card.chain_dice if card.chain_dice != "" and result.multiplicador >= 2 else card.dice), "values": result.dados, "label": card.name})
+	if result.acertou and not result.dados_extra.is_empty():
+		_present("dice", {"target": target, "sides": Dice.sides_of(card.sneak_dice if card.sneak_dice != "" else card.dice), "values": result.dados_extra, "label": "bônus"})
+	if result.acertou and not result.dados_passiva.is_empty():
+		_present("dice", {"target": target, "sides": Dice.sides_of(card.dice), "values": result.dados_passiva, "label": "passiva"})
+
 func _impact_on_enemy(card: Card, result: AttackResult, slot: Dictionary, log_it: bool = true) -> void:
 	var enemy: Enemy = slot.enemy
 	var hp_before := enemy.hp
 	run.stats.damage_dealt += mini(result.total, hp_before)
 	run.stats.record_damage(result.total)
 	enemy.hp -= result.total
+	_present("impact", {"target": _slot_id(slot), "from": hp_before, "to": enemy.hp, "damage": result.dano_carta, "color": card.color})
 	if log_it:
 		_say("%s acerta %s: %d de dano." % [who, enemy.name, result.total])
 	_fx("damage", _slot_id(slot), result.dano_carta, "", card.color)
@@ -348,9 +373,11 @@ func _miss_on_enemy(_card: Card, _result: AttackResult, slot: Dictionary, log_it
 	if log_it:
 		_say("%s erra %s." % [who, slot.enemy.name])
 	_fx("text", _slot_id(slot), 0, "Errou", "")
+	_present("miss", {"target": _slot_id(slot), "text": "Errou"})
 
 func _stun_check(card: Card, slot: Dictionary, check: StunCheck) -> void:
 	var enemy: Enemy = slot.enemy
+	_present("dice", {"target": _slot_id(slot), "sides": 20, "values": [check.d20], "label": "atordoar"})
 	if check.success:
 		var ok := enemy.try_stun()
 		_say("%s: d20 %d + Força = %d vs CD %d — atordoado!" % [card.name, check.d20, check.total, check.dc] if ok else "%s: o alvo resiste." % card.name)
@@ -379,8 +406,10 @@ func _critical_failure(card: Card) -> void:
 func _apply_heal(card: Card, heal: HealResult, ally: Member) -> void:
 	var p := player
 	if ally != null and ally.player != p:
+		var hp_before := ally.player.hp
 		var hr := party.apply_heal_to(ally, heal)
 		run.stats.healing += hr[0]
+		_present("heal", {"target": "ally:%d" % party.index_of(ally.player), "from": hp_before, "to": ally.player.hp, "amount": hr[0], "sides": Dice.sides_of(card.dice), "values": heal.dados, "label": card.name})
 		_say("%s cura %s em %d PV%s." % [card.name, ally.character.name, hr[0], " e o levanta" if hr[1] else ""])
 		_fx("heal", "ally:%d" % party.index_of(ally.player), hr[0])
 		return
@@ -390,8 +419,10 @@ func _apply_heal(card: Card, heal: HealResult, ally: Member) -> void:
 		_say("%s: a Cópia Sombria %s %d PV." % [card.name, "volta com" if revived else "recupera", gained])
 		_fx("text", "player", 0, "Cópia +%d" % gained, "Roxo")
 		return
+	var hp_before := p.hp
 	var healed := p.heal(heal.total)
 	run.stats.healing += healed
+	_present("heal", {"target": "player", "from": hp_before, "to": p.hp, "amount": healed, "sides": Dice.sides_of(card.dice), "values": heal.dados, "label": card.name})
 	_say("%s cura %d PV." % [card.name, healed])
 	_fx("heal", "player", healed)
 	if heal.desonra:
@@ -470,6 +501,7 @@ func _after_player_action() -> void:
 			s.eliminated = true
 			run.record_kill(s.enemy, player.character.id)
 			_say("%s foi eliminado." % s.enemy.name)
+			_present("death", {"target": _slot_id(s), "text": "%s foi eliminado" % s.enemy.name})
 		if everyone_down:
 			_finish(true)
 			return
@@ -561,8 +593,12 @@ func _prepare_enemy_attack(slot: Dictionary) -> bool:
 		enemy.consume_stun()
 		_say("%s está atordoado e perde o ataque." % enemy.name)
 		return false
+	var thunder_dice := enemy.thunder_mark
+	var thunder_before := enemy.hp
 	var th: Variant = Combat.resolve_thunder(enemy)
 	if th != null:
+		_present("dice", {"target": _slot_id(slot), "sides": Dice.sides_of(thunder_dice), "values": th.dados, "label": "trovão"})
+		_present("impact", {"target": _slot_id(slot), "from": thunder_before, "to": enemy.hp, "damage": th.damage, "color": "Amarelo"})
 		_say("%s sofre %d de trovão." % [enemy.name, th.damage])
 		_fx("damage", _slot_id(slot), th.damage, "", "Amarelo")
 		if th.killed:
@@ -588,6 +624,9 @@ func _begin_attack(slot: Dictionary, action: Variant) -> void:
 	if not _area_rest.is_empty() and _area_action == null:
 		_area_action = [pending.name, pending.dice]
 	_say("%s usa %s%s" % [enemy.name, pending.name, (" em %s" % who) if party.size > 1 else ""])
+	_present("announce", {"text": "%s usa %s" % [enemy.name, pending.name]})
+	if pending.hit != null:
+		_present("hit", {"target": "player", "d20": pending.hit.d20, "discarded": pending.hit.d20_discarded, "label": pending.hit.defense_name})
 	var options: Array = []
 	for c in player.hand:
 		if turn.can_react(c, pending.kind, pending.hit != null):
@@ -630,14 +669,22 @@ func finish_enemy_attack(pending: PendingEnemyAttack, reaction_card: Variant) ->
 	var enemy: Enemy = slot.enemy
 	var p := player
 	var hp_before := p.hp
+	var enemy_hp_before := enemy.hp
 	var result := Combat.resolve_enemy_attack(p, enemy, pending, reaction_card)
+	if result.hit != null and pending.hit != null and (result.hit.d20 != pending.hit.d20 or result.hit.state != pending.hit.state):
+		_present("hit", {"target": "player", "d20": result.hit.d20, "discarded": result.hit.d20_discarded, "label": result.hit.defense_name})
 	if result.acertou:
 		run.stats.damage_taken += maxi(0, hp_before - maxi(0, p.hp))
 		if result.negated:
 			_say("%s anula o ataque." % result.reaction)
 			_fx("text", "player", 0, "%s!" % result.reaction, "Azul")
 		else:
+			if not result.dados.is_empty():
+				_present("dice", {"target": "player", "sides": Dice.sides_of(pending.dice), "values": result.dados, "label": pending.name})
+			if not result.reaction_dice.is_empty() and reaction_card != null:
+				_present("dice", {"target": "player", "sides": Dice.sides_of(reaction_card.dice), "values": result.reaction_dice, "label": reaction_card.name})
 			_say("%s acerta %s: %d de dano%s." % [enemy.name, who, result.damage, (" (%s)" % enemy.special_extra) if (result.is_special and enemy.special_extra != "") else ""])
+			_present("impact", {"target": "player", "from": hp_before, "to": p.hp, "damage": result.damage, "color": "enemy"})
 			if result.damage > 0:
 				_fx("player_damage", "player", result.damage, "", "")
 			else:
@@ -658,11 +705,15 @@ func finish_enemy_attack(pending: PendingEnemyAttack, reaction_card: Variant) ->
 		if result.last_stand:
 			_say("%s: você fica com 1 PV!" % result.last_stand_source)
 		if result.counter_damage != 0:
+			if not result.counter_dice.is_empty():
+				_present("dice", {"target": _slot_id(slot), "sides": Dice.sides_of(reaction_card.counter_dice), "values": result.counter_dice, "label": "contra-ataque"})
+			_present("impact", {"target": _slot_id(slot), "from": enemy_hp_before, "to": enemy.hp, "damage": result.counter_damage, "color": "Azul"})
 			_say("%s devolve %d de dano a %s." % [result.reaction, result.counter_damage, enemy.name])
 			run.stats.damage_dealt += result.counter_damage + mini(0, enemy.hp)
 	else:
 		_say("%s erra %s." % [enemy.name, who])
 		_fx("text", "player", 0, "Errou", "")
+		_present("miss", {"target": "player", "text": "Errou"})
 	if _after_enemy_attack():
 		return
 
@@ -686,6 +737,7 @@ func _after_enemy_attack() -> bool:
 			s.eliminated = true
 			run.record_kill(s.enemy, player.character.id)
 			_say("%s foi eliminado." % s.enemy.name)
+			_present("death", {"target": _slot_id(s), "text": "%s foi eliminado" % s.enemy.name})
 		if everyone_down:
 			_finish(true)
 			return true

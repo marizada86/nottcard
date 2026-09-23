@@ -1,20 +1,25 @@
 class_name CombatScreen
 extends UiScreen
-## game/app.py::CombateScreen (versão sem dados 3D nem batidas animadas): a UI de um combate sobre o CombatSession. Desenha cenário, inimigos, grupo,
-## mão, trilho de ações, log e números flutuantes; entrada: clicar a carta (seleciona/joga), clicar o inimigo (alvo), botões da direita.
+## UI de combate: as regras são resolvidas pelo CombatSession; esta tela revela
+## seus eventos em batidas, com dados, impacto e PV visível no tempo certo.
 
 const ENEMY_W := 200
 const ENEMY_H := 300
 const ENEMY_Y := 90
 const RAIL_X := 1090
 const RAIL_W := 170
-const FLOAT_TIME := 1.5
 
 var cs: CombatSession
 var backdrop: String = ""
 var on_win: Callable
 var selected: int = -1
-var floaters: Array = []   # [{"text","pos","color","age","size","big"}]
+var sequence := CombatSequence.new()
+var combat_fx := CombatFx.new()
+var active_dice: Array = [] # [{"roll": DiceRollView, "center": Vector2}]
+var dice_3d: Dice3dView
+var announcement := ""
+var _shakes: Dictionary = {}
+var _death_fade: Dictionary = {}
 var action_draw_button := Rect2(RAIL_X, 572, RAIL_W, 30)
 var bonus_button := Rect2(RAIL_X, 606, RAIL_W, 30)
 var end_button := Rect2(RAIL_X, 640, RAIL_W, 30)
@@ -35,6 +40,17 @@ func _init(enemies: Array, is_boss: bool, backdrop_: String, on_win_: Callable =
 
 func enter() -> void:
 	cs = CombatSession.new(app.run, _enemies_init, _is_boss)
+	dice_3d = Dice3dView.new()
+	app.add_child(dice_3d)
+	for s in cs.slots:
+		_shown_hp[s.enemy] = CombatFx.ShownValue.new(s.enemy.hp)
+	for m in cs.party.members:
+		_shown_hp[m.player] = CombatFx.ShownValue.new(m.player.hp)
+
+func exit() -> void:
+	if dice_3d != null and is_instance_valid(dice_3d):
+		dice_3d.queue_free()
+	dice_3d = null
 
 func _slot_rect(i: int) -> Rect2:
 	var n := cs.slots.size()
@@ -69,6 +85,8 @@ func _member_rects() -> Array:
 	return out
 
 func handle_input(event: InputEvent) -> void:
+	if sequence.busy:
+		return
 	if cs.finished:
 		return
 	if event is InputEventKey and event.pressed and not event.echo:
@@ -170,36 +188,138 @@ func _play(i: int, slot_index: int) -> void:
 	selected = -1
 	_consume_fx()
 
-## Converte os efeitos do core em números flutuantes.
+## Enfileira resultados já resolvidos. Não cria novo RNG nem chama Combat.
+func _queue_presentation() -> void:
+	for raw in cs.presentation:
+		var event: Dictionary = raw.duplicate(true)
+		match String(event["kind"]):
+			"announce":
+				var announce := event.duplicate(true)
+				sequence.add("anuncio", 0.45, func(): announcement = String(announce.get("text", "")), Callable(), func(): announcement = "")
+			"hit":
+				var d20_values: Array = [int(event.get("d20", 1))] + ([] if event.get("discarded", null) == null else [int(event["discarded"])])
+				_queue_dice(event, 20, 1.7, "acerto", d20_values, String(event.get("label", "acerto")))
+			"dice":
+				var damage_values: Array = event.get("values", [])
+				_queue_dice(event, int(event.get("sides", 6)), 2.1, "rolagem", damage_values, String(event.get("label", "")))
+			"impact":
+				var impact := event.duplicate(true)
+				sequence.add("impacto", 1.5, func(): _show_impact(impact))
+			"heal":
+				var heal_values: Array = event.get("values", [])
+				_queue_dice(event, int(event.get("sides", 4)), 2.1, "rolagem", heal_values, String(event.get("label", "cura")))
+				var heal := event.duplicate(true)
+				sequence.add("cura", 1.2, func(): _show_heal(heal))
+			"miss":
+				var miss := event.duplicate(true)
+				sequence.add("erro", 0.9, func(): combat_fx.spawn(String(miss.get("text", "Errou")), _target_center(String(miss.get("target", "player"))), UiTheme.BLOCKED_COLOR, 42))
+			"death":
+				var death := event.duplicate(true)
+				var dying_target := String(death.get("target", ""))
+				sequence.add("morte-fade", 0.25,
+					func(): _death_fade[dying_target] = 0.0,
+					func(dt: float): _death_fade[dying_target] = minf(1.0, float(_death_fade.get(dying_target, 0.0)) + dt / 0.25))
+				sequence.add("aviso-eliminado", 1.38, func(): combat_fx.banner = CombatFx.Banner.new(String(death.get("text", "foi eliminado"))))
+	cs.presentation.clear()
+
+func _queue_dice(event: Dictionary, sides: int, duration: float, beat_name: String, values: Array, label: String) -> void:
+	var saved := event.duplicate(true)
+	var rolls: Array = values.duplicate()
+	sequence.add(beat_name, duration,
+		func(): _start_dice(sides, rolls, label, String(saved.get("target", "player")), duration),
+		func(dt: float): _update_dice(dt),
+		func(): active_dice.clear())
+	sequence.add("pausa", 0.25)
+
+func _start_dice(sides: int, values: Array, label: String, target: String, duration: float) -> void:
+	active_dice.clear()
+	if sides == 20 and dice_3d != null:
+		dice_3d.start(values, duration)
+		return
+	var center := _target_center(target)
+	var gap := minf(132.0, 760.0 / maxf(1.0, values.size()))
+	for i in range(values.size()):
+		active_dice.append({"roll": DiceRollView.new(sides, int(values[i]), label if i == 0 else "", duration, i), "center": center + Vector2((i - (values.size() - 1) / 2.0) * gap, -90)})
+
+func _update_dice(dt: float) -> void:
+	if dice_3d != null and dice_3d.active():
+		dice_3d.advance(dt)
+	for item in active_dice:
+		item["roll"].update(dt)
+
+func _target_center(target: String) -> Vector2:
+	if target.begins_with("enemy:"):
+		var idx := int(target.split(":")[1])
+		if idx >= 0 and idx < cs.slots.size():
+			return _slot_rect(idx).get_center()
+	if target.begins_with("ally:"):
+		var ally := int(target.split(":")[1])
+		var rects := _member_rects()
+		if ally >= 0 and ally < rects.size(): return rects[ally].get_center()
+	return Vector2(Gfx.W / 2.0, 455)
+
+func _shown(subject: Variant, fallback: float) -> CombatFx.ShownValue:
+	if not _shown_hp.has(subject):
+		_shown_hp[subject] = CombatFx.ShownValue.new(fallback)
+	return _shown_hp[subject]
+
+func _show_impact(event: Dictionary) -> void:
+	var target := String(event.get("target", "player"))
+	var to_value := float(event.get("to", 0))
+	var subject: Variant = cs.player
+	if target.begins_with("enemy:"):
+		var idx := int(target.split(":")[1])
+		if idx >= 0 and idx < cs.slots.size(): subject = cs.slots[idx].enemy
+	_shown(subject, float(event.get("from", to_value))).animate_to(maxf(0.0, to_value), 0.62)
+	_shakes[target] = 0.30
+	var col := Color8(255, 140, 130) if String(event.get("color", "")) == "enemy" else UiTheme.card_text_color(String(event.get("color", "")))
+	var damage := int(event.get("damage", 0))
+	if damage > 0:
+		combat_fx.spawn(str(damage), _target_center(target), col, 52)
+
+func _show_heal(event: Dictionary) -> void:
+	var target := String(event.get("target", "player"))
+	var to_value := float(event.get("to", 0))
+	var subject: Variant = cs.player
+	if target.begins_with("ally:"):
+		var ally := int(target.split(":")[1])
+		if ally >= 0 and ally < cs.party.members.size(): subject = cs.party.members[ally].player
+	_shown(subject, float(event.get("from", to_value))).animate_to(to_value, 0.62)
+	var amount := int(event.get("amount", 0))
+	if amount > 0:
+		combat_fx.spawn("+%d" % amount, _target_center(target), UiTheme.HEAL_COLOR, 46)
+
+## Converte os efeitos textuais restantes do core. Dano principal já é criado
+## pelo beat de impacto, para não aparecer antes do dado.
 func _consume_fx() -> void:
+	_queue_presentation()
+	var captions: Array = []
 	for f in cs.fx:
-		var pos := Vector2(Gfx.W / 2.0, 470)
+		var pos := _target_center(String(f["target"]))
 		var target: String = f["target"]
-		if target.begins_with("enemy:"):
-			var idx := int(target.split(":")[1])
-			if idx < cs.slots.size():
-				var r := _slot_rect(idx)
-				pos = r.get_center() + Vector2(0, -20)
-		elif target.begins_with("ally:"):
+		if target.begins_with("ally:"):
 			var r2: Rect2 = _member_rects()[int(target.split(":")[1])]
 			pos = r2.get_center()
 		var color := UiTheme.TEXT_COLOR
 		match f["kind"]:
 			"damage":
-				color = UiTheme.card_text_color(f["color"]) if f["color"] != "" else UiTheme.TEXT_COLOR
-				floaters.append({"text": str(f["value"]), "pos": pos, "color": color, "age": 0.0, "size": 46})
+				pass
 			"player_damage":
-				floaters.append({"text": str(f["value"]), "pos": Vector2(Gfx.W / 2.0, 455), "color": Color8(255, 140, 130), "age": 0.0, "size": 46})
+				pass
 			"heal":
-				floaters.append({"text": "+%d" % f["value"], "pos": Vector2(Gfx.W / 2.0, 455), "color": UiTheme.HEAL_COLOR, "age": 0.0, "size": 42})
+				# As curas normais entram em `presentation`; este fallback cobre
+				# efeitos especiais que não alteram o PV do personagem ativo.
+				if not sequence.busy:
+					combat_fx.spawn("+%d" % f["value"], pos, UiTheme.HEAL_COLOR, 42)
 			_:
 				color = UiTheme.card_text_color(f["color"]) if f["color"] != "" else UiTheme.BLOCKED_COLOR
-				var n := 0
-				for g in floaters:
-					if g["pos"].distance_to(pos) < 26 and g["age"] < 0.5:
-						n += 1
-				floaters.append({"text": f["text"], "pos": pos + Vector2(0, 34 * n), "color": color, "age": 0.0, "size": 22})
+				captions.append({"text": String(f["text"]), "pos": pos + Vector2(0, 28), "color": color})
 	cs.fx.clear()
+	if not captions.is_empty():
+		var delayed: Array = captions.duplicate(true)
+		sequence.add("modificadores", 1.2, func():
+			for caption in delayed:
+				combat_fx.spawn(caption["text"], caption["pos"], caption["color"], 24, 0.12))
 
 func _pick_rect(i: int) -> Rect2:
 	var n := cs.picking.size()
@@ -210,15 +330,14 @@ func _pick_rect(i: int) -> Rect2:
 
 func update(dt: float) -> void:
 	_t += dt
-	for f in floaters:
-		f["age"] += dt
-	floaters = floaters.filter(func(f): return f["age"] < FLOAT_TIME)
-	for i in range(cs.slots.size()):
-		var e: Enemy = cs.slots[i].enemy
-		var cur: float = _shown_hp.get(e, float(e.hp))
-		_shown_hp[e] = move_toward(cur, float(maxi(0, e.hp)), 60.0 * dt)
+	sequence.update(dt)
+	combat_fx.update(dt)
+	for target in _shakes.keys():
+		_shakes[target] = maxf(0.0, float(_shakes[target]) - dt)
+	for subject in _shown_hp:
+		_shown_hp[subject].update(dt)
 	app.run.stats.seconds += dt
-	if cs.finished and _finished_timer < 0.0:
+	if cs.finished and not sequence.busy and _finished_timer < 0.0:
 		_finished_timer = 1.2
 		app.show_toast("Vitória!" if cs.victory else "O grupo caiu...", 2.0)
 	if _finished_timer >= 0.0:
@@ -239,11 +358,17 @@ func draw(ci: CanvasItem) -> void:
 	_draw_log(ci)
 	_draw_hand(ci, m)
 	_draw_rail(ci, m)
-	for f in floaters:
-		var t: float = f["age"] / FLOAT_TIME
-		var col: Color = f["color"]
-		col.a = 1.0 - maxf(0.0, (t - 0.6) / 0.4)
-		Gfx.text_outlined(ci, f["text"], f["pos"] + Vector2(0, -50 * t), f["size"], col, UiTheme.TEXT_OUTLINE, "center", UiTheme.card_title_font())
+	combat_fx.draw(ci)
+	if dice_3d != null and dice_3d.active():
+		Gfx.scrim(ci, Rect2(390, 128, 500, 362), 120)
+		var die_texture := dice_3d.texture()
+		if die_texture != null:
+			ci.draw_texture_rect(die_texture, Rect2(430, 150, 420, 320), false)
+	for item in active_dice:
+		item["roll"].draw(ci, item["center"])
+	if announcement != "":
+		Gfx.scrim(ci, Rect2(250, 398, 780, 34), 190)
+		Gfx.text(ci, announcement, Vector2(Gfx.W / 2.0, 415), 22, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true))
 	if cs.reaction_pending != null:
 		Gfx.scrim(ci, Rect2(0, 396, Gfx.W, 30), 200)
 		Gfx.text(ci, "Reagir? Escolha uma carta de Reação (ou Enter para não reagir)", Vector2(Gfx.W / 2.0, 411), 20, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true))
@@ -258,7 +383,8 @@ func _draw_enemies(ci: CanvasItem, m: Vector2) -> void:
 		var s: Dictionary = cs.slots[i]
 		var e: Enemy = s.enemy
 		var r := _slot_rect(i)
-		var alpha := 1.0 if e.is_alive() else 0.25
+		r.position += _shake_offset("enemy:%d" % i)
+		var alpha := 1.0 if e.is_alive() else 1.0 - float(_death_fade.get("enemy:%d" % i, 0.0))
 		var tex := UiAssets.texture(e.slug, "enemies")
 		if tex != null:
 			ci.draw_texture_rect(tex, r, false, Color(1, 1, 1, alpha))
@@ -267,10 +393,10 @@ func _draw_enemies(ci: CanvasItem, m: Vector2) -> void:
 		if not e.is_alive():
 			continue
 		var bar := Rect2(r.position.x, r.position.y - 30, r.size.x, 14)
-		Gfx.bar(ci, bar, _shown_hp.get(e, float(e.hp)) / float(e.max_hp), UiTheme.HP_BAR_FG, UiTheme.HP_BAR_BG, 4)
+		Gfx.bar(ci, bar, _shown(e, e.hp).value / float(e.max_hp), UiTheme.HP_BAR_FG, UiTheme.HP_BAR_BG, 4)
 		Gfx.outline(ci, bar, UiTheme.CARD_BORDER, 2, 4)
 		var label := e.name if cs.slots.size() == 1 else String(e.name).split(" ")[0]
-		Gfx.text_outlined(ci, "%s  %d/%d" % [label, maxi(0, e.hp), e.max_hp], Vector2(r.get_center().x, bar.position.y - 4), 18, UiTheme.TEXT_COLOR, UiTheme.TEXT_OUTLINE, "midbottom", UiTheme.card_text_font(true), 1)
+		Gfx.text_outlined(ci, "%s  %d/%d" % [label, maxi(0, roundi(_shown(e, e.hp).value)), e.max_hp], Vector2(r.get_center().x, bar.position.y - 4), 18, UiTheme.TEXT_COLOR, UiTheme.TEXT_OUTLINE, "midbottom", UiTheme.card_text_font(true), 1)
 		var tags: PackedStringArray = []
 		if e.stunned: tags.append("atordoado")
 		if e.effective_ca != e.ca or e.effective_cam != e.cam: tags.append("CA %d/CAM %d" % [e.effective_ca, e.effective_cam])
@@ -288,13 +414,14 @@ func _draw_party(ci: CanvasItem) -> void:
 		var mb: Member = cs.party.members[i]
 		var p: Player = mb.player
 		var r: Rect2 = rects[i]
+		r.position += _shake_offset("player" if i == cs.party.active else "ally:%d" % i)
 		var active := i == cs.party.active
 		Gfx.rect(ci, r, Color8(20, 20, 28, 215), 10, 3 if active else 2, UiTheme.SELECTED_BORDER if active else UiTheme.CARD_BORDER)
 		Gfx.image(ci, mb.character.id, "portraits", Rect2(r.position.x + 6, r.position.y + 6, 72, 72))
 		Gfx.text(ci, mb.character.name, Vector2(r.position.x + 86, r.position.y + 6), 20, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(true))
 		var bar := Rect2(r.position.x + 86, r.position.y + 32, 152, 14)
-		Gfx.bar(ci, bar, float(maxi(0, p.hp)) / p.max_hp, Color8(60, 170, 80) if p.hp > 0 else UiTheme.HP_BAR_FG, UiTheme.HP_BAR_BG, 4)
-		Gfx.text(ci, "PV %d/%d" % [maxi(0, p.hp), p.max_hp], Vector2(r.position.x + 86, r.position.y + 50), 16, UiTheme.TEXT_COLOR, "topleft")
+		Gfx.bar(ci, bar, _shown(p, p.hp).value / p.max_hp, Color8(60, 170, 80) if p.hp > 0 else UiTheme.HP_BAR_FG, UiTheme.HP_BAR_BG, 4)
+		Gfx.text(ci, "PV %d/%d" % [maxi(0, roundi(_shown(p, p.hp).value)), p.max_hp], Vector2(r.position.x + 86, r.position.y + 50), 16, UiTheme.TEXT_COLOR, "topleft")
 		Gfx.text(ci, "CA %d · CAM %d" % [p.ca, p.cam], Vector2(r.position.x + 86, r.position.y + 66), 15, UiTheme.TEXT_MUTED, "topleft")
 		if mb.dead:
 			Gfx.text(ci, "morto", Vector2(r.end.x - 8, r.position.y + 8), 16, UiTheme.BLOCKED_COLOR, "topright")
@@ -356,13 +483,36 @@ func _draw_hand(ci: CanvasItem, m: Vector2) -> void:
 
 func _draw_rail(ci: CanvasItem, m: Vector2) -> void:
 	var t := cs.turn
-	Gfx.text(ci, "Ação %s · Bônus %s · Reação %s" % ["●" if t.actions_available > 0 else "○", "●" if t.bonus_available else "○", "●" if t.reaction_available else "○"],
-		Vector2(RAIL_X + RAIL_W / 2.0, 548), 16, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_text_font(true))
+	_draw_turn_gem(ci, "ind_acao", "Ação", t.actions_available > 0, Vector2(RAIL_X + 10, 540), t.actions_available)
+	_draw_turn_gem(ci, "ind_bonus", "Bônus", t.bonus_available, Vector2(RAIL_X + 66, 540))
+	_draw_turn_gem(ci, "ind_reacao", "Reação", t.reaction_available, Vector2(RAIL_X + 122, 540))
 	Gfx.button(ci, action_draw_button, "Comprar 1 (Ação)", action_draw_button.has_point(m))
 	Gfx.button(ci, bonus_button, "Comprar 1 (Bônus)", bonus_button.has_point(m))
+	_draw_button_gem(ci, "ind_acao", action_draw_button, t.actions_available > 0)
+	_draw_button_gem(ci, "ind_bonus", bonus_button, t.bonus_available)
 	Gfx.button(ci, end_button, "Encerrar turno (Enter)", end_button.has_point(m))
 	if cs.can_mulligan:
 		Gfx.button(ci, mulligan_button, "Trocar a mão", mulligan_button.has_point(m))
+
+func _draw_turn_gem(ci: CanvasItem, slug: String, label: String, ready: bool, pos: Vector2, amount: int = 0) -> void:
+	var tex := UiAssets.texture(slug, "hud")
+	var tint := Color.WHITE if ready else Color(0.30, 0.27, 0.32, 1.0)
+	if tex != null:
+		ci.draw_texture_rect(tex, Rect2(pos, Vector2(28, 28)), false, tint)
+	else:
+		Gfx.circle(ci, pos + Vector2(14, 14), 11, UiTheme.SELECTED_BORDER if ready else UiTheme.BLOCKED_COLOR)
+	Gfx.text(ci, label, pos + Vector2(14, 30), 12, UiTheme.TEXT_COLOR if ready else UiTheme.TEXT_MUTED, "midtop", UiTheme.card_text_font(true))
+	if amount > 1:
+		Gfx.text_outlined(ci, "x%d" % amount, pos + Vector2(28, 0), 14, UiTheme.SELECTED_BORDER, UiTheme.TEXT_OUTLINE, "topright", UiTheme.card_text_font(true), 1)
+
+func _draw_button_gem(ci: CanvasItem, slug: String, r: Rect2, ready: bool) -> void:
+	var tex := UiAssets.texture(slug, "hud")
+	if tex != null:
+		ci.draw_texture_rect(tex, Rect2(r.position + Vector2(5, 4), Vector2(22, 22)), false, Color.WHITE if ready else Color(0.3, 0.27, 0.32, 1.0))
+
+func _shake_offset(target: String) -> Vector2:
+	var left := float(_shakes.get(target, 0.0))
+	return Vector2(sin(_t * 72.0) * 6.0 * (left / 0.30), 0) if left > 0.0 else Vector2.ZERO
 
 func _draw_pick(ci: CanvasItem, m: Vector2) -> void:
 	Gfx.scrim(ci, Rect2(0, 0, Gfx.W, Gfx.H), 200)
