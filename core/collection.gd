@@ -138,6 +138,65 @@ static func _count_kind(cards: Array, kind: String) -> int:
 		if c.kind == kind: n += 1
 	return n
 
+static func _count_color(names: Array, color: String) -> int:
+	var catalog := card_catalog()
+	var count := 0
+	for name in names:
+		if catalog.has(name) and catalog[name].color == color:
+			count += 1
+	return count
+
+static func _add_playable_card(state: SaveState, deck: Array, candidates: Array) -> bool:
+	if deck.size() >= DECK_CAP:
+		return false
+	for card in candidates:
+		var cap := 1 if rarity_of(card) == RARA else mini(MAX_COPIES, _cap(card.name))
+		if deck.count(card.name) < cap:
+			deck.append(card.name)
+			state.collection.append(card.name)
+			return true
+	return false
+
+## Save novo precisa sempre chegar à primeira missão com um baralho válido.
+## A coleção inicial antiga podia sortear seis extras sem completar todas as cores.
+static func repair_initial_deck(state: SaveState) -> bool:
+	if state.decks.is_empty():
+		return false
+	var deck: Array = state.decks[mini(state.active_deck, state.decks.size() - 1)]
+	var changed := false
+	for color in COLORS:
+		var candidates: Array = []
+		for card in pool(COMUM):
+			if card.color == color:
+				candidates.append(card)
+		while _count_color(deck, color) < STARTING_MIN_PER_COLOR:
+			if not _add_playable_card(state, deck, candidates):
+				return changed
+			changed = true
+	var cards_in := resolve(deck)
+	var attacks := _count_kind(cards_in, "ataque")
+	while attacks < STARTING_MIN_ATTACKS:
+		var attack_cards: Array = []
+		for card in pool(COMUM):
+			if card.kind == "ataque":
+				attack_cards.append(card)
+		if not _add_playable_card(state, deck, attack_cards):
+			return changed
+		attacks += 1
+		changed = true
+	cards_in = resolve(deck)
+	var heals := _count_kind(cards_in, "cura")
+	while heals < STARTING_MIN_HEALS:
+		var heal_cards: Array = []
+		for card in pool(COMUM):
+			if card.kind == "cura":
+				heal_cards.append(card)
+		if not _add_playable_card(state, deck, heal_cards):
+			return changed
+		heals += 1
+		changed = true
+	return changed
+
 static func starting_extras(rng: PyRandom = null, size: int = STARTING_EXTRAS) -> Array:
 	var r := rng if rng != null else PyRandom.new()
 	var commons := pool(COMUM)
@@ -322,6 +381,8 @@ static func ensure_collection(state: SaveState, rng: PyRandom = null) -> bool:
 		state.decks = [default_deck(state.collection)]
 		changed = true
 	if ensure_core(state):
+		changed = true
+	if state.roster_rules and not state.has_progress and repair_initial_deck(state):
 		changed = true
 	return changed
 

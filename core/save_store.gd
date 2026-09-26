@@ -5,6 +5,7 @@ extends RefCounted
 
 const SAVE_NAME := "save.json"
 const BACKUP_NAME := "save.json.bak"
+const REPLACE_BACKUP_NAME := "save.json.replace.bak"
 const DEFAULT_DIR := "user://nottcard"
 
 var directory: String = ""
@@ -29,10 +30,11 @@ func load_state() -> SaveState:
 		_state = _read() if directory != "" else SaveState.new()
 	return _state
 
-func save(state: SaveState) -> void:
+func save(state: SaveState) -> bool:
 	_state = state
 	if directory != "":
-		_write(state)
+		return _write(state)
+	return true
 
 func clear() -> void:
 	_state = fresh() if directory != "" else SaveState.new()
@@ -62,13 +64,35 @@ func _read() -> SaveState:
 func _keep_backup() -> void:
 	DirAccess.rename_absolute(path, "%s/%s" % [directory, BACKUP_NAME])
 
-func _write(state: SaveState) -> void:
-	DirAccess.make_dir_recursive_absolute(directory)
+func _write(state: SaveState) -> bool:
+	warning = ""
+	var mkdir_err := DirAccess.make_dir_recursive_absolute(directory)
+	if mkdir_err != OK:
+		warning = "Não foi possível preparar a pasta do save."
+		return false
 	var tmp := path + ".tmp"
 	var f := FileAccess.open(tmp, FileAccess.WRITE)
 	if f == null:
 		warning = "Não foi possível gravar o save."
-		return
+		return false
 	f.store_string(JSON.stringify(state.to_dict(), "  ", false))
 	f.close()
-	DirAccess.rename_absolute(tmp, path)
+	var replace_backup := "%s/%s" % [directory, REPLACE_BACKUP_NAME]
+	DirAccess.remove_absolute(replace_backup)
+	var had_previous := FileAccess.file_exists(path)
+	if had_previous:
+		var preserve_err := DirAccess.rename_absolute(path, replace_backup)
+		if preserve_err != OK:
+			DirAccess.remove_absolute(tmp)
+			warning = "Não foi possível substituir o save existente; o anterior foi preservado."
+			return false
+	var replace_err := DirAccess.rename_absolute(tmp, path)
+	if replace_err != OK:
+		if had_previous:
+			DirAccess.rename_absolute(replace_backup, path)
+		DirAccess.remove_absolute(tmp)
+		warning = "Não foi possível finalizar a gravação do save; o estado anterior foi restaurado."
+		return false
+	if had_previous:
+		DirAccess.remove_absolute(replace_backup)
+	return true

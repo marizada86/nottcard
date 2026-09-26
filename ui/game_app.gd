@@ -230,7 +230,11 @@ func return_to_menu() -> void:
 		_end_qa_session()
 	open_menu()
 
-func start_run(characters: Array, mission_id: String, seed: int = 0) -> void:
+func start_run(characters: Array, mission_id: String, seed: int = 0) -> bool:
+	if characters.is_empty() or not Missions.all().has(mission_id):
+		show_toast("Não foi possível iniciar: personagem ou missão inválidos.", 5.0)
+		dev_log.add("Início bloqueado: personagem ou missão inválidos.")
+		return false
 	last_party = characters
 	last_mission = mission_id
 	run = RunSession.new(save_store)
@@ -238,8 +242,14 @@ func start_run(characters: Array, mission_id: String, seed: int = 0) -> void:
 		run.rng = PyRandom.new(seed)
 	run.playtester_mode = playtester_mode
 	run.start(characters, mission_id)
+	if run.mission == null or run.party == null:
+		show_toast("Não foi possível iniciar a tentativa. Consulte o log de teste.", 5.0)
+		dev_log.add("Início falhou ao preparar a tentativa %s." % mission_id.to_upper())
+		run = null
+		return false
 	dev_log.add("Tentativa iniciada: %s" % mission_id.to_upper())
 	enter_room()
+	return true
 
 ## Entra na sala atual: combate abre a luta; senão a caminhada (as salas de situação abrem por proximidade).
 func enter_room() -> void:
@@ -401,13 +411,34 @@ func _apply_qa_cheat() -> void:
 		var progress := state.for_character(character_id)
 		progress.level = ProgressRules.MAX_LEVEL
 		progress.xp = ProgressRules.xp_for_level(ProgressRules.MAX_LEVEL)
+	state.unlocked_characters = Py.set_of(ProgressRules.ALL_CHARACTER_IDS)
 	Achievements.unlock_all(state)
 	Achievements.grant_cards(state, newly_unlocked)
 	Shop.grant_everything(state)
 	Collection.ensure_collection(state)
-	save_store.save(state)
+	if not save_store.save(state):
+		show_toast("Cheat aplicado em memória, mas não foi salvo: " + save_store.warning, 7.0)
+		dev_log.add("Cheat de playtest não persistiu: " + save_store.warning)
+		return
+	var verified := state if save_store.directory == "" else SaveStore.new(save_store.directory).load_state()
+	if not qa_cheat_complete(verified):
+		show_toast("Cheat não foi confirmado após salvar. Consulte o log de teste.", 7.0)
+		dev_log.add("Cheat de playtest não passou na releitura do save.")
+		return
 	show_toast("Cheat de playtest aplicado: progresso e catálogo liberados.", 4.0)
 	dev_log.add("Cheat de playtest aplicado: nível máximo, conquistas e catálogo liberados.")
+
+func qa_cheat_complete(state: SaveState) -> bool:
+	for character_id in ProgressRules.ALL_CHARACTER_IDS:
+		var progress := state.for_character(character_id)
+		if progress.level != ProgressRules.MAX_LEVEL or progress.xp != ProgressRules.xp_for_level(ProgressRules.MAX_LEVEL):
+			return false
+		if not state.unlocked_characters.has(character_id):
+			return false
+	for achievement in Achievements.all():
+		if not state.achievements.has(achievement.id):
+			return false
+	return not state.collection.is_empty() and not state.equipment_units.is_empty() and not LayoutUnlocks.owned_layouts(state).is_empty()
 
 func show_playtest_guide(mark_seen: bool = false) -> void:
 	if not BuildConfig.playtest_enabled() or playtest_guide != null:

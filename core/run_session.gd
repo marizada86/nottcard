@@ -133,7 +133,7 @@ func interact_prop(cell: Vector2i) -> String:
 		if pair[0] != null:
 			extra = " e %s" % pair[0].nome
 	elif loot_roll < 10:
-		var card := Temporaries.grant_card(p, temp_budget, r)
+		var card: Variant = Temporaries.grant_card(p, temp_budget, r)
 		if card != null:
 			extra = " e carta temporária %s" % card.name
 	return "%s vasculhado: +%d ouro, +5 XP%s." % [slug.capitalize(), gold, extra]

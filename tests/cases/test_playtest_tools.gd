@@ -37,9 +37,12 @@ func test_evidence_note_caps_text_at_1000_characters() -> String:
 
 func test_qa_cheat_unlocks_persistent_progress() -> String:
 	var app := GameApp.new()
-	app.save_store = SaveStore.new("")
+	var dir := "user://test_nottcard_cheat_%d" % Time.get_ticks_usec()
+	app.save_store = SaveStore.new(dir)
 	app.dev_log = DevLog.new()
 	var state := app.save_store.load_state()
+	if not app.save_store.save(state):
+		return "não foi possível preparar o save do teste: " + app.save_store.warning
 	app._apply_qa_cheat()
 	for character_id in ProgressRules.ALL_CHARACTER_IDS:
 		var progress := state.for_character(character_id)
@@ -47,10 +50,43 @@ func test_qa_cheat_unlocks_persistent_progress() -> String:
 			return "cheat não elevou %s ao nível máximo" % character_id
 		if not state.unlocked_characters.has(character_id):
 			return "cheat não liberou %s" % character_id
-	if state.achievements.size() != Achievements.all().size():
-		return "cheat não liberou todas as conquistas"
+	for achievement in Achievements.all():
+		if not state.achievements.has(achievement.id):
+			return "cheat não liberou a conquista %s" % achievement.id
 	if state.collection.is_empty():
 		return "cheat não atualizou a coleção"
+	var reopened := SaveStore.new(dir).load_state()
+	if not app.qa_cheat_complete(reopened):
+		return "cheat não persistiu completo após reabrir o save"
 	if not app.toast.contains("Cheat de playtest aplicado") or app.dev_log.lines.is_empty():
 		return "cheat não registrou o resultado para o playtester"
+	DirAccess.remove_absolute(dir + "/save.json")
+	DirAccess.remove_absolute(dir)
+	return ""
+
+func test_fresh_save_never_blocks_the_first_run_with_an_invalid_deck() -> String:
+	for seed in range(1, 101):
+		var state := SaveStore.fresh()
+		Collection.ensure_collection(state, PyRandom.new(seed))
+		var deck: Array = state.decks[state.active_deck]
+		var problems := Collection.deck_problems(deck)
+		if not problems.is_empty():
+			return "save novo seed %d criou baralho inválido: %s" % [seed, "; ".join(problems)]
+	return ""
+
+func test_durvall_and_kayron_prepare_a_m1_run() -> String:
+	var store := SaveStore.new("")
+	var state := SaveStore.fresh()
+	state.unlocked_characters = Py.set_of(ProgressRules.ALL_CHARACTER_IDS)
+	state.missions_completed = {"m1": true}
+	store.save(state)
+	Collection.ensure_collection(state, PyRandom.new(9))
+	for character_id in ["durvall", "kayron"]:
+		var allowed := Roster.can_field(Missions.all()["m1"], state, [character_id])
+		if not allowed[0]:
+			return "%s não passou pela validação da M1: %s" % [character_id, allowed[1]]
+		var run := RunSession.new(store)
+		run.start([CharacterDefs.get_def(character_id)], "m1")
+		if run.mission == null or run.party == null or run.current_room() == null:
+			return "%s não preparou a primeira sala da M1" % character_id
 	return ""

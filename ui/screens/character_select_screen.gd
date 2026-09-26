@@ -81,11 +81,13 @@ func confirm() -> void:
 		var ok := Roster.can_field(mission, state, ids)
 		if not ok[0]:
 			app.show_toast(ok[1], 4.0)
+			app.dev_log.add("Início bloqueado: " + ok[1])
 			return
 		if not state.decks.is_empty():
 			var problems := Collection.deck_problems(state.decks[mini(state.active_deck, state.decks.size() - 1)])
 			if not problems.is_empty():
 				app.show_toast("Baralho inválido: " + "; ".join(problems) + ". Ajuste em Baralho.", 6.0)
+				app.dev_log.add("Início bloqueado: baralho inválido — " + "; ".join(problems))
 				return
 		app.start_run(chosen, mission.id)
 
@@ -188,14 +190,19 @@ func _draw_card(ci: CanvasItem, c: CharacterDef, rect: Rect2, hovered: bool, cho
 	Gfx.rect(ci, Rect2(bar.position, Vector2(int(bar.size.x * progress.fraction_to_next()), bar.size.y)), Color8(110, 90, 40), 6)
 	Gfx.outline(ci, bar, UiTheme.SELECTED_BORDER, 2, 6)
 	var caption := ("XP máx · Nível %d" % progress.level) if progress.at_cap else ("XP %d/%d · Nível %d" % [progress.xp, progress.next_threshold(), progress.level])
-	Gfx.text(ci, caption, bar.get_center(), 17, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true))
-	Gfx.text(ci, String(c.name).split(" ")[0], Vector2(rect.get_center().x, rect.position.y + 224), 32, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_title_font())
-	Gfx.text(ci, "%s · PV %d" % [c.class_label, c.max_hp], Vector2(rect.get_center().x, rect.position.y + 266), 22, UiTheme.TEXT_COLOR, "midtop")
+	Gfx.text_fit(ci, caption, bar, 17, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true), 11, 0)
+	Gfx.text_fit(ci, String(c.name).split(" ")[0], Rect2(rect.position.x + 8, rect.position.y + 220, rect.size.x - 16, 36), 32, UiTheme.TEXT_COLOR, "center", UiTheme.card_title_font(), 15, 0)
+	Gfx.text_fit(ci, "%s · PV %d" % [c.class_label, c.max_hp], Rect2(rect.position.x + 8, rect.position.y + 260, rect.size.x - 16, 30), 22, UiTheme.TEXT_COLOR, "center", null, 13, 0)
 	var attrs: PackedStringArray = []
 	for kv in ATTRIBUTE_LABELS:
 		attrs.append("%s %d" % [kv[1], c.attributes[kv[0]]])
-	Gfx.text(ci, "  ".join(attrs), Vector2(rect.get_center().x, rect.position.y + 298), 20, UiTheme.TEXT_COLOR, "midtop")
-	Gfx.text(ci, c.passive_name, Vector2(rect.get_center().x, rect.position.y + 332), 22, UiTheme.card_text_color(c.class_color), "midtop", UiTheme.card_text_font(true))
+	if rect.size.x < 280:
+		Gfx.text_fit(ci, "  ".join(attrs.slice(0, 2)), Rect2(rect.position.x + 8, rect.position.y + 294, rect.size.x - 16, 20), 18, UiTheme.TEXT_COLOR, "center", null, 12, 0)
+		Gfx.text_fit(ci, "  ".join(attrs.slice(2, 4)), Rect2(rect.position.x + 8, rect.position.y + 314, rect.size.x - 16, 20), 18, UiTheme.TEXT_COLOR, "center", null, 12, 0)
+		Gfx.text_fit(ci, c.passive_name, Rect2(rect.position.x + 8, rect.position.y + 340, rect.size.x - 16, 28), 20, UiTheme.card_text_color(c.class_color), "center", UiTheme.card_text_font(true), 12, 0)
+	else:
+		Gfx.text_fit(ci, "  ".join(attrs), Rect2(rect.position.x + 8, rect.position.y + 294, rect.size.x - 16, 24), 20, UiTheme.TEXT_COLOR, "center", null, 12, 0)
+		Gfx.text_fit(ci, c.passive_name, Rect2(rect.position.x + 8, rect.position.y + 328, rect.size.x - 16, 28), 22, UiTheme.card_text_color(c.class_color), "center", UiTheme.card_text_font(true), 12, 0)
 
 static func select_card_areas(rect: Rect2) -> Array:
 	var bar := Rect2(rect.position.x + 20, rect.position.y + 8, rect.size.x - 40, XP_BAR_HEIGHT)
