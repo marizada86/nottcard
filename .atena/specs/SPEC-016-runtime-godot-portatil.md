@@ -1,7 +1,7 @@
 ---
 id: "SPEC-016"
 titulo: "Runtime portátil do Godot 4.7.2 para desenvolvimento e testes"
-status: "concluída"
+status: "substituída"
 criado: "2026-09-26"
 aprovacao: "Plano aprovado pelo Guilherme em 2026-09-26"
 ---
@@ -66,5 +66,7 @@ prévia do motor.
 ## Reconciliação
 
 - Release publicada: `https://github.com/marizada86/nottcard/releases/tag/godot-v4.7.2-win64`.
-- Os binários e o diretório temporário de empacotamento permanecem ignorados;
-  a documentação e esta spec constituem o registro versionado da operação.
+- Em 2026-09-26, o runtime, os artefatos e a documentação local foram removidos
+  por decisão do responsável para que o repositório não distribua o Godot.
+- A release externa foi preservada; ela não faz parte do Git do projeto. Esta
+  spec e sua evidência permanecem como registro histórico da operação.
