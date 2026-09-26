@@ -77,6 +77,8 @@ func _sprites() -> Array:
 	var dg := run.mission.dungeon
 	for room in dg.prop_cells:
 		for p in dg.prop_cells[room]:
+			if run.removed_props.has(p[0]):
+				continue
 			out.append({"x": p[0].x + 0.5, "y": p[0].y + 0.5, "kind": "prop", "slug": p[1]})
 	for room in dg.enemy_cells:
 		if run.world.is_cleared(room):
@@ -125,6 +127,8 @@ func _start(events: Array) -> void:
 				if walker.block_reason == WalkRules.LOCKED:
 					if app.toast != WalkRules.LOCKED_TEXT or app.toast_left <= 0.0:
 						app.show_toast(WalkRules.LOCKED_TEXT, 3.0)
+				elif walker.block_reason == WalkRules.PROP:
+					app.show_toast(app.run.interact_prop(Vector2i(e["x"], e["y"])), 3.0)
 				var toward := Vector2(e["x"] + 0.5, e["y"] + 0.5) - vis_pos
 				anim = {"kind": "bump", "t": 0.0, "dur": BUMP_TIME, "p0": vis_pos, "p1": vis_pos, "dir": toward.normalized() if toward.length() > 0 else Vector2.ZERO}
 	if app.reduce_motion and anim != null:
@@ -140,7 +144,7 @@ func _finish() -> void:
 	pending = []
 	for e in events:
 		if e["type"] == "EnteredRoom":
-			if app.run.walk_cross(e["room"]):
+			if app.run.walk_cross(e["room"], e.get("backward", false)):
 				_open_room_encounter()
 				return
 	if not chained.is_empty():
@@ -253,9 +257,10 @@ func _draw_hud(ci: CanvasItem) -> void:
 	var room := WorldArt.room_for_cell(walker.grid, walker.x, walker.y)
 	var in_room := walker.grid.room_at(walker.x, walker.y)
 	var name: String = run.mission.room(room).name if in_room != 0 else "Corredor"
-	Gfx.scrim(ci, Rect2(w / 2.0 - 260, 14, 520, 66), 150)
-	Gfx.text(ci, name, Vector2(w / 2.0, 18), 28, UiTheme.TEXT_COLOR, "midtop")
-	Gfx.text(ci, "Virado para o %s" % DIRECTION_LABELS[NavGrid.DIR_NAMES[walker.facing]], Vector2(w / 2.0, 52), 18, UiTheme.TEXT_MUTED, "midtop")
+	var location_rect := Rect2(w / 2.0 - 260, 14, 520, 66)
+	Gfx.scrim(ci, location_rect, 150)
+	Gfx.text_fit(ci, name, Rect2(location_rect.position.x + 12, 16, location_rect.size.x - 24, 34), 28, UiTheme.TEXT_COLOR, "center", null, 16, 0)
+	Gfx.text_fit(ci, "Virado para o %s" % DIRECTION_LABELS[NavGrid.DIR_NAMES[walker.facing]], Rect2(location_rect.position.x + 12, 49, location_rect.size.x - 24, 24), 18, UiTheme.TEXT_MUTED, "center", null, 13, 0)
 	var held := 0
 	for mb in run.party.members:
 		held += mb.player.backpack.bag.size() + (1 if mb.player.backpack.accessory != null else 0)
@@ -263,8 +268,8 @@ func _draw_hud(ci: CanvasItem) -> void:
 	Gfx.button(ci, map_button, "Mapa (M)", map_button.has_point(m))
 	for n in buttons:
 		Gfx.button(ci, buttons[n], LABELS[n], buttons[n].has_point(m))
-	Gfx.text(ci, "Bolsa: %d de ouro" % run.ledger.mission_gold, Vector2(20, 14), 22, UiTheme.SELECTED_BORDER, "topleft")
-	Gfx.text(ci, "W/S avançar e recuar · Q/E ou setas virar · A/D passo lateral · X meia-volta", Vector2(w / 2.0, Gfx.H - 78), 18, UiTheme.TEXT_MUTED, "midbottom")
+	Gfx.text_fit(ci, "Bolsa: %d de ouro" % run.ledger.mission_gold, Rect2(14, 10, 240, 28), 22, UiTheme.SELECTED_BORDER, "topleft", null, 14, 0)
+	Gfx.text_fit(ci, "W/S avançar e recuar · Q/E ou setas virar · A/D passo lateral · X meia-volta", Rect2(120, Gfx.H - 96, w - 240, 28), 18, UiTheme.TEXT_MUTED, "center", null, 12, 0)
 	_draw_minimap(ci)
 
 func _draw_minimap(ci: CanvasItem) -> void:

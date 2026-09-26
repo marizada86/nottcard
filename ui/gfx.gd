@@ -5,6 +5,7 @@ extends RefCounted
 
 const W := 1280
 const H := 720
+const CONTENT_PADDING := 10.0
 
 static var _boxes: Dictionary = {}
 
@@ -90,18 +91,21 @@ static func text_outlined(ci: CanvasItem, s: String, pos: Vector2, size: int, co
 
 ## Quebra gulosa de linha (theme.wrap_text).
 static func wrap_lines(s: String, size: int, max_width: float, font: Font = null) -> Array:
-	var words := s.split(" ")
 	var lines: Array = []
-	var current := ""
-	for word in words:
-		var candidate := ("%s %s" % [current, word]).strip_edges()
-		if text_size(candidate, size, font).x <= max_width or current == "":
-			current = candidate
-		else:
+	for paragraph in s.split("\n", true):
+		if paragraph.is_empty():
+			lines.append("")
+			continue
+		var current := ""
+		for word in paragraph.split(" ", false):
+			var candidate := ("%s %s" % [current, word]).strip_edges()
+			if text_size(candidate, size, font).x <= max_width or current == "":
+				current = candidate
+			else:
+				lines.append(current)
+				current = word
+		if current != "":
 			lines.append(current)
-			current = word
-	if current != "":
-		lines.append(current)
 	return lines
 
 ## Texto centralizado com quebra; devolve a altura usada.
@@ -118,6 +122,64 @@ static func wrapped_left(ci: CanvasItem, s: String, size: int, color: Color, x: 
 		var r := text(ci, ln, Vector2(x, y), size, color, "topleft", font)
 		y += r.size.y + spacing
 	return y - top_y
+
+## Retângulo interno de uma moldura. Mantém o texto afastado da borda e torna
+## explícito qual área pode ser ocupada pelo conteúdo.
+static func content_rect(r: Rect2, padding: float = CONTENT_PADDING) -> Rect2:
+	var size := Vector2(maxf(0.0, r.size.x - padding * 2.0), maxf(0.0, r.size.y - padding * 2.0))
+	return Rect2(r.position + Vector2(padding, padding), size)
+
+## Escolhe o maior corpo que cabe em uma linha. É próprio para rótulos e HUD;
+## narrativas devem usar `wrapped_*` ou uma área paginada, nunca esta função.
+static func fitting_size(s: String, preferred_size: int, max_width: float, min_size: int = 12, font: Font = null) -> int:
+	var candidate := preferred_size
+	while candidate > min_size and text_size(s, candidate, font).x > max_width:
+		candidate -= 1
+	return candidate
+
+## Texto de uma linha que respeita um retângulo. Se o menor corpo ainda não
+## couber, a string recebe reticências de forma explícita, preservando o início.
+static func text_fit(ci: CanvasItem, s: String, r: Rect2, preferred_size: int, color: Color,
+		anchor: String = "center", font: Font = null, min_size: int = 12, padding: float = CONTENT_PADDING) -> Rect2:
+	var inner := content_rect(r, padding)
+	var body := fitting_size(s, preferred_size, inner.size.x, min_size, font)
+	var shown := s
+	if text_size(shown, body, font).x > inner.size.x:
+		var suffix := "…"
+		while shown.length() > 1 and text_size(shown + suffix, body, font).x > inner.size.x:
+			shown = shown.left(shown.length() - 1)
+		shown += suffix
+	var pos := inner.get_center()
+	match anchor:
+		"topleft": pos = inner.position
+		"midtop": pos = Vector2(inner.get_center().x, inner.position.y)
+		"topright": pos = Vector2(inner.end.x, inner.position.y)
+		"bottomleft": pos = Vector2(inner.position.x, inner.end.y)
+		"midbottom": pos = Vector2(inner.get_center().x, inner.end.y)
+		"bottomright": pos = inner.end
+		"midleft": pos = Vector2(inner.position.x, inner.get_center().y)
+		"midright": pos = Vector2(inner.end.x, inner.get_center().y)
+	return text(ci, shown, pos, body, color, anchor, font)
+
+## Parágrafo que reduz apenas o necessário para caber na área designada. Para
+## conteúdo que ainda não caiba no corpo mínimo, o chamador deve paginar ou
+## disponibilizar rolagem; esta rotina não descarta linhas.
+static func wrapped_fit(ci: CanvasItem, s: String, r: Rect2, preferred_size: int, color: Color,
+		centered: bool = false, spacing: int = 2, font: Font = null, min_size: int = 14, padding: float = CONTENT_PADDING) -> float:
+	var inner := content_rect(r, padding)
+	var body := preferred_size
+	var lines := wrap_lines(s, body, inner.size.x, font)
+	while body > min_size and lines.size() * (text_size("A", body, font).y + spacing) - spacing > inner.size.y:
+		body -= 1
+		lines = wrap_lines(s, body, inner.size.x, font)
+	var y := inner.position.y
+	for line in lines:
+		if centered:
+			text(ci, line, Vector2(inner.get_center().x, y), body, color, "midtop", font)
+		else:
+			text(ci, line, Vector2(inner.position.x, y), body, color, "topleft", font)
+		y += text_size("A", body, font).y + spacing
+	return y - inner.position.y - spacing
 
 ## Desenha a arte `slug` de `categoria` esticada em `r` (ou o retângulo de reserva com o nome).
 static func image(ci: CanvasItem, slug: String, categoria: String, r: Rect2, modulate: Color = Color.WHITE, pack: String = "") -> void:
@@ -146,7 +208,7 @@ static func scrim(ci: CanvasItem, r: Rect2, alpha: int = 150) -> void:
 ## O botão de sempre (hud.draw_button), sem ícone.
 static func button(ci: CanvasItem, r: Rect2, label: String, hovered: bool) -> void:
 	rect(ci, r, UiTheme.BUTTON_HOVER if hovered else UiTheme.BUTTON_COLOR, 8, 2, UiTheme.CARD_BORDER)
-	text(ci, label, r.get_center(), 22, UiTheme.TEXT_COLOR, "center")
+	text_fit(ci, label, r, 22, UiTheme.TEXT_COLOR, "center", null, 14, 8)
 
 ## Barra de valor (PV, XP).
 static func bar(ci: CanvasItem, r: Rect2, frac: float, fg: Color, bg: Color = UiTheme.HP_BAR_BG, radius: int = 6) -> void:

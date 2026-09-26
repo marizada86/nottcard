@@ -118,7 +118,7 @@ func update(dt: float) -> void:
 
 func draw(ci: CanvasItem) -> void:
 	ci.draw_rect(Rect2(0, 0, Gfx.W, Gfx.H), UiTheme.BACKGROUND_COLOR)
-	Gfx.text(ci, "Escolha o personagem inicial" if starter else "Escolha o personagem", Vector2(Gfx.W / 2.0, 62), 40, UiTheme.TEXT_COLOR, "center")
+	Gfx.text_fit(ci, "Escolha o personagem inicial" if starter else "Escolha o personagem", Rect2(160, 32, 960, 60), 40, UiTheme.TEXT_COLOR, "center", null, 20, 0)
 	var m := mouse()
 	for i in range(characters.size()):
 		var c: CharacterDef = characters[i]
@@ -168,7 +168,7 @@ func draw(ci: CanvasItem) -> void:
 	if not group.is_empty():
 		var names: PackedStringArray = []
 		for i in group: names.append(characters[i].name)
-		Gfx.text(ci, "Grupo: " + ", ".join(names), Vector2(Gfx.W / 2.0, 88), 22, UiTheme.SELECTED_BORDER, "midtop", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "Grupo: " + ", ".join(names), Rect2(150, 76, 980, 28), 22, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true), 13, 0)
 	if not roster_chosen().is_empty():
 		Gfx.button(ci, start_button, "Começar (Enter)", start_button.has_point(m))
 
@@ -205,5 +205,5 @@ static func select_card_areas(rect: Rect2) -> Array:
 
 func _draw_passive_panel(ci: CanvasItem, c: CharacterDef, rect: Rect2) -> void:
 	Gfx.rect(ci, rect, UiTheme.PANEL_COLOR, 14, 3, UiTheme.card_color(c.class_color))
-	Gfx.text(ci, c.passive_name, Vector2(rect.position.x + 24, rect.position.y + 14), 30, UiTheme.card_text_color(c.class_color), "topleft", UiTheme.card_title_font())
-	Gfx.wrapped_left(ci, c.passive_text, 22, UiTheme.TEXT_COLOR, rect.position.x + 24, rect.position.y + 56, rect.size.x - 48, 2, UiTheme.card_text_font())
+	Gfx.text_fit(ci, c.passive_name, Rect2(rect.position.x + 20, rect.position.y + 12, rect.size.x - 40, 36), 30, UiTheme.card_text_color(c.class_color), "topleft", UiTheme.card_title_font(), 16, 0)
+	Gfx.wrapped_fit(ci, c.passive_text, Rect2(rect.position.x + 20, rect.position.y + 54, rect.size.x - 40, rect.size.y - 62), 22, UiTheme.TEXT_COLOR, false, 2, UiTheme.card_text_font(), 14, 0)

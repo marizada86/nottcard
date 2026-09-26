@@ -37,12 +37,12 @@ func draw(ci: CanvasItem) -> void:
 	Gfx.scrim(ci, Rect2(0, 0, Gfx.W, Gfx.H), 225)
 	var r := result
 	var cx := Gfx.W / 2.0
-	Gfx.text(ci, "Vitória!" if victory else ("Derrota" if r.outcome == ProgressRules.DERROTA else "Desistência"), Vector2(cx, 56), 46, UiTheme.SELECTED_BORDER if victory else Color8(230, 90, 80), "center", UiTheme.card_title_font())
+	Gfx.text_fit(ci, "Vitória!" if victory else ("Derrota" if r.outcome == ProgressRules.DERROTA else "Desistência"), Rect2(180, 24, 920, 64), 46, UiTheme.SELECTED_BORDER if victory else Color8(230, 90, 80), "center", UiTheme.card_title_font(), 22, 0)
 	var who: String = app.run.character.name if app.run != null else ""
-	Gfx.text(ci, "%s — nível %d%s" % [who, r.level_after, (" (subiu de %d!)" % r.level_before) if r.leveled_up else ""], Vector2(cx, 108), 26, UiTheme.TEXT_COLOR, "center")
+	Gfx.text_fit(ci, "%s — nível %d%s" % [who, r.level_after, (" (subiu de %d!)" % r.level_before) if r.leveled_up else ""], Rect2(160, 92, 960, 32), 26, UiTheme.TEXT_COLOR, "center", null, 14, 0)
 	var y := 150.0 - scroll
 	for l in r.lines:
-		Gfx.text(ci, l.source, Vector2(cx - 240, y), 22, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font())
+		Gfx.text_fit(ci, l.source, Rect2(cx - 240, y, 390, 24), 22, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(), 13, 0)
 		Gfx.text(ci, "+%d XP" % l.amount, Vector2(cx + 240, y), 22, UiTheme.SELECTED_BORDER, "topright", UiTheme.card_text_font(true))
 		y += 26
 	if r.adjustment != 0:

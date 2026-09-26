@@ -44,9 +44,13 @@ static func face_center(value: int) -> Vector3:
 
 static func face_material(value: int) -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
-	# Um marfim fosco é legível contra qualquer cenário e remete a dados físicos.
+	# Cada face carrega sua própria arte; evita números em billboard atravessando o dado.
 	material.albedo_color = Color8(232, 228, 214)
 	material.metallic = 0.0
 	material.roughness = 0.52
 	material.cull_mode = BaseMaterial3D.CULL_DISABLED
+	material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	var path := "res://assets/dice/textures/d20_face_%02d.png" % clampi(value, 1, 20)
+	if ResourceLoader.exists(path):
+		material.albedo_texture = load(path)
 	return material

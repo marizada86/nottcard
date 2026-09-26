@@ -246,3 +246,16 @@ func test_events_misc() -> String:
 			mim.append([mid, room, m.hp, m.ca, m.cam, m.xp])
 	Missions.set_current("m1")
 	return Golden.diff(mim, g.mimic, "mimic")
+
+func test_walk_cross_only_opens_new_forward_room() -> String:
+	var forward := RunSession.new(SaveStore.new(""))
+	forward.start([CharacterDefs.get_def("durvall")], "m1")
+	if not forward.walk_cross(2):
+		return "avanço para sala nova deveria abrir o encontro"
+	var backward := RunSession.new(SaveStore.new(""))
+	backward.start([CharacterDefs.get_def("durvall")], "m1")
+	if backward.walk_cross(2, true):
+		return "recuo para sala nova não deveria abrir o encontro"
+	if backward.world.current != 2:
+		return "recuo deveria atualizar a sala atual"
+	return ""

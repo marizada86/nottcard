@@ -367,14 +367,17 @@ func draw(ci: CanvasItem) -> void:
 	for item in active_dice:
 		item["roll"].draw(ci, item["center"])
 	if announcement != "":
-		Gfx.scrim(ci, Rect2(250, 398, 780, 34), 190)
-		Gfx.text(ci, announcement, Vector2(Gfx.W / 2.0, 415), 22, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true))
+		var announcement_rect := Rect2(250, 398, 780, 34)
+		Gfx.scrim(ci, announcement_rect, 190)
+		Gfx.text_fit(ci, announcement, announcement_rect, 22, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true), 14, 4)
 	if cs.reaction_pending != null:
-		Gfx.scrim(ci, Rect2(0, 396, Gfx.W, 30), 200)
-		Gfx.text(ci, "Reagir? Escolha uma carta de Reação (ou Enter para não reagir)", Vector2(Gfx.W / 2.0, 411), 20, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true))
+		var prompt_rect := Rect2(0, 396, Gfx.W, 30)
+		Gfx.scrim(ci, prompt_rect, 200)
+		Gfx.text_fit(ci, "Reagir? Escolha uma carta de Reação (ou Enter para não reagir)", prompt_rect, 20, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true), 14, 4)
 	if cs.discarding:
-		Gfx.scrim(ci, Rect2(0, 396, Gfx.W, 30), 200)
-		Gfx.text(ci, cs.discard_prompt, Vector2(Gfx.W / 2.0, 411), 20, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true))
+		var discard_rect := Rect2(0, 396, Gfx.W, 30)
+		Gfx.scrim(ci, discard_rect, 200)
+		Gfx.text_fit(ci, cs.discard_prompt, discard_rect, 20, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true), 14, 4)
 	if cs.picking.size() > 0:
 		_draw_pick(ci, m)
 
@@ -418,11 +421,11 @@ func _draw_party(ci: CanvasItem) -> void:
 		var active := i == cs.party.active
 		Gfx.rect(ci, r, Color8(20, 20, 28, 215), 10, 3 if active else 2, UiTheme.SELECTED_BORDER if active else UiTheme.CARD_BORDER)
 		Gfx.image(ci, mb.character.id, "portraits", Rect2(r.position.x + 6, r.position.y + 6, 72, 72))
-		Gfx.text(ci, mb.character.name, Vector2(r.position.x + 86, r.position.y + 6), 20, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, mb.character.name, Rect2(r.position.x + 84, r.position.y + 4, r.size.x - 92, 24), 20, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(true), 13, 0)
 		var bar := Rect2(r.position.x + 86, r.position.y + 32, 152, 14)
 		Gfx.bar(ci, bar, _shown(p, p.hp).value / p.max_hp, Color8(60, 170, 80) if p.hp > 0 else UiTheme.HP_BAR_FG, UiTheme.HP_BAR_BG, 4)
-		Gfx.text(ci, "PV %d/%d" % [maxi(0, roundi(_shown(p, p.hp).value)), p.max_hp], Vector2(r.position.x + 86, r.position.y + 50), 16, UiTheme.TEXT_COLOR, "topleft")
-		Gfx.text(ci, "CA %d · CAM %d" % [p.ca, p.cam], Vector2(r.position.x + 86, r.position.y + 66), 15, UiTheme.TEXT_MUTED, "topleft")
+		Gfx.text_fit(ci, "PV %d/%d" % [maxi(0, roundi(_shown(p, p.hp).value)), p.max_hp], Rect2(r.position.x + 84, r.position.y + 48, r.size.x - 92, 16), 16, UiTheme.TEXT_COLOR, "topleft", null, 12, 0)
+		Gfx.text_fit(ci, "CA %d · CAM %d" % [p.ca, p.cam], Rect2(r.position.x + 84, r.position.y + 64, r.size.x - 92, 16), 15, UiTheme.TEXT_MUTED, "topleft", null, 11, 0)
 		if mb.dead:
 			Gfx.text(ci, "morto", Vector2(r.end.x - 8, r.position.y + 8), 16, UiTheme.BLOCKED_COLOR, "topright")
 		elif mb.downed:
@@ -438,23 +441,23 @@ func _draw_resources(ci: CanvasItem) -> void:
 	Gfx.rect(ci, panel, Color8(20, 20, 28, 200), 10, 2, UiTheme.CARD_BORDER)
 	var y := panel.position.y + 8
 	if c.charge_mode:
-		Gfx.text(ci, "Poder Místico %d/%d" % [c.mystic_power, c.charge_cap], Vector2(panel.position.x + 10, y), 20, UiTheme.card_text_color("Roxo"), "topleft", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "Poder Místico %d/%d" % [c.mystic_power, c.charge_cap], Rect2(panel.position.x + 8, y, panel.size.x - 16, 24), 20, UiTheme.card_text_color("Roxo"), "topleft", UiTheme.card_text_font(true), 13, 0)
 	else:
 		var col := UiTheme.SELECTED_BORDER if c.streak > 0 else UiTheme.TEXT_MUTED
-		Gfx.text(ci, "Corrente x%d" % [c.multiplier_for(p.hand[0]) if false else mini(c.streak + c.boost, p.character.chain_cap) + 1], Vector2(panel.position.x + 10, y), 22, col, "topleft", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "Corrente x%d" % [c.multiplier_for(p.hand[0]) if false else mini(c.streak + c.boost, p.character.chain_cap) + 1], Rect2(panel.position.x + 8, y, panel.size.x - 16, 24), 22, col, "topleft", UiTheme.card_text_font(true), 13, 0)
 	y += 28
 	if c.last_event == "quebrou" and c.streak == 0:
-		Gfx.text(ci, "quebrada (era %d)" % c.broken_from, Vector2(panel.position.x + 10, y), 16, Color8(200, 50, 50), "topleft")
+		Gfx.text_fit(ci, "quebrada (era %d)" % c.broken_from, Rect2(panel.position.x + 8, y, panel.size.x - 16, 18), 16, Color8(200, 50, 50), "topleft", null, 12, 0)
 	y += 22
-	Gfx.text(ci, "Compra %d · Descarte %d" % [p.draw_pile.size(), p.discard.size()], Vector2(panel.position.x + 10, y), 16, UiTheme.TEXT_MUTED, "topleft")
+	Gfx.text_fit(ci, "Compra %d · Descarte %d" % [p.draw_pile.size(), p.discard.size()], Rect2(panel.position.x + 8, y, panel.size.x - 16, 18), 16, UiTheme.TEXT_MUTED, "topleft", null, 12, 0)
 	y += 20
-	Gfx.text(ci, "HC gastas %d · Gastas %d" % [p.spent_class.size(), p.exhausted.size()], Vector2(panel.position.x + 10, y), 16, UiTheme.TEXT_MUTED, "topleft")
+	Gfx.text_fit(ci, "HC gastas %d · Gastas %d" % [p.spent_class.size(), p.exhausted.size()], Rect2(panel.position.x + 8, y, panel.size.x - 16, 18), 16, UiTheme.TEXT_MUTED, "topleft", null, 12, 0)
 	y += 22
 	if p.guard_cap > 0:
-		Gfx.text(ci, "Guarda %d/%d%s" % [p.guard, p.guard_cap, "  (Desonra)" if p.dishonored else ""], Vector2(panel.position.x + 10, y), 18, UiTheme.card_text_color("Azul"), "topleft", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "Guarda %d/%d%s" % [p.guard, p.guard_cap, "  (Desonra)" if p.dishonored else ""], Rect2(panel.position.x + 8, y, panel.size.x - 16, 20), 18, UiTheme.card_text_color("Azul"), "topleft", UiTheme.card_text_font(true), 12, 0)
 		y += 22
 	if p.clone_max_hp != null:
-		Gfx.text(ci, "Cópia %d/%d" % [int(p.clone_hp), int(p.clone_max_hp)], Vector2(panel.position.x + 10, y), 18, UiTheme.card_text_color("Roxo"), "topleft", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "Cópia %d/%d" % [int(p.clone_hp), int(p.clone_max_hp)], Rect2(panel.position.x + 8, y, panel.size.x - 16, 20), 18, UiTheme.card_text_color("Roxo"), "topleft", UiTheme.card_text_font(true), 12, 0)
 		y += 22
 	Gfx.text(ci, "Turno %d" % cs.turn_number, Vector2(panel.position.x + 10, panel.end.y - 22), 16, UiTheme.TEXT_MUTED, "topleft")
 
@@ -466,7 +469,7 @@ func _draw_log(ci: CanvasItem) -> void:
 	Gfx.scrim(ci, panel, 150)
 	var y := panel.position.y + 8
 	for ln in lines:
-		Gfx.text(ci, ln, Vector2(panel.position.x + 10, y), 18, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font())
+		Gfx.text_fit(ci, ln, Rect2(panel.position.x + 8, y, panel.size.x - 16, 20), 18, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(), 12, 0)
 		y += 24
 
 func _draw_hand(ci: CanvasItem, m: Vector2) -> void:
@@ -486,11 +489,11 @@ func _draw_rail(ci: CanvasItem, m: Vector2) -> void:
 	_draw_turn_gem(ci, "ind_acao", "Ação", t.actions_available > 0, Vector2(RAIL_X + 10, 540), t.actions_available)
 	_draw_turn_gem(ci, "ind_bonus", "Bônus", t.bonus_available, Vector2(RAIL_X + 66, 540))
 	_draw_turn_gem(ci, "ind_reacao", "Reação", t.reaction_available, Vector2(RAIL_X + 122, 540))
-	Gfx.button(ci, action_draw_button, "Comprar 1 (Ação)", action_draw_button.has_point(m))
-	Gfx.button(ci, bonus_button, "Comprar 1 (Bônus)", bonus_button.has_point(m))
+	Gfx.button(ci, action_draw_button, "Comprar 1", action_draw_button.has_point(m))
+	Gfx.button(ci, bonus_button, "Comprar 1", bonus_button.has_point(m))
 	_draw_button_gem(ci, "ind_acao", action_draw_button, t.actions_available > 0)
 	_draw_button_gem(ci, "ind_bonus", bonus_button, t.bonus_available)
-	Gfx.button(ci, end_button, "Encerrar turno (Enter)", end_button.has_point(m))
+	Gfx.button(ci, end_button, "Encerrar (Enter)", end_button.has_point(m))
 	if cs.can_mulligan:
 		Gfx.button(ci, mulligan_button, "Trocar a mão", mulligan_button.has_point(m))
 

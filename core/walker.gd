@@ -82,7 +82,7 @@ func _step(nx: int, ny: int, backward_: bool) -> Array:
 	events.append({"type": "Moved", "x": nx, "y": ny, "backward": backward_})
 	var now := room
 	if now != before and now != 0:
-		events.append({"type": "EnteredRoom", "room": now})
+		events.append({"type": "EnteredRoom", "room": now, "backward": backward_})
 	return events
 
 ## Para o desenho: a célula deixa passar o raio? Chão e porta aberta sim.

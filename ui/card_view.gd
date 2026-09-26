@@ -39,8 +39,8 @@ static func draw_card(ci: CanvasItem, card: Card, r: Rect2, hovered: bool = fals
 		Gfx.wrapped_center(ci, card.note, int(clampf(r.size.x * 0.078, 11, 16)), Color8(235, 235, 235), r.get_center().x, y, r.size.x - 16, 1, UiTheme.card_text_font())
 	Gfx.outline(ci, r, border, 4 if selected else (3 if hovered else 2), 10)
 	if card.class_ability:
-		Gfx.text(ci, "HC", Vector2(r.end.x - 8, r.position.y + 6), 14, UiTheme.SELECTED_BORDER, "topright", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "HC", Rect2(r.end.x - 34, r.position.y + 4, 28, 18), 14, UiTheme.SELECTED_BORDER, "topright", UiTheme.card_text_font(true), 10, 0)
 	if card.scroll:
-		Gfx.text(ci, "Pergaminho", Vector2(r.position.x + 8, r.end.y - 6), 13, UiTheme.TEXT_MUTED, "bottomleft", UiTheme.card_text_font(true))
+		Gfx.text_fit(ci, "Pergaminho", Rect2(r.position.x + 6, r.end.y - 22, r.size.x - 12, 18), 13, UiTheme.TEXT_MUTED, "bottomleft", UiTheme.card_text_font(true), 10, 0)
 	if not playable:
 		Gfx.rect(ci, r, Color8(8, 8, 12, 150), 10)

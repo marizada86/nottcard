@@ -96,7 +96,7 @@ func handle_input(event: InputEvent) -> void:
 func draw(ci: CanvasItem) -> void:
 	Gfx.screen_background(ci, "menu")
 	Gfx.scrim(ci, Rect2(0, Gfx.H / 2.0 - 110, Gfx.W, 220))
-	Gfx.text(ci, "M1 — A Fechadura da Fenda nas Docas (solo)", Vector2(Gfx.W / 2.0, Gfx.H / 2.0 - 10), 20, UiTheme.TEXT_MUTED, "center")
+	Gfx.text_fit(ci, "M1 — A Fechadura da Fenda nas Docas (solo)", Rect2(240, Gfx.H / 2.0 - 34, 800, 42), 20, UiTheme.TEXT_MUTED, "center", null, 14, 0)
 	Gfx.text(ci, GameApp.VERSION_LABEL, Vector2(Gfx.W - 12, Gfx.H - 10), 16, UiTheme.TEXT_MUTED, "bottomright")
 	var m := mouse()
 	for b in buttons:
@@ -110,7 +110,7 @@ func draw(ci: CanvasItem) -> void:
 		ci.draw_rect(Rect2(0, 0, Gfx.W, Gfx.H), Color8(6, 6, 10, 190))
 		var panel := CONFIRM_PANEL
 		Gfx.rect(ci, panel, UiTheme.PANEL_COLOR, 14, 3, UiTheme.CARD_BORDER)
-		Gfx.text(ci, "Apagar o save?", Vector2(panel.get_center().x, panel.position.y + 24), 28, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_title_font())
+		Gfx.text_fit(ci, "Apagar o save?", Rect2(panel.position.x + 24, panel.position.y + 18, panel.size.x - 48, 36), 28, UiTheme.TEXT_COLOR, "center", UiTheme.card_title_font(), 18, 0)
 		var i := 0
 		for line in ["O nível e o XP de todos os", "personagens voltam ao zero."]:
 			Gfx.text(ci, line, Vector2(panel.get_center().x, panel.position.y + 80 + i * 28), 22, UiTheme.TEXT_MUTED, "midtop", UiTheme.card_text_font())

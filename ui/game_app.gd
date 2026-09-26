@@ -154,7 +154,7 @@ func _input(event: InputEvent) -> void:
 		show_playtest_guide(false)
 		return
 	if BuildConfig.qa_tools_enabled() and event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_P and event.ctrl_pressed and Input.is_key_pressed(KEY_O):
-		open_qa_navigator()
+		_apply_qa_cheat()
 		return
 	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F11:
 		var mode := DisplayServer.window_get_mode()
@@ -390,6 +390,24 @@ func _toggle_dev_console() -> void:
 	dev_console.open_for(self, dev_log)
 	dev_log.visible = true
 	dev_log.add("Console de desenvolvimento aberto.")
+
+func _apply_qa_cheat() -> void:
+	var state := save_state
+	var newly_unlocked: Array = []
+	for achievement in Achievements.all():
+		if not state.achievements.has(achievement.id):
+			newly_unlocked.append(achievement)
+	for character_id in ProgressRules.ALL_CHARACTER_IDS:
+		var progress := state.for_character(character_id)
+		progress.level = ProgressRules.MAX_LEVEL
+		progress.xp = ProgressRules.xp_for_level(ProgressRules.MAX_LEVEL)
+	Achievements.unlock_all(state)
+	Achievements.grant_cards(state, newly_unlocked)
+	Shop.grant_everything(state)
+	Collection.ensure_collection(state)
+	save_store.save(state)
+	show_toast("Cheat de playtest aplicado: progresso e catálogo liberados.", 4.0)
+	dev_log.add("Cheat de playtest aplicado: nível máximo, conquistas e catálogo liberados.")
 
 func show_playtest_guide(mark_seen: bool = false) -> void:
 	if not BuildConfig.playtest_enabled() or playtest_guide != null:

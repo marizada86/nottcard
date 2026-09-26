@@ -25,8 +25,8 @@ O resultado não depende de integração nem login no Discord: o jogo produz um
 - F11 continua alternando a tela cheia.
 - F12 abre uma ferramenta de desenvolvimento com as abas **Log** e
   **Comandos**; o log é incluído na exportação.
-- `Ctrl+O+P` abre o **Navegador QA** nas builds internas. O atalho deixa de
-  desbloquear o perfil diretamente.
+- O **Navegador QA** é aberto pelo menu **Ferramentas de teste** nas builds
+  internas. O atalho `Ctrl+O+P` é reservado ao cheat definido na SPEC-017.
 - O Navegador QA inicia cenários declarados para conteúdos existentes,
   incluindo missões, segmentos de combate/evento e HQs que tenham tela
   jogável. Cada cenário usa estado isolado e pode ser reiniciado.
@@ -41,8 +41,7 @@ O resultado não depende de integração nem login no Discord: o jogo produz um
 - Criar uma HQ, sala, fase ou sistema de campanha que ainda não exista.
 - Editor livre de memória/save, console de código arbitrário ou comandos que
   executem arquivos do computador.
-- Garantir segredo do Navegador QA por combinação de teclas; a separação é por
-  tipo de build, não por ofuscação.
+- Garantir o acesso ao Navegador QA por tipo de build, não por ofuscação.
 
 ## Modos de build e autorização
 
@@ -131,12 +130,11 @@ prints não sofrem manipulação e o guia avisa que eles mostram a tela do jogo.
 - Dados de combate e eventos relevantes entram no log como explicações, sem
   duplicar ou alterar regras do `core`.
 
-## Ctrl+O+P — Navegador QA
+## Acesso ao Navegador QA
 
-`Ctrl+O+P` passa a abrir/fechar o Navegador QA. Ele é tratado como o
-pressionamento de `P` enquanto Ctrl e O estão mantidos; o evento é consumido
-para não vazar a tecla à tela por trás. Um botão **Ferramentas de teste** no
-menu e na pausa oferece o mesmo acesso.
+O botão **Ferramentas de teste** no menu abre o Navegador QA. O atalho
+`Ctrl+O+P` é tratado como cheat na SPEC-017 e é consumido para não vazar a
+tecla à tela por trás.
 
 O navegador não altera o save normal do usuário. Ele cria e usa uma sessão de
 teste isolada, identificada visualmente por uma faixa `CENÁRIO DE TESTE`.
@@ -215,8 +213,8 @@ salva PNG; `ZIPPacker` cria o arquivo de evidência.
 - [ ] O rascunho sobrevive a reinício e respeita os limites de 20 imagens/8 MB.
 - [ ] F11 continua funcionando; F12 não bloqueia a jogabilidade; as abas de
       comandos não existem fora da build QA.
-- [ ] `Ctrl+O+P` e os botões de acesso abrem o Navegador QA somente na build
-      QA, sem alterar o save normal.
+- [ ] O botão **Ferramentas de teste** abre o Navegador QA somente na build
+      QA, sem alterar o save normal; `Ctrl+O+P` segue a SPEC-017.
 - [ ] Cada destino ofertado pelo catálogo inicia, exibe `CENÁRIO DE TESTE`,
       reinicia de forma determinística e grava seu ID no pacote de evidência.
 - [ ] Há pelo menos um cenário de acesso direto para cada missão jogável e
@@ -232,7 +230,8 @@ salva PNG; `ZIPPacker` cria o arquivo de evidência.
    incluindo ZIP, sanitização, rascunho e falhas de disco.
 3. Implementar F6/F7 globalmente e o overlay F5; atualizar guia, menu e pausa.
 4. Implementar `DevLog`/F12 e incluir seu recorte na exportação.
-5. Implementar o catálogo de cenários, sandbox, Navegador QA e `Ctrl+O+P`.
+5. Implementar o catálogo de cenários, sandbox e acesso de menu ao Navegador
+   QA; `Ctrl+O+P` é definido pela SPEC-017.
 6. Declarar cenários para M1–M9, telas existentes e HQs com rota jogável.
 7. Executar testes unitários, de UI e uma prova manual de build pública e QA;
    registrar o ZIP produzido e a matriz de cenários em `evidence/`.

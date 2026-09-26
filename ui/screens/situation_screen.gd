@@ -172,11 +172,11 @@ func draw(ci: CanvasItem) -> void:
 	ci.draw_rect(Rect2(0, 0, Gfx.W, Gfx.H), UiTheme.BACKGROUND_COLOR)
 	Gfx.image(ci, room.asset_id + "/bg", "rooms", Rect2(0, 0, Gfx.W, Gfx.H))
 	Gfx.scrim(ci, Rect2(0, 0, Gfx.W, Gfx.H), 110)
-	Gfx.scrim(ci, Rect2(190, 60, 900, 250), 170)
-	Gfx.text(ci, title, Vector2(Gfx.W / 2.0, 72), 34, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_title_font())
-	var y := 122.0
-	for line in situation.lines:
-		y += Gfx.wrapped_center(ci, line, 24, UiTheme.TEXT_COLOR, Gfx.W / 2.0, y, 820, 4, UiTheme.card_text_font())
+	var intro_rect := Rect2(190, 60, 900, 250)
+	Gfx.scrim(ci, intro_rect, 170)
+	Gfx.text_fit(ci, title, Rect2(intro_rect.position.x + 20, 68, intro_rect.size.x - 40, 40), 34, UiTheme.TEXT_COLOR, "center", UiTheme.card_title_font(), 18, 0)
+	var body := "\n".join(situation.lines)
+	Gfx.wrapped_fit(ci, body, Rect2(intro_rect.position.x + 26, 114, intro_rect.size.x - 52, 184), 24, UiTheme.TEXT_COLOR, true, 4, UiTheme.card_text_font(), 14, 0)
 	var m := mouse()
 	if chosen == null:
 		if run.party.size > 1:
@@ -184,7 +184,7 @@ func draw(ci: CanvasItem) -> void:
 				var member: Member = run.party.members[i]
 				var sel := i == tester
 				Gfx.rect(ci, chip_rects[i], Color8(52, 90, 60) if sel else UiTheme.BUTTON_COLOR, 6, 2, UiTheme.SELECTED_BORDER if sel else UiTheme.CARD_BORDER)
-				Gfx.text(ci, member.character.name, chip_rects[i].get_center(), 19, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true))
+				Gfx.text_fit(ci, member.character.name, chip_rects[i], 19, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true), 12, 6)
 		for b in option_buttons:
 			_draw_option(ci, b["option"], b["rect"], m)
 		return
@@ -192,7 +192,7 @@ func draw(ci: CanvasItem) -> void:
 	var who: String = tester_player.character.name
 	var panel := Rect2(290, 330, 700, 210)
 	Gfx.rect(ci, panel, Color8(20, 20, 28, 235), 14, 3, UiTheme.CARD_BORDER)
-	Gfx.text(ci, "%s — %s" % [who, chosen.label], Vector2(panel.get_center().x, panel.position.y + 14), 24, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_text_font(true))
+	Gfx.text_fit(ci, "%s — %s" % [who, chosen.label], Rect2(panel.position.x + 16, panel.position.y + 10, panel.size.x - 32, 32), 24, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true), 14, 0)
 	if not chosen.auto:
 		var shown: int
 		if rolling:
@@ -202,9 +202,9 @@ func draw(ci: CanvasItem) -> void:
 		Gfx.text(ci, str(shown), Vector2(panel.position.x + 120, panel.position.y + 110), 84, UiTheme.SELECTED_BORDER if not rolling else UiTheme.TEXT_MUTED, "center", UiTheme.card_title_font())
 		if resolved:
 			var extra := (" %+d" % check.bonus) if check.bonus != 0 else ""
-			Gfx.text(ci, "d20 %d %+d%s = %d vs DC %d" % [check.roll, check.modifier, extra, check.total, check.dc], Vector2(panel.position.x + 230, panel.position.y + 78), 24, UiTheme.TEXT_COLOR, "topleft")
+			Gfx.text_fit(ci, "d20 %d %+d%s = %d vs DC %d" % [check.roll, check.modifier, extra, check.total, check.dc], Rect2(panel.position.x + 226, panel.position.y + 70, panel.size.x - 242, 32), 24, UiTheme.TEXT_COLOR, "topleft", null, 14, 0)
 			var verdict := "Sucesso" if check.success else ("FALHA CRÍTICA" if check.critical else "Falha")
-			Gfx.text(ci, verdict, Vector2(panel.position.x + 230, panel.position.y + 112), 34, UiTheme.HEAL_COLOR if check.success else Color8(230, 90, 80), "topleft")
+			Gfx.text_fit(ci, verdict, Rect2(panel.position.x + 226, panel.position.y + 106, panel.size.x - 242, 38), 34, UiTheme.HEAL_COLOR if check.success else Color8(230, 90, 80), "topleft", null, 18, 0)
 	if resolved and applied != null:
 		Gfx.wrapped_center(ci, applied.text, 22, UiTheme.TEXT_COLOR, panel.get_center().x, panel.position.y + 160, 640, 2, UiTheme.card_text_font())
 		var bits: PackedStringArray = []
@@ -215,7 +215,7 @@ func draw(ci: CanvasItem) -> void:
 		if applied.drawn != 0: bits.append("+%d carta" % applied.drawn)
 		if applied.lost_card != null: bits.append("perdeu %s" % applied.lost_card.name)
 		if not bits.is_empty():
-			Gfx.text(ci, " · ".join(bits), Vector2(panel.get_center().x, panel.end.y + 10), 22, UiTheme.SELECTED_BORDER, "midtop", UiTheme.card_text_font(true))
+			Gfx.text_fit(ci, " · ".join(bits), Rect2(220, panel.end.y + 8, 840, 28), 22, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true), 13, 0)
 	if resolved:
 		if luck_pending:
 			Gfx.button(ci, luck_button, "Usar Sorte (%d)" % tester_player.luck, luck_button.has_point(m))
@@ -227,7 +227,7 @@ func draw(ci: CanvasItem) -> void:
 			if pr.item != null: what.append(pr.item.nome)
 			if pr.temp_card != "": what.append("carta temporária")
 			if pr.temp_item != "": what.append("item temporário")
-			Gfx.text(ci, "Recompensa: " + ", ".join(what), Vector2(Gfx.W / 2.0, Gfx.H - 140), 22, UiTheme.SELECTED_BORDER, "midtop")
+			Gfx.text_fit(ci, "Recompensa: " + ", ".join(what), Rect2(190, Gfx.H - 148, 900, 30), 22, UiTheme.SELECTED_BORDER, "center", null, 13, 0)
 			Gfx.button(ci, luck_button, "Aceitar", luck_button.has_point(m))
 			Gfx.button(ci, accept_button, "Recusar", accept_button.has_point(m))
 		elif applied != null:
@@ -236,12 +236,40 @@ func draw(ci: CanvasItem) -> void:
 func _draw_option(ci: CanvasItem, o: Option, rect: Rect2, m: Vector2) -> void:
 	var affordable := o.cost_gold <= app.run.gold_available()
 	Gfx.rect(ci, rect, UiTheme.BUTTON_HOVER if (rect.has_point(m) and affordable) else UiTheme.BUTTON_COLOR, 10, 2, UiTheme.CARD_BORDER)
-	Gfx.text(ci, o.label, Vector2(rect.get_center().x, rect.position.y + 10), 22, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_text_font(true))
+	Gfx.text_fit(ci, o.label, Rect2(rect.position.x + 8, rect.position.y + 6, rect.size.x - 16, 26), 22, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true), 13, 0)
 	var sub := o.check_label if not o.combat else "Combate"
-	Gfx.text(ci, sub, Vector2(rect.get_center().x, rect.position.y + 38), 19, UiTheme.SELECTED_BORDER, "midtop", UiTheme.card_text_font(true))
+	Gfx.text_fit(ci, sub, Rect2(rect.position.x + 8, rect.position.y + 34, rect.size.x - 16, 22), 19, UiTheme.SELECTED_BORDER, "center", UiTheme.card_text_font(true), 12, 0)
 	if o.attribute != null:
 		var pv: Variant = Exploration.check_preview(app.run.party.members[tester].player, o)
 		if pv != null:
-			Gfx.text(ci, pv.chance_text, Vector2(rect.get_center().x, rect.position.y + 58), 16, UiTheme.TEXT_MUTED, "midtop", UiTheme.card_text_font())
+			Gfx.text_fit(ci, pv.chance_text, Rect2(rect.position.x + 8, rect.position.y + 56, rect.size.x - 16, 18), 16, UiTheme.TEXT_MUTED, "center", UiTheme.card_text_font(), 11, 0)
+		if rect.has_point(m):
+			_draw_party_preview(ci, o)
 	if not affordable:
 		Gfx.rect(ci, rect, Color8(8, 8, 12, 150), 10)
+
+func _draw_party_preview(ci: CanvasItem, o: Option) -> void:
+	var previews: Array = []
+	var best := -1
+	var best_bonus := -999
+	for member in app.run.party.members:
+		var p: Player = member.player
+		var pv: Variant = Exploration.check_preview(p, o)
+		if pv == null:
+			continue
+		previews.append([p, pv])
+		if pv.total_bonus > best_bonus:
+			best_bonus = pv.total_bonus
+			best = previews.size() - 1
+	if previews.is_empty():
+		return
+	var panel := Rect2(220, 320, 840, 34 + previews.size() * 24)
+	Gfx.scrim(ci, panel, 220)
+	var attr: String = String(ATTR_LABELS.get(o.attribute, o.attribute))
+	Gfx.text_fit(ci, "Melhor escolha para %s (CD %d)" % [attr, o.dc], Rect2(panel.position.x + 12, panel.position.y + 5, panel.size.x - 24, 22), 18, UiTheme.TEXT_COLOR, "center", UiTheme.card_text_font(true), 12, 0)
+	for i in range(previews.size()):
+		var p: Player = previews[i][0]
+		var pv: CheckPreview = previews[i][1]
+		var recommended := i == best
+		var text := "%s: %s %d (%+d) · %s%s" % [p.character.name, attr, p.attributes[o.attribute], pv.total_bonus, pv.chance_text, " · recomendado" if recommended else ""]
+		Gfx.text_fit(ci, text, Rect2(panel.position.x + 14, panel.position.y + 30 + i * 24, panel.size.x - 28, 22), 17, UiTheme.SELECTED_BORDER if recommended else UiTheme.TEXT_MUTED, "topleft", UiTheme.card_text_font(recommended), 11, 0)

@@ -72,7 +72,7 @@ func handle_input(event: InputEvent) -> void:
 func draw(ci: CanvasItem) -> void:
 	Gfx.screen_background(ci, "recompensa")
 	Gfx.scrim(ci, Rect2(0, 0, Gfx.W, Gfx.H), 170)
-	Gfx.text(ci, title, Vector2(Gfx.W / 2.0, 80), 38, UiTheme.TEXT_COLOR, "center")
+	Gfx.text_fit(ci, title, Rect2(160, 48, 960, 64), 38, UiTheme.TEXT_COLOR, "center", null, 20, 0)
 	var m := mouse()
 	for i in range(cards.size()):
 		CardView.draw_card(ci, cards[i], rects[i], rects[i].has_point(m), true)

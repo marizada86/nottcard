@@ -19,6 +19,8 @@ var result: RunResult = null
 var member_results: Array = []
 var world: WorldMap
 var walker: Walker
+var interactive_props: Dictionary = {}
+var removed_props: Dictionary = {}
 var room_index: int = 0
 var temp_budget: TempBudget = TempBudget.new()
 var event_plan: Array = []
@@ -74,8 +76,22 @@ func start(characters: Array, mission_id: String) -> void:
 	run_kills = {}
 	world = mission.make_world()
 	var dg := mission.dungeon
+	interactive_props = {}
+	removed_props = {}
+	var reserved := {Vector2i(dg.start[0], dg.start[1]): true}
+	for door in dg.doors:
+		reserved[door] = true
+	for anchor in dg.anchors.values():
+		reserved[anchor] = true
+	for room in dg.enemy_cells:
+		for cell in dg.enemy_cells[room]:
+			reserved[cell] = true
+	for room in dg.prop_cells:
+		for prop in dg.prop_cells[room]:
+			if not reserved.has(prop[0]) and is_interactive_prop(String(prop[1])):
+				interactive_props[prop[0]] = String(prop[1])
 	walker = Walker.new(dg.build(), dg.start[0], dg.start[1], dg.start[2])
-	walker.gate = WalkRules.make_gate(world, mission.rooms_by_id, dg)
+	walker.gate = WalkRules.make_gate(world, mission.rooms_by_id, dg, interactive_props)
 	room_index = mission.index_of(world.current)
 	temp_budget = TempBudget.new()
 	plan_events()
@@ -93,6 +109,34 @@ func plan_events() -> void:
 	for inst in event_plan:
 		inst.cell = mission.dungeon.event_cell(inst.room, r)
 		inst.state = Events.roll_state(inst, r)
+
+static func is_interactive_prop(slug: String) -> bool:
+	return slug in ["caixote", "barril", "braseiro", "braseiro_apagado", "vela", "tocha", "lanterna_nevoa", "bigorna_ferraria", "banco_quebrado", "mesa_pousada"]
+
+func interact_prop(cell: Vector2i) -> String:
+	var slug: Variant = interactive_props.get(cell)
+	if slug == null:
+		return WalkRules.PROP_TEXT
+	var p: Player = party.active_member.player
+	if slug == "caixote" and p.attributes["forca"] < 14:
+		return "A caixa grande exige Força 14 para ser quebrada."
+	interactive_props.erase(cell)
+	removed_props[cell] = true
+	var r := rng if rng != null else PyRandom.shared
+	var gold := 2 + r.randrange(4)
+	ledger.add_gold(gold)
+	ledger.add("Objeto: %s" % slug, 5)
+	var extra := ""
+	var loot_roll := r.randrange(100)
+	if loot_roll < 5:
+		var pair := Temporaries.grant_item(p, temp_budget, r)
+		if pair[0] != null:
+			extra = " e %s" % pair[0].nome
+	elif loot_roll < 10:
+		var card := Temporaries.grant_card(p, temp_budget, r)
+		if card != null:
+			extra = " e carta temporária %s" % card.name
+	return "%s vasculhado: +%d ouro, +5 XP%s." % [slug.capitalize(), gold, extra]
 
 func current_room() -> Room:
 	return mission.rooms[room_index]
@@ -313,14 +357,11 @@ func mimic_won(instance: EventInstance) -> String:
 	var item: Variant = pair[0]
 	return "Mímico derrotado: +%d de ouro%s." % [gold, (" e %s" % item.nome) if item != null else ""]
 
-## O jogador cruzou a soleira de uma sala andando. Devolve true se a sala atual não resolvida precisa abrir o encontro dela.
-func walk_cross(room_id: int) -> bool:
-	var current := world.current
-	if room_id == current:
+## O jogador cruzou a soleira de uma sala. Só o avanço inédito abre o encontro; recuar permanece livre.
+func walk_cross(room_id: int, backward: bool = false) -> bool:
+	if room_id == world.current or not world.can_move_to(room_id):
 		return false
-	if not world.is_cleared(current):
-		return true
-	if world.can_move_to(room_id):
-		world.move_to(room_id)
-		room_index = mission.index_of(room_id)
-	return false
+	var was_visited := world.visited.has(room_id)
+	world.move_to(room_id)
+	room_index = mission.index_of(room_id)
+	return not backward and not was_visited and not world.is_cleared(room_id)

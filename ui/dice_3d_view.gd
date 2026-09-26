@@ -61,27 +61,12 @@ func start(values: Array, duration: float) -> void:
 		for face_index in range(20):
 			instance.set_surface_override_material(face_index, MeshSource.face_material(face_index + 1))
 		pivot.add_child(instance)
-		_add_face_numbers(pivot)
 		var offset := (i - (values.size() - 1) / 2.0) * 1.45
 		pivot.position = Vector3(-2.6 + offset, 1.25, 0.0)
 		var start_rotation := Quaternion.from_euler(Vector3(1.2 + i * 0.5, -0.9 + i * 0.7, 0.4 + i * 0.3))
 		pivot.quaternion = start_rotation
 		var target_rotation := Quaternion(MeshSource.face_normal(int(values[i])), Vector3(0, 0, 1))
 		_dice.append({"pivot": pivot, "from": start_rotation, "target": target_rotation, "offset": offset})
-
-func _add_face_numbers(pivot: Node3D) -> void:
-	for value in range(1, 21):
-		var number := Label3D.new()
-		number.text = str(value)
-		number.font = UiTheme.card_title_font()
-		number.font_size = 72
-		number.outline_size = 10
-		number.modulate = Color8(32, 34, 40)
-		number.outline_modulate = Color8(238, 234, 220)
-		number.pixel_size = 0.0042
-		number.billboard = BaseMaterial3D.BILLBOARD_ENABLED
-		number.position = MeshSource.face_center(value) + MeshSource.face_normal(value) * 0.025
-		pivot.add_child(number)
 
 func advance(dt: float) -> void:
 	if not _active:

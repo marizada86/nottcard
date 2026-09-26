@@ -83,8 +83,8 @@ func _start() -> void:
 func _draw() -> void:
 	Gfx.scrim(self, Rect2(0, 0, Gfx.W, Gfx.H), 225)
 	Gfx.rect(self, PANEL, Color8(20, 20, 28, 248), 14, 3, UiTheme.CARD_BORDER)
-	Gfx.text(self, "Navegador QA", Vector2(PANEL.position.x + 28, PANEL.position.y + 20), 34, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_title_font())
-	Gfx.text(self, "Cenários usam save isolado; o progresso normal não será alterado.", Vector2(PANEL.position.x + 28, PANEL.position.y + 62), 18, UiTheme.TEXT_MUTED, "topleft")
+	Gfx.text_fit(self, "Navegador QA", Rect2(PANEL.position.x + 24, PANEL.position.y + 14, PANEL.size.x - 48, 38), 34, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_title_font(), 18, 0)
+	Gfx.text_fit(self, "Cenários usam save isolado; o progresso normal não será alterado.", Rect2(PANEL.position.x + 24, PANEL.position.y + 58, PANEL.size.x - 48, 24), 18, UiTheme.TEXT_MUTED, "topleft", null, 13, 0)
 	group_buttons = []
 	var x := PANEL.position.x + 24
 	for name in _groups():
@@ -101,8 +101,8 @@ func _draw() -> void:
 		var rect := Rect2(PANEL.position.x + 28, y, 1044, 54)
 		row_buttons.append({"scenario": scenario, "rect": rect})
 		Gfx.rect(self, rect, UiTheme.BUTTON_HOVER if scenario == selected else UiTheme.BUTTON_COLOR, 8, 2, UiTheme.SELECTED_BORDER if scenario == selected else UiTheme.CARD_BORDER)
-		Gfx.text(self, scenario.title, Vector2(rect.position.x + 14, rect.position.y + 8), 21, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(true))
-		Gfx.text(self, scenario.description, Vector2(rect.position.x + 14, rect.position.y + 31), 16, UiTheme.TEXT_MUTED, "topleft")
+		Gfx.text_fit(self, scenario.title, Rect2(rect.position.x + 12, rect.position.y + 5, rect.size.x - 24, 22), 21, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_text_font(true), 14, 0)
+		Gfx.text_fit(self, scenario.description, Rect2(rect.position.x + 12, rect.position.y + 29, rect.size.x - 24, 18), 16, UiTheme.TEXT_MUTED, "topleft", null, 12, 0)
 		y += 62
 		if y > 572:
 			break
@@ -112,4 +112,4 @@ func _draw() -> void:
 		party_names.append(String(cid).capitalize())
 	Gfx.button(self, PARTY_BUTTON, "Grupo: " + ", ".join(party_names), PARTY_BUTTON.has_point(get_local_mouse_position()))
 	Gfx.button(self, START_BUTTON, "Iniciar cenário (Enter)", START_BUTTON.has_point(get_local_mouse_position()))
-	Gfx.text(self, "Esc fecha · Ctrl+O+P também abre este painel", Vector2(PANEL.position.x + 28, PANEL.end.y - 18), 16, UiTheme.TEXT_MUTED, "bottomleft")
+	Gfx.text_fit(self, "Esc fecha · Ferramentas de teste no menu abre este painel", Rect2(PANEL.position.x + 24, PANEL.end.y - 34, 560, 22), 16, UiTheme.TEXT_MUTED, "bottomleft", null, 12, 0)

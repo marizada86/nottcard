@@ -88,16 +88,15 @@ func _draw() -> void:
 	if BuildConfig.qa_tools_enabled():
 		Gfx.button(self, TAB_COMMANDS, "Comandos", TAB_COMMANDS.has_point(get_local_mouse_position()))
 	if log.commands_tab and BuildConfig.qa_tools_enabled():
-		Gfx.text(self, "Comandos seguros", Vector2(PANEL.position.x + 30, 112), 25, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_title_font())
-		Gfx.text(self, "Os cenários substituem comandos de código livre.", Vector2(PANEL.position.x + 30, 150), 19, UiTheme.TEXT_MUTED, "topleft")
-		Gfx.text(self, "Digite ‘list’ ou ‘start <id>’; ou abra a lista visual.", Vector2(PANEL.position.x + 30, 180), 19, UiTheme.TEXT_MUTED, "topleft")
+		Gfx.text_fit(self, "Comandos seguros", Rect2(PANEL.position.x + 24, 104, PANEL.size.x - 48, 34), 25, UiTheme.TEXT_COLOR, "topleft", UiTheme.card_title_font(), 16, 0)
+		Gfx.wrapped_fit(self, "Os cenários substituem comandos de código livre. Digite ‘list’ ou ‘start <id>’; ou abra a lista visual.", Rect2(PANEL.position.x + 24, 144, PANEL.size.x - 48, 62), 19, UiTheme.TEXT_MUTED, false, 2, null, 14, 0)
 		Gfx.button(self, QA_BUTTON, "Abrir Navegador QA", QA_BUTTON.has_point(get_local_mouse_position()))
 		return
 	var y := 106.0
 	var lines: Array = log.recent(12)
 	if lines.is_empty():
-		Gfx.text(self, "Ainda não há eventos no log.", Vector2(PANEL.position.x + 30, y), 19, UiTheme.TEXT_MUTED, "topleft")
+		Gfx.text_fit(self, "Ainda não há eventos no log.", Rect2(PANEL.position.x + 24, y, PANEL.size.x - 48, 20), 19, UiTheme.TEXT_MUTED, "topleft", null, 14, 0)
 	for line in lines:
-		Gfx.text(self, line, Vector2(PANEL.position.x + 24, y), 16, UiTheme.TEXT_COLOR, "topleft")
+		Gfx.text_fit(self, line, Rect2(PANEL.position.x + 24, y, PANEL.size.x - 48, 18), 16, UiTheme.TEXT_COLOR, "topleft", null, 12, 0)
 		y += 20
-	Gfx.text(self, "F12 fecha · o log também acompanha o ZIP", Vector2(PANEL.position.x + 20, PANEL.end.y - 16), 16, UiTheme.TEXT_MUTED, "bottomleft")
+	Gfx.text_fit(self, "F12 fecha · o log também acompanha o ZIP", Rect2(PANEL.position.x + 16, PANEL.end.y - 32, PANEL.size.x - 32, 22), 16, UiTheme.TEXT_MUTED, "bottomleft", null, 12, 0)

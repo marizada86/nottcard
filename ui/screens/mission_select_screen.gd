@@ -9,12 +9,22 @@ var hovered: int = -1
 
 func _init() -> void:
 	entries = Missions.all().values()
-	var width := 560
-	var height := 62
-	var gap := 14
-	var top := 190
+	_layout_entries()
+
+func _layout_entries() -> void:
+	rects.clear()
+	# Duas colunas mantêm M1–M9 acima do briefing e do botão Voltar.
+	var columns := 2
+	var width := 540.0
+	var height := 50.0
+	var gap_x := 24.0
+	var gap_y := 12.0
+	var top := 142.0
 	for i in range(entries.size()):
-		rects.append(Rect2((Gfx.W - width) / 2.0, top + i * (height + gap), width, height))
+		var col := i % columns
+		var row := i / columns
+		var x := (Gfx.W - (columns * width + (columns - 1) * gap_x)) / 2.0 + col * (width + gap_x)
+		rects.append(Rect2(x, top + row * (height + gap_y), width, height))
 
 func _unlocked(mission: MissionDef) -> bool:
 	return Missions.is_unlocked(mission, app.save_state.missions_completed)
@@ -56,5 +66,5 @@ func draw(ci: CanvasItem) -> void:
 			var reqs: PackedStringArray = []
 			for r in shown.requires: reqs.append(String(r).to_upper())
 			text = "Conclua %s para liberar esta missão." % ", ".join(reqs)
-	Gfx.wrapped_center(ci, text, 22, UiTheme.TEXT_MUTED, Gfx.W / 2.0, 190 + rects.size() * 76 + 24, 760)
+	Gfx.wrapped_fit(ci, text, Rect2(190, 470, 900, 114), 22, UiTheme.TEXT_MUTED, true, 3)
 	Gfx.button(ci, back_button, "Voltar", back_button.has_point(m))

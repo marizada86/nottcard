@@ -5,6 +5,7 @@ extends Control
 const PANEL := Rect2(160, 72, 960, 576)
 const EDITOR_RECT := Rect2(190, 160, 900, 370)
 const CLEAR_RECT := Rect2(190, 550, 220, 42)
+const MAX_NOTE_LENGTH := 1000
 
 var app: GameApp
 var opening_png: PackedByteArray
@@ -20,12 +21,20 @@ func open_for(game: GameApp, png: PackedByteArray) -> void:
 	editor.position = EDITOR_RECT.position
 	editor.size = EDITOR_RECT.size
 	editor.placeholder_text = "Escreva o que aconteceu, o que pareceu estranho e como repetir. Não escreva senhas ou dados pessoais."
-	editor.max_length = 1000
 	editor.wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
 	editor.tooltip_text = "Ctrl+Z desfaz · Ctrl+Y refaz · Ctrl+C/Ctrl+V copia e cola"
 	add_child(editor)
-	editor.text_changed.connect(queue_redraw)
+	editor.text_changed.connect(_on_editor_text_changed)
 	editor.grab_focus()
+	queue_redraw()
+
+static func capped_text(text: String) -> String:
+	return text.left(MAX_NOTE_LENGTH)
+
+func _on_editor_text_changed() -> void:
+	var capped := capped_text(editor.text)
+	if capped != editor.text:
+		editor.text = capped
 	queue_redraw()
 
 func close_and_store() -> void:
@@ -65,9 +74,9 @@ func handle_input(event: InputEvent) -> bool:
 func _draw() -> void:
 	Gfx.scrim(self, Rect2(0, 0, Gfx.W, Gfx.H), 225)
 	Gfx.rect(self, PANEL, Color8(20, 20, 28, 245), 14, 3, UiTheme.CARD_BORDER)
-	Gfx.text(self, "Nota de playtest", Vector2(PANEL.get_center().x, PANEL.position.y + 18), 32, UiTheme.TEXT_COLOR, "midtop", UiTheme.card_title_font())
-	Gfx.text(self, "A nota será guardada com o print deste instante ao fechar (F5 ou Esc).", Vector2(PANEL.get_center().x, PANEL.position.y + 58), 18, UiTheme.TEXT_MUTED, "midtop")
+	Gfx.text_fit(self, "Nota de playtest", Rect2(PANEL.position.x + 24, PANEL.position.y + 14, PANEL.size.x - 48, 38), 32, UiTheme.TEXT_COLOR, "center", UiTheme.card_title_font(), 18, 0)
+	Gfx.text_fit(self, "A nota será guardada com o print deste instante ao fechar (F5 ou Esc).", Rect2(PANEL.position.x + 24, PANEL.position.y + 56, PANEL.size.x - 48, 28), 18, UiTheme.TEXT_MUTED, "center", null, 13, 0)
 	Gfx.button(self, CLEAR_RECT, "Confirmar apagar" if clear_armed else "Apagar texto", CLEAR_RECT.has_point(get_local_mouse_position()))
 	var count := editor.text.length() if editor != null else 0
-	Gfx.text(self, "%d/1000 · Guardado: %s" % [count, app.evidence_store.summary()], Vector2(PANEL.end.x - 24, PANEL.end.y - 24), 18, UiTheme.SELECTED_BORDER, "bottomright")
-	Gfx.text(self, "Ctrl+Z desfaz · Ctrl+Y refaz · Ctrl+C/Ctrl+V · F5/Esc fecha", Vector2(PANEL.position.x + 28, PANEL.end.y - 24), 16, UiTheme.TEXT_MUTED, "bottomleft")
+	Gfx.text_fit(self, "%d/%d · Guardado: %s" % [count, MAX_NOTE_LENGTH, app.evidence_store.summary()], Rect2(700, PANEL.end.y - 40, 396, 24), 18, UiTheme.SELECTED_BORDER, "bottomright", null, 12, 0)
+	Gfx.text_fit(self, "Ctrl+Z desfaz · Ctrl+Y refaz · Ctrl+C/Ctrl+V · F5/Esc fecha", Rect2(PANEL.position.x + 28, PANEL.end.y - 40, 500, 24), 16, UiTheme.TEXT_MUTED, "bottomleft", null, 12, 0)
