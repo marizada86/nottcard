@@ -2,3 +2,4 @@
 *.tmp
 build/
 .baseline/
+Godot_v*-stable_win64.exe
